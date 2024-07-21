@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;700&display=swap">
     <title>Striv - Personal AI Running Coach</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -86,7 +87,51 @@
             }
         ]
         window.onload = ()=> {
-           
+            let windowWidth = window.innerWidth
+            let windowHeight = window.innerHeight
+            let isNotMobile = windowWidth > 640
+
+            const items = document.querySelectorAll('li[data-image]');
+            const displayImage = document.getElementById('displayImage');
+
+            items.forEach((item, index, arr)=> {
+                let arrowEl = item.getElementsByClassName('arrow')[0]        
+                if(isNotMobile) {
+                    arrowEl.className = `arrow h-9 w-9 mt-1 ${index ? 'hidden' : ''}`
+                    arrowEl.src = "assets/arrow-right-top-bold.svg"
+                } else {
+                    arrowEl.className = `arrow w-[13px] h-[13px] ${index ? 'hidden' : ''}`
+                    arrowEl.src = "assets/arrow-right-top.svg"
+                }
+                item.addEventListener('mouseover', () => {
+                    const imageName = item.getAttribute('data-image');
+                    displayImage.src = imageName;
+
+                    
+                    arr[0].getElementsByClassName('arrow')[0].classList.add('hidden');
+                    arr[0].getElementsByClassName('desc')[0].classList.add('hidden');
+                    item.getElementsByClassName('arrow')[0].classList.remove('hidden');
+                    item.getElementsByClassName('desc')[0].classList.remove('hidden');
+                });
+                item.addEventListener('mouseout', () => {
+                    item.getElementsByClassName('arrow')[0].classList.add('hidden');
+                    item.getElementsByClassName('desc')[0].classList.add('hidden');
+                    arr[0].getElementsByClassName('arrow')[0].classList.remove('hidden');
+                    arr[0].getElementsByClassName('desc')[0].classList.remove('hidden');
+                    
+                    displayImage.src = arr[0].getAttribute('data-image');
+                })
+            });
+
+            
+            
+            if (isNotMobile) {
+                let aspectRatio = 1.8
+                let maxWidth = windowHeight * 1.8
+                let rootEle = document.getElementById('root');
+                rootEle.style.maxWidth = maxWidth + 'px';
+            }
+        
             const listContainer = document.getElementById('faq-question-container');
             faqs.forEach((item, index) => {
                 const itemDiv = document.createElement('div');
@@ -194,7 +239,7 @@
             background: var(--green-37EC7F);
 
             color: #000;
-            font-family: "Bai Jamjuree";
+            font-family: "";
             font-size: 12px;
             font-style: normal;
             font-weight: 400;
@@ -219,6 +264,14 @@
             font-weight: 600;
             line-height: 140%; /* 78.4px */
             letter-spacing: -0.339px;
+        }
+        .text-40-lexend {
+            color: #FFF;
+            font-family: Lexend;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 140%; /* 56px */
         }
         .border-bottom-white {
             border-bottom: 0.281px solid #FFF;
@@ -287,23 +340,31 @@
             font-weight: 700;
             line-height: 140%;
         }
-        input {
-            background-color: transparent;
+        input.transparent {
+            background-color: transparent !important;
             border-bottom: 1px solid #FFF;
             padding: 20px 0px;
             font-family: Lexend;
             caret-color: white;
         }
-        input::placeholder {
+        input.transparent::placeholder {
             outline: none;
             color: white;
             font-size: 14px;
         }
-        input:focus {
+        input.transparent:active, input.transparent:focus {
             outline: none;
             font-size: 24px;
             color: white;
+            background-color: transparent !important;
         }
+        /* 针对自动填充的样式 */
+        input:-internal-autofill-previewed,
+        input:-internal-autofill-selected {
+            -webkit-text-fill-color: #FFFFFF !important;
+            transition: background-color 5000s ease-in-out 0s !important;
+        }
+
         .grid-col-3 {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -368,18 +429,26 @@
         .toggle-btn {
            background: url(assets/plus-white.svg);
         }
+
+        .white-filter {
+            filter: invert(50%) brightness(200%);
+        }
+
+        .list-active {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div class="root">
+    <div class="root" id="root">
         <div class="relative">
-            <img class="aspect-[0.95] sm:aspect-[1.8] sm:object-fill object-cover" src="./assets/section-0-bg.png">
-            <div class="left-8 sm:left-16 top-6 right-0 absolute">
+            <img class="aspect-[0.95] sm:aspect-[1.8] sm:object-fill object-cover " src="./assets/section-0-bg.png">
+            <div class="left-8 sm:left-[4.4%] top-[6.1%] right-0 absolute">
                 <div class="flex flex-row sm:h-16 items-center">
                     <img src="./assets/logo.svg" class="h-[15px] aspect-[1.25] sm:h-[27px]">
                     <img src="./assets/striv.svg" class="h-[12px] aspect-[3.72] ml-2 sm:h-[22px]">
                 </div>
-                <div class="mt-[30px] sm:mt-[100px] flex flex-col items-start">
+                <div class="mt-[30px] sm:mt-[7.5%] flex flex-col items-start">
                     <p class="text-14-lexend text-white sm:text-[34px]">Get elite-level coaching with every step</p>
                     <p class="uppercase text-28-lexend text-white sm:text-[56px]">Personal 
                         <br class="sm:hidden"> 
@@ -388,17 +457,16 @@
                         <br>
                         Just For you
                     </p>
-                    <button class="mt-[112px] join-btn sm:p-6 sm:rounded-[50px] sm:text-[20px]">
+                    <button class="mt-[10.1%] join-btn sm:p-6 sm:rounded-[50px] sm:text-[20px]">
                         Join the Waitlist Now
                     </button>
                 </div>
             </div>
         </div>
         <div class="flex flex-col items-start sm:flex-row my-10 sm:justify-between">
-            <p class="text-20-lexend mx-6">Get elite-level coaching with every run <br class="hidden sm:inline"> or ride. Striv brings professional <br class="hidden sm:inline"> training to your feet.</p>
-            <button class="mt-4 ml-6 ">
-                <img class="" src="./assets/arrow-right-bottom.svg">
-            </button>
+            <p class="text-20-lexend mx-6 sm:text-[40px]">Get elite-level coaching with every run <br class="hidden sm:inline"> or ride. Striv brings professional <br class="hidden sm:inline"> training to your feet.</p>
+            <img class="mt-4 ml-6 aspect-square w-[48px] sm:hidden" src="./assets/arrow-right-bottom.svg">
+            <img class="mt-4 ml-6 aspect-square w-[83px] sm:block hidden" src="./assets/arrow-left-bottom.svg">
         </div>
         <div class="mx-6 flex flex-row aspect-[1.3] sm:aspect-video justify-center items-center sm:px-[30px] sm:py-[34px]">
             <div class="h-full">
@@ -406,10 +474,10 @@
                     <img src="./assets/logo-fill-black-rounded.png" class="aspect-square w-[56px] sm:w-[116px]">
                 </div>
                 <div class="h-[4%] sm:h-[2%]"></div>
-                <div class="aspect-[0.74] h-[48%] sm:h-[49%] relative s2-container bg-color-green63 flex justify-center items-center sm:rounded-xl">
-                    <p class="absolute top-[10px] sm:top-[36px] text-12-lexend sm:text-2xl text-white">Multi-device <br> application</p>
-                    <img src="./assets/apple-watch.png" class="aspect-[0.6] w-[56px] sm:w-[135px] absolute bottom-[11px] sm:bottom-[36px]">
-                </div>
+                <img src="assets/multi-device-watch.png" class="aspect-[0.74] h-[48%] sm:h-[49%] relative s2-container bg-color-green63 flex justify-center items-center sm:rounded-xl">
+                    <!-- <p class="absolute top-[10px] sm:top-[36px] text-12-lexend sm:text-2xl text-white">Multi-device <br> application</p>
+                    <img src="./assets/apple-watch.png" class="aspect-[0.6] w-[56px] sm:w-[135px] absolute bottom-[11px] sm:bottom-[36px]"> -->
+                </img>
             </div>
             <div class="flex-1 h-full ml-[14px]">
                 <img src="./assets/strivinsole.png" alt="" class="aspect-[1.36] h-[67%] sm:h-[68%] object-fill rounded sm:rounded-xl">
@@ -430,31 +498,40 @@
             Features</p>
         <p class="text-64-lexend mt-12 mb-6 uppercase text-white hidden sm:block sm:mb-[160px] text-center">Revolutionary Technology</p>    
         <div class="flex sm:flex-row flex-col mx-6 sm:items-center">
-            <div class="text-color-white flex-1">
-                <div class="flex border-bottom-white py-3 group">
-                    <a class="no-underline hover:font-bold uppercase text-14-lexend text-left sm:text-[32px]">High Density  sensor</a>
-                    <!-- <img src="./assets/arrow-right-top.svg" class="h-[13px] w-[13px] sm:hidden"></img> -->
-                    <img src="./assets/arrow-right-top-bold.svg" class="h-9 w-9 sm:group-hover:block hidden mt-1"></img>
-                </div>
-                <div class="flex border-bottom-white py-3 group">
-                    <a class="no-underline hover:font-bold uppercase text-14-lexend text-left sm:text-[32px]">Multi-device</a>
-                    <!-- <img src="./assets/arrow-right-top.svg" class="h-[13px] w-[13px] sm:hidden"></img> -->
-                    <img src="./assets/arrow-right-top-bold.svg" class="h-9 w-9 sm:group-hover:block hidden mt-1"></img>
-                </div>
-                <div class="group border-bottom-white">
-                    <div class="flex py-3 flex-row">
-                        <a class="max-sm:flex-1 no-underline text-14-lexend uppercase text-left hover:font-bold sm:text-[32px]">AI Planning for u</a>
-                        <img src="./assets/arrow-right-top.svg" class="h-[13px] w-[13px] sm:hidden group-focus:block"></img>
-                        <img src="./assets/arrow-right-top-bold.svg" class="h-9 w-9 sm:group-hover:block hidden mt-1"></img>
+            <ul class="text-color-white flex-1">
+                <li data-image="assets/high-density-sensor.png" class="flex border-bottom-white group flex-col">
+                   <div class="flex flex-row py-3 ">
+                        <a class="max-sm:flex-1 no-underline hover:font-bold uppercase text-14-lexend text-left sm:text-[32px]">High Density  sensor</a>
+                        <!-- <img src="./assets/arrow-right-top.svg" class="h-[13px] w-[13px] sm:hidden"></img> -->
+                        <img class="arrow h-9 w-9 mt-1 "></img>
+                   </div>
+                   <p class="text-14-lexend text-left font-light pb-3 desc">
+                    Last mile or first mile, fibre or copper, Ethernet or wireless, 20Mbs or 100Gbs - we'll always find the best-performing connectivity to fit your needs and location.
+                    </p>
+                </>
+                <li data-image="assets/multi-device.png" class="flex flex-col border-bottom-white group">
+                    <div class="flex flex-row py-3 ">
+                        <a class="max-sm:flex-1 no-underline hover:font-bold uppercase text-14-lexend text-left sm:text-[32px]">Multi-device</a>
+                        <!-- <img src="./assets/arrow-right-top.svg" class="h-[13px] w-[13px] sm:hidden"></img> -->
+                        <img class="arrow h-9 w-9 mt-1 hidden"></img>
                     </div>
-                    <p class="text-14-lexend text-left font-light pb-3 sm:group-hover:block hidden max-sm:block">
+                    <p class="text-14-lexend text-left font-light pb-3 hidden desc">
                         Last mile or first mile, fibre or copper, Ethernet or wireless, 20Mbs or 100Gbs - we'll always find the best-performing connectivity to fit your needs and location.
                     </p>
-                </div>
-            </div>
+                </li>
+                <li data-image="assets/ai-planning-foru.png" class="group border-bottom-white">
+                    <div class="flex py-3 flex-row">
+                        <a class="max-sm:flex-1 no-underline text-14-lexend uppercase text-left hover:font-bold sm:text-[32px]">AI Planning for u</a>
+                        <img class="arrow h-9 w-9 mt-1 hidden"></img>
+                    </div>
+                    <p class="text-14-lexend text-left font-light pb-3 hidden desc">
+                        Last mile or first mile, fibre or copper, Ethernet or wireless, 20Mbs or 100Gbs - we'll always find the best-performing connectivity to fit your needs and location.
+                    </p>
+                </li>
+            </ul>
             <p class="w-[20px] sm:w-[72px]"></p>
             <img class="aspect-[1.1] sm:hidden mt-5 sm:mt-0" src="./assets/s3-right.png">
-            <img class="aspect-[1.3] h-[555px] hidden sm:block" src="./assets/s3-right-xl.png">
+            <img id="displayImage" class="aspect-[1.3] w-[48%] hidden sm:block" src="assets/high-density-sensor.png">
         </div>    
         <div class="flex flex-row sm:justify-between items-center mx-6 justify-center sm:mt-[180px]">
             <p class="text-24-lexend mt-12 mb-6 uppercase text-white sm:text-[64px] sm:pb-[28px]">How it works</p>
@@ -463,24 +540,24 @@
         <div class=" mx-6 sm:grid sm:grid-cols-[2fr_1fr]">
             <div class="flex flex-row">
                 <div class="bg-color-black08 flex flex-col items-start">
-                    <p class="text-color-green text-12-lexend px-3  mt-3" style="line-height: 30px;">Easy to Use</p>
-                    <p class="sm:mb-[50px] px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend font-normal text-left">Insert smart insoles into your shoes， attach charging pod on top of shoes (easily magnetically attached))</p>
-                    <img src="./assets/section-4-0.png" class="aspect-[1.5]">
+                    <p class="text-color-green text-12-lexend px-3  mt-3 mb-2 sm:pr-[9%] sm:pl-[12%] pt-[7.5%]">Easy to Use</p>
+                    <p class="sm:mb-[50px] px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend font-normal text-left flex-1 sm:pr-[9%] sm:pl-[12%]">Insert smart insoles into your shoes， attach charging pod on top of shoes (easily magnetically attached)</p>
+                    <img src="./assets/section-4-0.png" class="aspect-[1.23]">
                 </div>
                 <!-- <div class="w-[11px] sm:w-[25px]"></div> -->
-                <div class="bg-color-black08 flex flex-col items-start ml-[11px] sm:ml-[25px]">
-                    <p class="text-color-green text-12-lexend px-3 mt-3" style="line-height: 30px;">Easy to Use</p>
-                    <p class="sm:mb-[50px] px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend font-normal text-left">Insert smart insoles into your shoes， attach charging pod on top of shoes (easily magnetically attached))</p>
-                    <img src="./assets/section-4-1.png" class="aspect-[1.5]">
+                <div class="bg-color-black08 flex flex-col items-start ml-[11px] sm:ml-[25px] ">
+                    <p class="text-color-green text-12-lexend px-3 mt-3 text-start mb-2 sm:pr-[9%] sm:pl-[12%]  pt-[7.5%]" >Connect to our easy-to-use app</p>
+                    <p class="flex-1 sm:mb-[50px] px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend font-normal text-left sm:pr-[9%] sm:pl-[12%]">Insert smart insoles into your shoes， attach charging pod on top of shoes (easily magnetically attached)</p>
+                    <img src="./assets/section-4-1.png" class="aspect-[1.23]">
                 </div>
             </div>
             <div class="bg-color-black08 flex flex-row mt-[26px] sm:mt-0 sm:flex-col sm:ml-[25px]">
                 <div class="flex flex-col items-start flex-1">
-                    <p class="text-color-green text-12-lexend px-3 mt-5 mb-2 text-start">Start your run or ride and 
+                    <p class="text-color-green text-12-lexend px-3 mt-5 mb-2 text-start sm:pr-[9%] sm:pl-[12%]  pt-[7.5%]">Start your run or ride and 
                         Receive real-time audio coaching</p>
-                    <p class="sm:mb-[50px] px-3 text-12-lexend font-normal text-left text-white opacity-[0.65] mb-[14px]">Insert smart insoles into your shoes， attach charging pod on top of shoes (easily magnetically attached))</p>
+                    <p class="sm:mb-[50px] px-3 text-12-lexend font-normal text-left text-white opacity-[0.65] mb-[14px] sm:pr-[9%] sm:pl-[12%]">Insert smart insoles into your shoes， attach charging pod on top of shoes (easily magnetically attached)</p>
                 </div>
-                <img src="./assets/section-4.png" class="aspect-[0.9] h-[180px] sm:aspect-[1.5] sm:h-full">
+                <img src="./assets/section-4.png" class="aspect-[0.9] h-[180px] sm:aspect-[1.19] sm:h-full">
             </div>
         </div>
         <div class="sm:mt-[180px] sm:mb-[132px] mb-6 mx-6 flex flex-row sm:justify-between justify-center">
@@ -563,12 +640,24 @@
             </div> 
         </div>
         <div class="mt-12 bg-color-black22 relative">
-            <img src="./assets/section-6-lg.png" class="hidden sm:block">
+            <img src="./assets/section-6-lg.png" class="hidden sm:block aspect-[2.77] h-screen object-fill">
             <img src="./assets/section-6.png" class="sm:hidden">
+            <div class="hidden sm:block absolute left-[12.5%] top-0 right-0">
+                <div class="aspect-[5.5] "></div>
+                <div class="pb-6 flex flex-row items-start justify-between mr-[12.5%]">
+                    <p class="text-40-lexend ">Join our exclusive waitlist today and<br> receive:</p>
+                    <img src="./assets/arrow-left-bottom.svg" class="w-[83px] aspect-square white-filter">
+                </div>
+                <list class="list-inside text-20-lexend">
+                    <li>Early access to Striv, potential testing Sessions before purchase</li>
+                    <li class="py-3">25% discount on your first purchase</li>
+                    <li>Free premium app subscription for 6 months</li>
+                </list>
+            </div>
             <form action="https://run.us13.list-manage.com/subscribe/post?u=1a4454a27524c9bc932d713ea&amp;id=4f1f571fa7&amp;f_id=006102e9f0" 
                 method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank"
-             class="sm:pb-[22px] sm:ml-[11%] sm:w-[40%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6">
-                <input type="email" name="EMAIL" id="mce-EMAIL" required="" value="" class="flex-1 h-[58px] sm:placeholder:text-[18px] text-white" placeholder="Enter Your Email Here">
+             class="sm:pb-[4%] sm:ml-[11%] sm:w-[40%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6">
+                <input type="email" name="EMAIL" id="mce-EMAIL" class="transparent flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
                 <button class="subscribe-btn ml-3 sm:ml-[38px] uppercase">
                     <p class="text-12-lexend text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Get Notified</p>
                 </button>
