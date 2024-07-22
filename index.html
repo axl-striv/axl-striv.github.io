@@ -114,7 +114,7 @@
                     arrowEl.src = "assets/arrow-right-top-bold.svg"
                     
                     displayImage.src = "assets/high-density-sensor.png"
-                    displayImage.className = "aspect-[1.1] sm:hidden mt-5 sm:mt-0"
+                    displayImage.className = "rounded-2xl aspect-[1.1] sm:hidden mt-5 sm:mt-0"
                 }
                 item.addEventListener('mouseover', () => {
                     const imageName = item.getAttribute('data-image');
@@ -153,14 +153,14 @@
             const listContainer = document.getElementById('faq-question-container');
             faqs.forEach((item, index) => {
                 const itemDiv = document.createElement('div');
-                itemDiv.className = 'item mx-6 py-[26px] border-bottom-white flex flex-col';
+                itemDiv.className = 'item mx-6 border-bottom-white flex flex-col';
                 itemDiv.innerHTML = 
                     `
-                        <div class="item-title sm:text-[16px] flex flex-row items-start">
+                        <div class="item-title  py-[24px] sm:text-[16px] flex flex-row items-start">
                             <p class="max-w-[85%]">${item.question}</p>
                             <div class="toggle-btn aspect-square w-5"></div>
                         </div>
-                        <p class="item-content sm:text-[16px] mt-6 max-w-[85%]">${item.answer}</div>
+                        <p class="item-content sm:text-[16px] mb-6 max-w-[85%]">${item.answer}</div>
                     `;
                 listContainer.appendChild(itemDiv);
 
@@ -575,7 +575,7 @@
                 <div class="bg-color-black08 flex flex-col items-start">
                     <p class="text-color-green text-18-lexend sm:text-[22px] font-bold px-3  mt-5 mb-2 sm:pr-[9%] sm:pl-[12%] pt-[3.85%]">
                         Effortless Setup</p>
-                    <p class="sm:mb-[50px]  px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend sm:text-[16px] font-normal text-left flex-1 sm:pr-[9%] sm:pl-[12%]">
+                    <p class="sm:mb-[50px]  px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend sm:text-[16px] font-extralight text-left flex-1 sm:pr-[9%] sm:pl-[12%]">
                         Place the smart insoles into your shoes and magnetically attach the charging pod on top.
                     </p>
                     <img src="./assets/section-4-0.png" class="aspect-[1.23]">
@@ -585,7 +585,7 @@
                     <p class="text-color-green text-18-lexend sm:text-[22px] font-bold px-3 mt-5 text-start mb-2 sm:pr-[9%] sm:pl-[12%]  pt-[3.85%]" >
                         Seamless App Connection
                     </p>
-                    <p class="flex-1 sm:mb-[50px] px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend sm:text-[16px] font-normal text-left sm:pr-[9%] sm:pl-[12%]">
+                    <p class="flex-1 sm:mb-[50px] px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend sm:text-[16px] font-extralight text-left sm:pr-[9%] sm:pl-[12%]">
                         After inserting the insoles and attaching the charging pod, connect them to our user-friendly app for seamless integration.
                     </p>
                     <img src="./assets/section-4-1.png" class="aspect-[1.23]">
@@ -595,7 +595,7 @@
                 <div class="flex flex-col items-start flex-1">
                     <p class="text-color-green text-18-lexend sm:text-[22px] font-bold px-3 mt-5 mb-2 text-start sm:pr-[9%] sm:pl-[12%]  pt-[3.85%]">
                         Real-Time Coaching!</p>
-                    <p class="sm:mb-[50px] px-3 text-12-lexend sm:text-[16px] font-normal text-left text-white opacity-[0.65] mb-[14px] sm:pr-[9%] sm:pl-[12%]">
+                    <p class="sm:mb-[50px] px-3 text-12-lexend sm:text-[16px] font-extralight text-left text-white opacity-[0.65] mb-[14px] sm:pr-[9%] sm:pl-[12%]">
                         Begin your run or ride with the smart insoles and charging pod in place. Get real-time audio coaching to enhance your performance now!
                     </p>
                 </div>
@@ -612,15 +612,15 @@
         </div>
         <p class="text-24-lexend mt-12 mb-6 max-sm:uppercase text-white sm:text-[42px]">What Athletes Are Saying:</p>
         <p class="text-14-lexend text-white sm:text-[20px] sm:font-light capitalize">Actively Testing With Elite Athletes <br class="sm:hidden"> Like US Team Marathoner Jake Riley, Clayton Young, etc.</p>
-        <div class="sm:mx-0 mx-6 sm:flex sm:flex-row sm:mt-[80px] overflow-x-scroll sm:aspect-[5.2] scroll-container" id="scrollContainer">
+        <div class="sm:mx-0 mx-6 sm:flex sm:flex-row sm:mt-[80px] overflow-x-scroll sm:aspect-[4.4] scroll-container" id="scrollContainer">
             <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
-                    <p class="text-16-lexend font-light text-white text-left">Striv’s technology is a game-changer. After testing the sensors and seeing the data firsthand, I'm convinced of its value. It’s not just another smart wearable.</p>
+                    <p class="text-20-lexend font-light text-white text-left">Striv’s technology is a game-changer! After testing the sensors and seeing the data firsthand, I'm convinced of its value. It’s not just another smart wearable.</p>
                     <div class="flex flex-row items-center text-white mt-[28px] sm:mt-[64px] ">
                         <div class="w-[36px] h-[2px] bg-white"></div>
-                        <p class="text-left text-color-green ml-4 text-12-lexend font-medium">Jake Riley, US Team 2020 Marathoner</p>
+                        <p class="text-left text-color-green ml-4 text-14-lexend font-medium">Jake Riley, US Team 2020 Marathoner</p>
                     </div>
                 </div>
             </div>
@@ -628,10 +628,10 @@
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
-                    <p class="text-16-lexend font-light text-white text-left">With Striv's force sensors, we can now analyze our running efficiency in real-world conditions. It provides invaluable insights for improving performance across various terrains.</p>
+                    <p class="text-20-lexend font-light text-white text-left">With Striv's force sensors, we can now analyze our running efficiency in real-world conditions. It provides insights for improving performance across various terrains.</p>
                     <div class="flex flex-row items-center text-white mt-[28px] sm:mt-[64px]">
                         <div class="w-[36px] h-[2px] bg-white"></div>
-                        <p class="text-left text-color-green ml-4 text-12-lexend font-medium">Clayton Young, US Team 2024 Marathoner</p>
+                        <p class="text-left text-color-green ml-4 text-14-lexend font-medium">Clayton Young, US Team 2024 Marathoner</p>
                     </div>
                 </div>
             </div>
@@ -639,10 +639,10 @@
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
-                    <p class="text-16-lexend font-light text-white text-left">Testing Striv’s prototype has been impressive. The sensor data and insights show great potential. Looking forward to use it in my run.</p>
+                    <p class="text-20-lexend font-light text-white text-left">Testing Striv’s prototype has been impressive. The sensor data and insights show great potential. Looking forward to use it in my run.</p>
                     <div class="flex flex-row items-center text-white mt-[28px] sm:mt-[64px]">
                         <div class="w-[36px] h-[2px] bg-white"></div>
-                        <p class="text-left text-color-green ml-4 text-12-lexend font-medium">Michael, Boston Marathon Qualifier</p>
+                        <p class="text-left text-color-green ml-4 text-14-lexend font-medium">Michael, Boston Marathon Qualifier</p>
                     </div>
                 </div>
             </div>
@@ -650,10 +650,10 @@
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
-                    <p class="text-16-lexend font-light text-white text-left">Striv offers what I need from smartwatches provide plus advanced biomechanics, and personalized feedback. This is fantastic!</p>
+                    <p class="text-20-lexend font-light text-white text-left">Striv offers what I need from smartwatches provide plus advanced biomechanics, and personalized feedback. This is fantastic!</p>
                     <div class="flex flex-row items-center text-white mt-[28px] sm:mt-[64px]">
                         <div class="w-[36px] h-[2px] bg-white"></div>
-                        <p class="text-left text-color-green ml-4 text-12-lexend font-medium">Nicole, College Athlete</p>
+                        <p class="text-left text-color-green ml-4 text-14-lexend font-medium">Nicole, College Athlete</p>
                     </div>
                 </div>
             </div>
@@ -663,7 +663,7 @@
             <img src="./assets/section-6-lg.png" class="hidden sm:block aspect-[2.77] w-screen	 object-fill">
             <img src="./assets/section-6.png" class="sm:hidden">
             <div class="hidden sm:block absolute left-[12.5%] top-0 right-0">
-                <div class="aspect-[15] "></div>
+                <div class="aspect-[20] "></div>
                 <div class="pb-6 flex flex-row items-start justify-between mr-[12.5%]">
                     <p class="text-40-lexend ">Join our exclusive waitlist today and<br> receive:</p>
                     <img src="./assets/arrow-left-bottom.svg" class="w-[83px] aspect-square white-filter">
