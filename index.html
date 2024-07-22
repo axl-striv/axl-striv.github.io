@@ -97,29 +97,45 @@
             const displayImage = document.getElementById('displayImage');
 
             items.forEach((item, index, arr)=> {
-                let arrowEl = item.getElementsByClassName('arrow')[0]        
+                let arrowEl = item.getElementsByClassName('arrow')[0]
+                let titleEl = item.getElementsByClassName("title")[0]        
                 if(isNotMobile) {
+                    if(index == 0) titleEl.classList.add("font-bold")
+
                     arrowEl.className = `arrow h-9 w-9 mt-1 ${index ? 'hidden' : ''}`
                     arrowEl.src = "assets/arrow-right-top-bold.svg"
+
+                    displayImage.src = "assets/high-density-sensor.png"
+                    displayImage.className = "aspect-[1.3] w-[48%] hidden sm:block"    
                 } else {
+                    if(index == 0) titleEl.classList.add("font-bold")
+
                     arrowEl.className = `arrow w-[13px] h-[13px] ${index ? 'hidden' : ''}`
                     arrowEl.src = "assets/arrow-right-top-bold.svg"
+                    
+                    displayImage.src = "assets/high-density-sensor.png"
+                    displayImage.className = "aspect-[1.1] sm:hidden mt-5 sm:mt-0"
                 }
                 item.addEventListener('mouseover', () => {
                     const imageName = item.getAttribute('data-image');
                     displayImage.src = imageName;
-
-                    
+                 
                     arr[0].getElementsByClassName('arrow')[0].classList.add('hidden');
                     arr[0].getElementsByClassName('desc')[0].classList.add('hidden');
+                    arr[0].getElementsByClassName('title')[0].classList.remove('font-bold');
+
                     item.getElementsByClassName('arrow')[0].classList.remove('hidden');
                     item.getElementsByClassName('desc')[0].classList.remove('hidden');
+                    item.getElementsByClassName('title')[0].classList.add('font-bold');
                 });
                 item.addEventListener('mouseout', () => {
                     item.getElementsByClassName('arrow')[0].classList.add('hidden');
                     item.getElementsByClassName('desc')[0].classList.add('hidden');
+                    item.getElementsByClassName('title')[0].classList.remove('font-bold');
+
                     arr[0].getElementsByClassName('arrow')[0].classList.remove('hidden');
                     arr[0].getElementsByClassName('desc')[0].classList.remove('hidden');
+                    arr[0].getElementsByClassName('title')[0].classList.add('font-bold');
                     
                     displayImage.src = arr[0].getAttribute('data-image');
                 })
@@ -479,28 +495,36 @@
             <img class="mt-4 ml-6 aspect-square w-[48px] sm:hidden" src="./assets/arrow-right-bottom.svg">
             <img class="mt-4 ml-6 aspect-square w-[83px] sm:block hidden" src="./assets/arrow-left-bottom.svg">
         </div>
-        <div class="mx-6 flex flex-row aspect-[1.3] sm:aspect-video justify-center items-center sm:px-[30px] sm:py-[34px]">
-            <div class="h-full">
-                <div class="aspect-[0.74] h-[48%] sm:h-[49%] bg-color-black08 flex justify-center items-center sm:rounded-xl">
-                    <img src="./assets/logo-fill-black-rounded.png" class="aspect-square w-[56px] sm:w-[116px]">
+
+
+            <!-- <div class="mx-6 flex flex-row aspect-[1.3] sm:aspect-video justify-center items-center sm:px-[30px] sm:py-[34px]">
+                <div class="h-full">
+                    <div class="aspect-[0.74] h-[48%] sm:h-[49%] bg-color-black08 flex justify-center items-center sm:rounded-xl">
+                        <img src="./assets/logo-fill-black-rounded.png" class="aspect-square w-[56px] sm:w-[116px]">
+                    </div>
+                    <div class="h-[4%] sm:h-[2%]"></div>
+                    <img src="assets/multi-device-watch.png" class="aspect-[0.74] h-[48%] sm:h-[49%] relative s2-container bg-color-green63 flex justify-center items-center sm:rounded-xl">
+
+
+                        <p class="absolute top-[10px] sm:top-[36px] text-12-lexend sm:text-2xl text-white">Multi-device <br> application</p>
+                        <img src="./assets/apple-watch.png" class="aspect-[0.6] w-[56px] sm:w-[135px] absolute bottom-[11px] sm:bottom-[36px]">
+
+
+                    </img>
                 </div>
-                <div class="h-[4%] sm:h-[2%]"></div>
-                <img src="assets/multi-device-watch.png" class="aspect-[0.74] h-[48%] sm:h-[49%] relative s2-container bg-color-green63 flex justify-center items-center sm:rounded-xl">
-                    <!-- <p class="absolute top-[10px] sm:top-[36px] text-12-lexend sm:text-2xl text-white">Multi-device <br> application</p>
-                    <img src="./assets/apple-watch.png" class="aspect-[0.6] w-[56px] sm:w-[135px] absolute bottom-[11px] sm:bottom-[36px]"> -->
-                </img>
-            </div>
-            <div class="flex-1 h-full ml-[14px]">
-                <img src="./assets/strivinsole.png" alt="" class="aspect-[1.36] h-[67%] sm:h-[68%] object-fill rounded sm:rounded-xl">
-                <div class="h-[4%] sm:h-[2%]"></div>
-                <img src="./assets/s2-foot.png" class="aspect-[3.1] h-[29%] sm:h-[30%] object-fill rounded sm:rounded-xl">
-            </div>
-            <div class="ml-[14px] hidden sm:block flex-1 h-full">
-                <img src="./assets/s2-mobile.png" class="aspect-[1.8] h-[49%] object-fill rounded sm:rounded-xl"/>
-                <div class="h-[2%]"></div>
-                <img src="./assets/s2-24h.png" class="aspect-[1.8] h-[49%] object-fill rounded sm:rounded-xl"/>
-            </div>
-        </div>
+                <div class="flex-1 h-full ml-[14px]">
+                    <img src="./assets/strivinsole.png" alt="" class="aspect-[1.36] h-[67%] sm:h-[68%] object-fill rounded sm:rounded-xl">
+                    <div class="h-[4%] sm:h-[2%]"></div>
+                    <img src="./assets/s2-foot.png" class="aspect-[3.1] h-[29%] sm:h-[30%] object-fill rounded sm:rounded-xl">
+                </div>
+                <div class="ml-[14px] hidden sm:block flex-1 h-full">
+                    <img src="./assets/s2-mobile.png" class="aspect-[1.8] h-[49%] object-fill rounded sm:rounded-xl"/>
+                    <div class="h-[2%]"></div>
+                    <img src="./assets/s2-24h.png" class="aspect-[1.8] h-[49%] object-fill rounded sm:rounded-xl"/>
+                </div>
+            </div> -->
+
+
         <div class="mx-6 mt-[14px] sm:hidden">
             <img src="./assets/s2-mobile.png" class="aspect-[1.8]"/>
             <img src="./assets/s2-24h.png" class="aspect-[1.8] mt-[10px]"/>
@@ -511,7 +535,7 @@
             <ul class="text-color-white flex-1">
                 <li data-image="assets/high-density-sensor.png" class="flex border-bottom-white group flex-col">
                    <div class="flex flex-row py-3 ">
-                        <a class="max-sm:flex-1 no-underline hover:font-bold uppercase text-14-lexend text-left sm:text-[32px]">High Density  sensor</a>
+                        <a class="title max-sm:flex-1 no-underline uppercase text-14-lexend text-left sm:text-[32px]">High Density  sensor</a>
                         <!-- <img src="./assets/arrow-right-top.svg" class="h-[13px] w-[13px] sm:hidden"></img> -->
                         <img class="arrow h-9 w-9 mt-1 "></img>
                    </div>
@@ -521,7 +545,7 @@
                 <!-- </> -->
                 <li data-image="assets/multi-device.png" class="flex flex-col border-bottom-white group">
                     <div class="flex flex-row py-3 ">
-                        <a class="max-sm:flex-1 no-underline hover:font-bold uppercase text-14-lexend text-left sm:text-[32px]">Multi-device</a>
+                        <a class="title max-sm:flex-1 no-underline uppercase text-14-lexend text-left sm:text-[32px]">Multi-device</a>
                         <!-- <img src="./assets/arrow-right-top.svg" class="h-[13px] w-[13px] sm:hidden"></img> -->
                         <img class="arrow h-9 w-9 mt-1 hidden"></img>
                     </div>
@@ -531,7 +555,7 @@
                 </li>
                 <li data-image="assets/ai-planning-foru.png" class="group border-bottom-white">
                     <div class="flex py-3 flex-row">
-                        <a class="max-sm:flex-1 no-underline text-14-lexend uppercase text-left hover:font-bold sm:text-[32px]">AI Planning for You</a>
+                        <a class="title max-sm:flex-1 no-underline text-14-lexend uppercase text-left sm:text-[32px]">AI Planning for You</a>
                         <img class="arrow h-9 w-9 mt-1 hidden"></img>
                     </div>
                     <p class="text-16-lexend text-left font-light pb-3 hidden desc">
@@ -540,8 +564,7 @@
                 </li>
             </ul>
             <p class="w-[20px] sm:w-[72px]"></p>
-            <img class="aspect-[1.1] sm:hidden mt-5 sm:mt-0" src="./assets/s3-right.png">
-            <img id="displayImage" class="aspect-[1.3] w-[48%] hidden sm:block" src="assets/high-density-sensor.png">
+            <img id="displayImage" src="assets/high-density-sensor.png">
         </div>    
         <div class="flex flex-row sm:justify-between items-center mx-6 justify-center sm:mt-[100px]">
             <p class="text-24-lexend mt-12 mb-6 uppercase text-white sm:text-[64px] sm:pb-[28px]">How it works</p>
@@ -597,7 +620,7 @@
                     <p class="text-16-lexend font-light text-white text-left">Striv’s technology is a game-changer. After testing the sensors and seeing the data firsthand, I'm convinced of its value. It’s not just another smart wearable.</p>
                     <div class="flex flex-row items-center text-white mt-[28px] sm:mt-[64px] ">
                         <div class="w-[36px] h-[2px] bg-white"></div>
-                        <p class="ml-4 text-12-lexend font-medium">Jake Riley, US Team 2020 Marathoner</p>
+                        <p class="text-left text-color-green ml-4 text-12-lexend font-medium">Jake Riley, US Team 2020 Marathoner</p>
                     </div>
                 </div>
             </div>
@@ -608,7 +631,7 @@
                     <p class="text-16-lexend font-light text-white text-left">With Striv's force sensors, we can now analyze our running efficiency in real-world conditions. It provides invaluable insights for improving performance across various terrains.</p>
                     <div class="flex flex-row items-center text-white mt-[28px] sm:mt-[64px]">
                         <div class="w-[36px] h-[2px] bg-white"></div>
-                        <p class="ml-4 text-12-lexend font-medium">Clayton Young, US Team 2024 Marathoner</p>
+                        <p class="text-left text-color-green ml-4 text-12-lexend font-medium">Clayton Young, US Team 2024 Marathoner</p>
                     </div>
                 </div>
             </div>
@@ -619,7 +642,7 @@
                     <p class="text-16-lexend font-light text-white text-left">Testing Striv’s prototype has been impressive. The sensor data and insights show great potential. Looking forward to use it in my run.</p>
                     <div class="flex flex-row items-center text-white mt-[28px] sm:mt-[64px]">
                         <div class="w-[36px] h-[2px] bg-white"></div>
-                        <p class="ml-4 text-12-lexend font-medium">Michael, Boston Marathon Qualifier</p>
+                        <p class="text-left text-color-green ml-4 text-12-lexend font-medium">Michael, Boston Marathon Qualifier</p>
                     </div>
                 </div>
             </div>
@@ -627,10 +650,10 @@
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
-                    <p class="text-16-lexend font-light text-white text-left">Striv offers what I need from smartwatches provide plus advanced biomechanics. This is fantastic!</p>
+                    <p class="text-16-lexend font-light text-white text-left">Striv offers what I need from smartwatches provide plus advanced biomechanics, and personalized feedback. This is fantastic!</p>
                     <div class="flex flex-row items-center text-white mt-[28px] sm:mt-[64px]">
                         <div class="w-[36px] h-[2px] bg-white"></div>
-                        <p class="ml-4 text-12-lexend font-medium">Nicole, College Athlete</p>
+                        <p class="text-left text-color-green ml-4 text-12-lexend font-medium">Nicole, College Athlete</p>
                     </div>
                 </div>
             </div>
