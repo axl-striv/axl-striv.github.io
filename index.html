@@ -106,7 +106,7 @@
                     arrowEl.src = "assets/arrow-right-top-bold.svg"
 
                     displayImage.src = "assets/high-density-sensor.png"
-                    displayImage.className = "rounded-2xl aspect-[1.22522523] w-[48%] hidden sm:block"    
+                    displayImage.className = "rounded-2xl aspect-[1.22522523] w-[55%] hidden sm:block"    
                 } else {
                     if(index == 0) titleEl.classList.add("font-bold")
 
@@ -549,16 +549,6 @@
 
                     Our insoles feature over 250 pressure sensors combined with motion sensors, capturing detailed metrics on performance, power, strain, and efficiency. This combination ensures precise data collection, providing unparalleled insights into your running health.                </p>
                 <!-- </> -->
-                <li data-image="assets/multi-device.png" class="flex flex-col border-bottom-white group">
-                    <div class="flex flex-row py-3 ">
-                        <a class="title max-sm:flex-1 no-underline uppercase text-14-lexend text-left sm:text-[32px]">Multi-device</a>
-                        <!-- <img src="./assets/arrow-right-top.svg" class="h-[13px] w-[13px] sm:hidden"></img> -->
-                        <img class="arrow h-9 w-9 mt-1 hidden"></img>
-                    </div>
-                    <p class="text-16-lexend text-left font-light pb-3 hidden desc">
-                        Striv™ insoles seamlessly connect with multiple devices, allowing you to access your data and personalized training plans from your smartphone, smartwatch, AirPods, or other smart fitness devices. This ensures you're always in sync, no matter your preferred device.
-                    </p>
-                </li>
                 <li data-image="assets/ai-planning-foru.png" class="group border-bottom-white">
                     <div class="flex py-3 flex-row">
                         <a class="title max-sm:flex-1 no-underline text-14-lexend uppercase text-left sm:text-[32px]">AI Planning for You</a>
@@ -568,26 +558,40 @@
                         Harness the power of AI with Striv™. Our advanced software translates sensor data into personalized training plans and real-time feedback tailored specifically for you. Experience elite-level coaching and optimize your training like never before.
                     </p>
                 </li>
+                <!-- <li data-image="assets/multi-device.png" class="flex flex-col border-bottom-white group">
+                    <div class="flex flex-row py-3 ">
+                        <a class="title max-sm:flex-1 no-underline uppercase text-14-lexend text-left sm:text-[32px]">Multi-device</a>
+                        <img class="arrow h-9 w-9 mt-1 hidden"></img>
+                    </div>
+                    <p class="text-16-lexend text-left font-light pb-3 hidden desc">
+                        Striv™ insoles seamlessly connect with multiple devices, allowing you to access your data and personalized training plans from your smartphone, smartwatch, AirPods, or other smart fitness devices. This ensures you're always in sync, no matter your preferred device.
+                    </p>
+                </li> -->
+                <!-- <img src="./assets/arrow-right-top.svg" class="h-[13px] w-[13px] sm:hidden"></img> -->
+
             </ul>
             <p class="w-[20px] sm:w-[72px]"></p>
             <img id="displayImage" src="assets/high-density-sensor.png">
         </div>    
 
         <p class="text-24-lexend mt-32 mb-6 max-sm:uppercase text-white sm:text-[42px]">What Athletes Are Saying:</p>
-        <p class="text-14-lexend text-white sm:text-[20px] sm:font-light capitalize">Actively Testing With Elite Athletes <br class="sm:hidden"> Like Olympians Jake Riley, Clayton Young, etc.</p>
+        <p class="text-14-lexend text-white sm:text-[20px] sm:font-light capitalize">
+            <!-- Actively Testing With Elite Athletes <br class="sm:hidden">,  Olympians, Like Jake Riley (Olympian US 2020), Clayton Young (Olympian US 2024), etc. -->
+            Actively testing with elite athletes and Olympians <br> such as Jake Riley (Olympian, US 2020) and <br class="sm:hidden">Clayton Young (Olympian, US 2024), among others.
+        </p>
         <div class="sm:mx-0 mx-6 sm:flex sm:flex-row sm:mt-[80px] overflow-x-scroll sm:aspect-[4.4] scroll-container" id="scrollContainer">
             <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
-                    <p class="text-20-lexend font-light text-white text-left">Striv’s technology is a game-changer! After testing the sensors and seeing the data firsthand, I'm convinced of its value. It’s not just another smart wearable.</p>
+                    <p class="text-20-lexend font-light text-white text-left">Striv’s technology is a game-changer! After testing the sensors and seeing the data firsthand, I'm convinced of its value. It’s not just another smart wearable!</p>
                     <div class="flex flex-row items-center text-white mt-[28px] sm:mt-[64px] ">
                         <div class="w-[36px] h-[2px] bg-white"></div>
                         <p class="text-left text-color-green ml-4 text-14-lexend font-medium">Jake Riley, US Team 2020 Marathoner</p>
                     </div>
                 </div>
             </div>
-            <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 sm:ml-6 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
+            <!-- <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 sm:ml-6 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
@@ -597,7 +601,7 @@
                         <p class="text-left text-color-green ml-4 text-14-lexend font-medium">Clayton Young, US Team 2024 Marathoner</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 sm:ml-6 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
@@ -627,10 +631,10 @@
             <p class="text-24-lexend mt-10 mb-6 uppercase text-white sm:text-[64px] sm:pb-[28px]">How it works</p>
             <img src="./assets/arrow-left-bottom.svg" class="hidden sm:block w-[83px] h-[83px]">
         </div>
-        <div class=" mx-6 sm:grid sm:grid-cols-[2fr_1fr]">
-            <div class="flex flex-row">
-                <div class="bg-color-black08 flex flex-col items-start">
-                    <p class="text-color-green text-18-lexend sm:text-[22px] font-bold px-3  mt-5 mb-2 sm:pr-[9%] sm:pl-[12%] pt-[3.85%]">
+        <div class=" mx-6 sm:grid sm:grid-cols-[3fr]">
+            <div class="flex flex-col sm:flex-row">
+                <div class="bg-color-black08 flex flex-col items-start mb-12">
+                    <p class="text-color-green text-18-lexend sm:text-[22px] font-bold px-3 mt-0 sm:mt-4 mb-2 sm:pr-[9%] sm:pl-[12%] pt-[3.85%]">
                         Effortless Setup</p>
                     <p class="sm:mb-[50px]  px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend sm:text-[16px] font-extralight text-left flex-1 sm:pr-[9%] sm:pl-[12%]">
                         Place the smart insoles into your shoes and magnetically attach the charging pod on top.
@@ -638,8 +642,8 @@
                     <img src="./assets/section-4-0.png" class="aspect-[1.23]">
                 </div>
                 <!-- <div class="w-[11px] sm:w-[25px]"></div> -->
-                <div class="bg-color-black08 flex flex-col items-start ml-[11px] sm:ml-[25px] ">
-                    <p class="text-color-green text-18-lexend sm:text-[22px] font-bold px-3 mt-5 text-start mb-2 sm:pr-[9%] sm:pl-[12%]  pt-[3.85%]" >
+                <div class="bg-color-black08 flex flex-col items-start sm:ml-[11px] sm:ml-[25px]  mb-12">
+                    <p class="text-color-green text-18-lexend sm:text-[22px] font-bold px-3 mt-0 sm:mt-4 text-start mb-2 sm:pr-[9%] sm:pl-[12%]  pt-[3.85%]" >
                         Seamless App Connection
                     </p>
                     <p class="flex-1 sm:mb-[50px] px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend sm:text-[16px] font-extralight text-left sm:pr-[9%] sm:pl-[12%]">
@@ -647,8 +651,17 @@
                     </p>
                     <img src="./assets/section-4-1.png" class="aspect-[1.23]">
                 </div>
+                <div class="bg-color-black08 flex flex-col items-start sm:ml-[11px] sm:ml-[25px]  mb-12">
+                    <p class="text-color-green text-18-lexend sm:text-[22px] font-bold px-3 mt-0 sm:mt-4 text-start mb-2 sm:pr-[9%] sm:pl-[12%]  pt-[3.85%]" >
+                        Seamless App Connection
+                    </p>
+                    <p class="flex-1 sm:mb-[50px] px-3 text-white opacity-[0.65] mb-[14px] text-12-lexend sm:text-[16px] font-extralight text-left sm:pr-[9%] sm:pl-[12%]">
+                        After inserting the insoles and attaching the charging pod, connect them to our user-friendly app for seamless integration.
+                    </p>
+                    <img src="./assets/section-4.png" class="aspect-[1.23]">
+                </div>
             </div>
-            <div class="bg-color-black08 flex flex-row mt-[26px] sm:mt-0 sm:flex-col sm:ml-[25px]">
+            <!-- <div class="bg-color-black08 flex flex-row mt-[26px] sm:mt-0 flex-row sm:flex-col sm:ml-[25px]">
                 <div class="flex flex-col items-start flex-1">
                     <p class="text-color-green text-18-lexend sm:text-[22px] font-bold px-3 mt-5 mb-2 text-start sm:pr-[9%] sm:pl-[12%] pt-[3.85%]">
                         Real-Time Coaching!</p>
@@ -656,8 +669,8 @@
                         Begin your run or ride with the smart insoles and charging pod in place. Get real-time audio coaching to enhance your performance now!
                     </p>
                 </div>
-                <img src="./assets/section-4.png" class="aspect-[0.9] h-[190px] sm:aspect-[1.19] sm:h-full">
-            </div>
+                <img src="./assets/section-4.png" class="aspect-[0.9] h-[190px] sm:aspect-[1.23] sm:h-full">
+            </div> -->
         </div>
         <div class="mt-[50px] sm:mt-[140px] sm:mb-[100px] mb-6 mx-6 flex flex-row sm:justify-between justify-center items-center">
             <p class="text-24-lexend uppercase text-white sm:text-[64px]">Striv™ AI Running Coach</p>
