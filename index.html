@@ -92,6 +92,7 @@
             let windowWidth = window.innerWidth
             let windowHeight = window.innerHeight
             let isNotMobile = windowWidth > 640
+            let isMd = windowWidth > 768
 
             const items = document.querySelectorAll('li[data-image]');
             const displayImage = document.getElementById('displayImage');
@@ -186,6 +187,31 @@
                 startX = e.pageX - scrollContainer.offsetLeft;
                 scrollLeft = scrollContainer.scrollLeft;
             });
+
+            if(isNotMobile) {
+                let sayingChildren = scrollContainer.getElementsByClassName('snap-start')
+            
+                let isOverflow = false;
+                for(let i = 0; i < sayingChildren.length; i++) {
+                    let parent = scrollContainer.getBoundingClientRect()
+
+                    let item = sayingChildren[i];
+
+                    let itemOriginRect = item.getBoundingClientRect();
+                    let itemWidth = isMd ? (parent.width - 24 * 2 ) / 3 : (parent.width - 24) / 2;
+                    
+                    if(!isOverflow) {
+                        isOverflow = itemOriginRect.height / itemWidth >= 1.5
+                    }
+                    item.style.width = itemWidth + 'px';
+                }
+                if(isOverflow) {
+                    for(let i = 0; i < sayingChildren.length; i++) {
+                            let parent = scrollContainer.getBoundingClientRect()
+                            sayingChildren[i].style.width = (parent.width - 24) / 2 + 'px';
+                    }
+                }
+            }
 
             scrollContainer.addEventListener('mouseleave', () => {
                 isDown = false;
@@ -400,21 +426,16 @@
         .grid-col-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-        }
-        .scroll-container-1 {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -ms-overflow-style: none;  /* Internet Explorer 10+ */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .scroll-container {
-            overflow: hidden; /* 隐藏滚动条 */
+        } 
+
+        .scrollable {
+            overflow: hidden;
             cursor: grab; /* 设置鼠标指针样式 */
             user-select: none; /* 禁止文本选择 */
         }
-        .scroll-container::-webkit-scrollbar {
-            display: none;  /* Safari and Chrome */
+
+        .snap-start {
+            flex: 0 0 auto;
         }
 
         .item {}
@@ -579,8 +600,8 @@
             <!-- Actively Testing With Elite Athletes <br class="sm:hidden">,  Olympians, Like Jake Riley (Olympian US 2020), Clayton Young (Olympian US 2024), etc. -->
             Actively testing with elite athletes and Olympians <br> such as Jake Riley (Olympian, US 2020) and <br class="sm:hidden">Clayton Young (Olympian, US 2024), among others.
         </p>
-        <div class="sm:mx-0 mx-6 sm:flex sm:flex-row sm:mt-[80px] overflow-x-scroll sm:aspect-[4.4] scroll-container" id="scrollContainer">
-            <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
+        <div class="sm:mx-0 mx-6 sm:flex sm:flex-row sm:mt-[80px] scrollable" id="scrollContainer">
+            <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 mt-6 bg-color-black08 ">
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
@@ -591,7 +612,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 sm:ml-6 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
+            <!-- <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 sm:ml-6 mt-6 bg-color-black08 ">
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
@@ -602,7 +623,7 @@
                     </div>
                 </div>
             </div> -->
-            <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 sm:ml-6 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
+            <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 sm:ml-6 mt-6 bg-color-black08 ">
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
@@ -613,7 +634,7 @@
                     </div>
                 </div>
             </div>
-            <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 sm:ml-6 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
+            <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 sm:ml-6 mt-6 bg-color-black08 ">
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
                 <div>
@@ -624,7 +645,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
         
         <div class="mt-[50px] sm:mt-[140px] sm:mb-[100px] mb-6 mx-6 flex flex-row sm:justify-between justify-center items-center">
@@ -685,7 +705,7 @@
 
         <!-- <p class="text-24-lexend mt-12 mb-6 max-sm:uppercase text-white sm:text-[42px]">What Athletes Are Saying:</p>
         <p class="text-14-lexend text-white sm:text-[20px] sm:font-light capitalize">Actively Testing With Elite Athletes <br class="sm:hidden"> Like US Team Marathoner Jake Riley, Clayton Young, etc.</p>
-        <div class="sm:mx-0 mx-6 sm:flex sm:flex-row sm:mt-[80px] overflow-x-scroll sm:aspect-[4.4] scroll-container" id="scrollContainer">
+        <div class="sm:mx-0 mx-6 sm:flex sm:flex-row sm:mt-[80px] overflow-x-scroll sm:aspect-[4.4] scrollable" id="scrollContainer">
             <div class="snap-start px-[34px] py-[30px] flex flex-row items-start sm:mt-0 mt-6 bg-color-black08 sm:h-full sm:aspect-[1.6]">
                 <img src="./assets/qutos.svg" class="w-[22px] h-[18px]">
                 <div class="w-[44px]"></div>
