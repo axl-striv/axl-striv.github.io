@@ -1,0 +1,22 @@
+Privacy Policy and Data Collection Terms
+	1	Introduction
+	◦	Striv™ values your privacy and is committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information.
+	2	Data Collection
+	◦	Personal Information: We collect information such as name, email address, payment details, and any other information you provide.
+	◦	Usage Data: Information on how you use our product and services, including interaction data, device information, and insole sensor data.
+	◦	Cookies: We use cookies to enhance your experience and gather data about site traffic and interactions.
+	3	Use of Data
+	◦	Personalization: To personalize and improve your experience with our AI-powered coaching.
+	◦	Communication: To send updates, newsletters, and other relevant information.
+	◦	Service Improvement: To analyze data for improving our products and services.
+	◦	Legal Requirements: To comply with legal obligations and protect our rights.
+	4	Data Sharing
+	◦	We do not sell, trade, or otherwise transfer your personal information to outside parties, except for trusted partners who assist in operating our website and conducting our business, as long as those parties agree to keep this information confidential.
+	5	Data Security
+	◦	We implement a variety of security measures to maintain the safety of your personal information.
+	6	User Rights
+	◦	You have the right to access, correct, or delete your personal data. You can also object to certain processing activities or request data portability.
+	7	Changes to the Policy
+	◦	We may update this privacy policy periodically. We will notify you of any changes by updating the date at the top of this policy and, if the changes are significant, provide a more prominent notice.
+	8	Contact Information
+	◦	For any questions or concerns regarding this privacy policy, please contact us at info@striv.run.
