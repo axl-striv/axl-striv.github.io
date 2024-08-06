@@ -853,14 +853,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li>Lifetime free premium app subscription.</li>
                 </list>
             </div>
-            <form action="https://run.us13.list-manage.com/subscribe/post?u=1a4454a27524c9bc932d713ea&amp;id=4f1f571fa7&amp;f_id=006102e9f0" 
+            <!-- Hidden iframe for form submission -->
+        <!-- <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+        <form action="https://run.us13.list-manage.com/subscribe/post?u=1a4454a27524c9bc932d713ea&amp;id=4f1f571fa7&amp;f_id=006102e9f0" 
+                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="hidden_iframe"
+                    class="sm:pb-[4%] sm:ml-[11%] sm:w-[50%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6"
+                    onsubmit="document.body.style.cursor = 'wait'; setTimeout(function(){ window.location.href='appreciation.html'; }, 1000);"
+                    >
+            <input type="email" name="EMAIL" id="mce-EMAIL" class="transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
+            <button type="submit" class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
+                <p class="text-12-lexend text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Get Notified</p>
+            </button>
+        </form> -->
+
+
+        <form action="https://run.us13.list-manage.com/subscribe/post?u=1a4454a27524c9bc932d713ea&amp;id=4f1f571fa7&amp;f_id=006102e9f0" 
                 method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank"
              class="sm:pb-[4%] sm:ml-[11%] sm:w-[50%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6">
-                <input type="email" name="EMAIL" id="mce-EMAIL" class="transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
-                <button class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
-                    <p class="text-12-lexend text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Get Notified</p>
-                </button>
-            </form>
+            <input type="email" name="EMAIL" id="mce-EMAIL" class="transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
+            <button type="submit" class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
+                <p class="text-12-lexend text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Get Notified</p>
+            </button>
+        </form>
+
+
         </div>
         <div class="bg-color-black22 sm:bg-transparent mt-12 sm:mt-[120px]">
            <div class="flex flex-row items-center sm:items-start justify-between mx-6 pb-20 border-bottom-white">
@@ -975,5 +992,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         });
         </script>
+
+    <script>
+        document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            document.body.style.cursor = 'wait';
+            const form = event.target;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors', // Use no-cors for requests to external servers like Mailchimp
+            }).then(response => {
+                // Assuming the form submission is successful
+                window.location.href = 'appreciation.html';
+            }).catch(error => {
+                console.error('Form submission failed:', error);
+                alert('There was a problem with the submission. Please try again.');
+            });
+        });
+</script>
 </body>
 </html>
