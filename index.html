@@ -852,9 +852,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <form action="https://run.us13.list-manage.com/subscribe/post?u=1a4454a27524c9bc932d713ea&amp;id=4f1f571fa7&amp;f_id=006102e9f0" 
                 method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank"
-             class="sm:pb-[4%] sm:ml-[11%] sm:w-[40%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6">
-                <input type="email" name="EMAIL" id="mce-EMAIL" class="transparent flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
-                <button class="subscribe-btn ml-3 sm:ml-[38px] uppercase">
+             class="sm:pb-[4%] sm:ml-[11%] sm:w-[50%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6">
+                <input type="email" name="EMAIL" id="mce-EMAIL" class="transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
+                <button class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
                     <p class="text-12-lexend text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Get Notified</p>
                 </button>
             </form>
@@ -957,5 +957,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const emailInput = document.getElementById('mce-EMAIL');
+            const submitButton = document.querySelector('.subscribe-btn');
+        
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+            emailInput.addEventListener('input', function () {
+                const isValid = validateEmail(emailInput.value);
+                submitButton.disabled = !isValid;
+            });
+        });
+        </script>
 </body>
 </html>
