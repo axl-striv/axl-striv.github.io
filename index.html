@@ -280,9 +280,11 @@
         }
         .subscribe-btn:disabled p {
             color: gray; /* Adjust the color as needed */
+            background: var(--black-222222);
+            border-radius: 50px;
         }
         .join-btn {
-            border-radius: 10px;
+            border-radius: 50px;
             background: var(--green-37EC7F);
 
             color: #000;
@@ -403,6 +405,7 @@
             padding: 20px 0px;
             font-family: Lexend;
             caret-color: white;
+            font-size: 14px;
         }
         input.transparent::placeholder {
             outline: none;
@@ -411,7 +414,7 @@
         }
         input.transparent:active, input.transparent:focus {
             outline: none;
-            font-size: 24px;
+            font-size: 14px;
             color: white;
             background-color: transparent !important;
         }
@@ -563,9 +566,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     
                     <p class="text-14-lexend pr-20 pb-4 text-white text-[15px] sm:text-[18px] font-light mt-6 text-left">Elite-level Coaching In Every Step<br/> 
                         Trusted by <span class="text-color-green font-medium">Olympians</span></p>
-                    <button onclick="document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });" class="mt-[2%] sm:text-[24px] text-24-lexend text-[15px] font-medium join-btn sm:p-6 sm:rounded-[24px] sm:text-[20px]">
+                    <!-- <button onclick="document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });" class="mt-[2%] sm:text-[24px] text-24-lexend text-[15px] font-medium join-btn sm:p-6 sm:rounded-[24px] sm:text-[20px]">
                         Sign Up Now for 40% off
-                    </button>
+                    </button> -->
+                    <form action="https://run.us13.list-manage.com/subscribe/post?u=1a4454a27524c9bc932d713ea&amp;id=4f1f571fa7&amp;f_id=006102e9f0" 
+                            method="post" name="mc-embedded-subscribe-form" target="_blank"
+                        class="mc-embedded-subscribe-form sm:pb-[4%] sm:w-[40%] w-[70%] sm:h-[140px] h-[80px] left-0 flex flex-row justify-center sm:items-end items-center">
+                        <input type="email" name="EMAIL" class="mce-EMAIL transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Email:">
+                        <button type="submit" class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
+                            <p class="text-12-lexend join-btn text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Sign Up for 40% off</p>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -869,9 +880,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
         <form action="https://run.us13.list-manage.com/subscribe/post?u=1a4454a27524c9bc932d713ea&amp;id=4f1f571fa7&amp;f_id=006102e9f0" 
-                method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank"
-             class="sm:pb-[4%] sm:ml-[11%] sm:w-[50%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6">
-            <input type="email" name="EMAIL" id="mce-EMAIL" class="transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
+                method="post" name="mc-embedded-subscribe-form" target="_blank"
+             class="mc-embedded-subscribe-form sm:pb-[6%] sm:ml-[11%] sm:w-[50%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6">
+            <input type="email" name="EMAIL" class="mce-EMAIL transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
             <button type="submit" class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
                 <p class="text-12-lexend text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Get Notified</p>
             </button>
@@ -909,9 +920,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
 
 
-
-
-
             </div>
         </div>
         <div class="sm:flex sm:flex-row sm:items-start mt-12 mb-32 sm:mt-[180px]">
@@ -923,20 +931,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             Striv is led by a team of sports enthusiasts with deep expertise in sensor technology and AI. We're not just researchers—we're athletes at heart. With filed patents and years of research, our goal is to democratize professional-level coaching, bringing elite insights and personalized training to athletes of all levels.
 
-
-
-
-
-
-
-
-
-
-
-
-
-            
-          
         </p>
         </div>
 
@@ -977,41 +971,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         </div>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const emailInput = document.getElementById('mce-EMAIL');
-            const submitButton = document.querySelector('.subscribe-btn');
-        
+            const emailInputs = document.querySelectorAll('.mce-EMAIL'); // Select all elements with class 'email-input'
+            const submitButtons = document.querySelectorAll('.subscribe-btn'); // Select all submit buttons with class 'subscribe-btn'
+    
             function validateEmail(email) {
                 const re = /^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(email);
             }
-            emailInput.addEventListener('input', function () {
-                const isValid = validateEmail(emailInput.value);
-                submitButton.disabled = !isValid;
+            emailInputs.forEach((emailInput, index) => {
+                emailInput.addEventListener('input', function () {
+                    const isValid = validateEmail(emailInput.value);
+                    submitButtons[index].disabled = !isValid; // Disable the corresponding submit button
+                });
             });
         });
-        </script>
+    </script>
 
     <script>
-        document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            document.body.style.cursor = 'wait';
-            const form = event.target;
-            const formData = new FormData(form);
+        document.querySelectorAll('.mc-embedded-subscribe-form').forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                document.body.style.cursor = 'wait';
+                const formData = new FormData(form);
 
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors', // Use no-cors for requests to external servers like Mailchimp
-            }).then(response => {
-                // Assuming the form submission is successful
-                window.location.href = 'appreciation.html';
-            }).catch(error => {
-                console.error('Form submission failed:', error);
-                alert('There was a problem with the submission. Please try again.');
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors', // Use no-cors for requests to external servers like Mailchimp
+                }).then(response => {
+                    // Assuming the form submission is successful
+                    window.location.href = 'appreciation.html';
+                }).catch(error => {
+                    console.error('Form submission failed:', error);
+                    alert('There was a problem with the submission. Please try again.');
+                });
             });
         });
-</script>
+    </script>
+
 </body>
 </html>
