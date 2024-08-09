@@ -530,7 +530,22 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
 
-
+    <script>
+        window.onload = function() {
+            // Create an instance of URLSearchParams with the query string from the URL
+            const params = new URLSearchParams(window.location.search);
+            // Get the value of the 'from' parameter
+            const fromParam = params.get('from');
+            // If 'from' is 'y', set the first name field to 'yixi'
+            if (fromParam === 'y') {
+                document.getElementById('fname').value = 'yixi';
+            }
+            else{
+                document.getElementById('fname').value = 'striv';
+            }
+        };
+    </script>
+    
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -573,6 +588,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             method="post" name="mc-embedded-subscribe-form" target="_blank"
                         class="mc-embedded-subscribe-form sm:pb-[4%] sm:w-[40%] w-[90%] sm:h-[140px] h-[80px] left-0 flex flex-row justify-center sm:items-end items-center">
                         <input type="email" name="EMAIL" class="mce-EMAIL transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Email:">
+                        <input type="hidden" name="FNAME" id="fname"> <!-- Hidden input for first name -->
                         <button type="submit" class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
                             <p class="text-12-lexend join-btn text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Sign Up for 40% off</p>
                         </button>
@@ -883,6 +899,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 method="post" name="mc-embedded-subscribe-form" target="_blank"
              class="mc-embedded-subscribe-form sm:pb-[6%] sm:ml-[11%] sm:w-[50%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6">
             <input type="email" name="EMAIL" class="mce-EMAIL transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
+            <input type="hidden" name="FNAME" id="fname"> <!-- Hidden input for first name -->
             <button type="submit" class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
                 <p class="text-12-lexend text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Get Notified</p>
             </button>
