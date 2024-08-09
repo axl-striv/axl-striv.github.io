@@ -230,6 +230,18 @@
                 const walk = (x - startX) * 1; // 调整滚动速度
                 scrollContainer.scrollLeft = scrollLeft - walk;
             });
+
+            const params = new URLSearchParams(window.location.search);
+            // Get the value of the 'from' parameter
+            const fromParam = params.get('from');
+            // If 'from' is 'y', set the first name field to 'yixi'
+            if (fromParam === 'y') {
+                document.getElementById('fname').value = 'yixi';
+            }
+            else{
+                document.getElementById('fname').value = 'striv';
+            }
+            
         }
 
         
@@ -530,21 +542,7 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
 
-    <script>
-        window.onload = function() {
-            // Create an instance of URLSearchParams with the query string from the URL
-            const params = new URLSearchParams(window.location.search);
-            // Get the value of the 'from' parameter
-            const fromParam = params.get('from');
-            // If 'from' is 'y', set the first name field to 'yixi'
-            if (fromParam === 'y') {
-                document.getElementById('fname').value = 'yixi';
-            }
-            else{
-                document.getElementById('fname').value = 'striv';
-            }
-        };
-    </script>
+
     
 </head>
 <body>
