@@ -93,25 +93,25 @@
         ]
         window.onload = ()=> {
 
-            const prices = [159, 179, 199];
-            const selectedPrice = prices[Math.floor(Math.random() * prices.length)];
+            // const prices = [159, 179, 199];
+            // const selectedPrice = prices[Math.floor(Math.random() * prices.length)];
 
-            const priceElement = document.getElementById('price-text');
-            priceElement.innerHTML = `<br/>Starting at <span class="text-color-green font-medium">$${selectedPrice}</span>`;
+            // const priceElement = document.getElementById('price-text');
+            // priceElement.innerHTML = `<br/>Starting at <span class="text-color-green font-medium">$${selectedPrice}</span>`;
 
-            // Log the selected price
-            console.log("Selected price:", selectedPrice);
+            // // Log the selected price
+            // console.log("Selected price:", selectedPrice);
 
-            // Set the fname value based on the selected price
-            const fnameValue = (selectedPrice === 159) ? 'striv_159' :
-                            (selectedPrice === 179) ? 'striv_179' : 'striv_199';
+            // // Set the fname value based on the selected price
+            // const fnameValue = (selectedPrice === 159) ? 'striv_159' :
+            //                 (selectedPrice === 179) ? 'striv_179' : 'striv_199';
 
-            // Update all hidden FNAME fields
-            const fnameElements = document.querySelectorAll('.fname');
-            fnameElements.forEach(element => {
-                element.value = fnameValue;
-                console.log("Setting FNAME to:", fnameValue);
-            });
+            // // Update all hidden FNAME fields
+            // const fnameElements = document.querySelectorAll('.fname');
+            // fnameElements.forEach(element => {
+            //     element.value = fnameValue;
+            //     console.log("Setting FNAME to:", fnameValue);
+            // });
 
             
 
@@ -573,7 +573,26 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const prices = [159, 179, 199];
+        const selectedPrice = prices[Math.floor(Math.random() * prices.length)];
 
+        const priceElement = document.getElementById('price-text');
+        priceElement.innerHTML = `<br/>Starting at <span class="text-color-green font-medium">$${selectedPrice}</span>`;
+
+        console.log("Selected price:", selectedPrice);
+
+        const fnameValue = (selectedPrice === 159) ? 'striv_159' :
+                    (selectedPrice === 179) ? 'striv_179' : 'striv_199';
+
+        const fnameElements = document.querySelectorAll('.fname');
+        fnameElements.forEach(element => {
+            element.value = fnameValue;
+            console.log("Setting FNAME to:", fnameValue);
+        });
+    });
+</script>
     
 </head>
 <body>
