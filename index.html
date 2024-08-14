@@ -92,6 +92,30 @@
 
         ]
         window.onload = ()=> {
+
+            const prices = [159, 179, 199];
+            const selectedPrice = prices[Math.floor(Math.random() * prices.length)];
+
+            const priceElement = document.getElementById('price-text');
+            priceElement.innerHTML = `<br/>Starting at <span class="text-color-green font-medium">$${selectedPrice}</span>`;
+
+            // Log the selected price
+            console.log("Selected price:", selectedPrice);
+
+            // Set the fname value based on the selected price
+            const fnameValue = (selectedPrice === 159) ? 'striv_159' :
+                            (selectedPrice === 179) ? 'striv_179' : 'striv_199';
+
+            // Update all hidden FNAME fields
+            const fnameElements = document.querySelectorAll('.fname');
+            fnameElements.forEach(element => {
+                element.value = fnameValue;
+                console.log("Setting FNAME to:", fnameValue);
+            });
+
+            
+
+
             let windowWidth = window.innerWidth
             let windowHeight = window.innerHeight
             let isNotMobile = windowWidth > 640
@@ -234,17 +258,21 @@
                 scrollContainer.scrollLeft = scrollLeft - walk;
             });
 
-            const params = new URLSearchParams(window.location.search);
-            // Get the value of the 'from' parameter
-            const fromParam = params.get('from');
-            // If 'from' is 'y', set the first name field to 'yixi'
-            if (fromParam === 'y') {
-                document.getElementById('fname').value = 'yixi';
-            }
-            else{
-                document.getElementById('fname').value = 'striv';
-            }
-            console.log("getting email from", document.getElementById('fname').value)
+            const params_url = new URLSearchParams(window.location.search);
+            const fromParam = params_url.get('from');
+            const lnameValue = (fromParam === 'y') ? 'yixi' : 'striv';
+
+            // Select all elements with the class 'fname'
+            const lnameElements = document.querySelectorAll('.lname');
+            
+            // Iterate over each element and set its value
+            lnameElements.forEach(element => {
+                element.value = lnameValue;
+                console.log("Setting LNAME to:", lnameValue);
+            });
+
+            // Optional: Log the value to verify it's set correctly on all elements
+
         }
 
         
@@ -581,7 +609,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </p>
                     
                     <p class="text-14-lexend pr-20 pb-4 text-white text-[15px] sm:text-[18px] font-light mt-6 text-left">Elite-level Coaching In Every Step<br/> 
-                        Trusted by <span class="text-color-green font-medium">Olympians</span></p>
+                        Trusted by <span class="text-color-green font-medium">Olympians</span><span id="price-text"></span></p>
+
+                        
                     <!-- <button onclick="document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });" class="mt-[2%] sm:text-[24px] text-24-lexend text-[15px] font-medium join-btn sm:p-6 sm:rounded-[24px] sm:text-[20px]">
                         Sign Up Now for 40% off
                     </button> -->
@@ -589,7 +619,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             method="post" name="mc-embedded-subscribe-form" target="_blank"
                         class="mc-embedded-subscribe-form sm:pb-[4%] sm:w-[40%] w-[90%] sm:h-[140px] h-[80px] left-0 flex flex-row justify-center sm:items-end items-center">
                         <input type="email" name="EMAIL" class="mce-EMAIL transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Email:">
-                        <input type="hidden" name="FNAME" id="fname"> <!-- Hidden input for first name -->
+                        <input type="hidden" name="FNAME" class="fname"> <!-- Hidden input for first name -->
+                        <input type="hidden" name="LNAME" class="lname"> <!-- Hidden input for first name -->
                         <button type="submit" class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
                             <p class="text-12-lexend join-btn text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Sign Up for 40% off</p>
                         </button>
@@ -900,7 +931,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 method="post" name="mc-embedded-subscribe-form" target="_blank"
              class="mc-embedded-subscribe-form sm:pb-[6%] sm:ml-[11%] sm:w-[50%] h-[180px] absolute bottom-0 left-0 right-0 flex flex-row justify-center sm:items-end items-center px-6">
             <input type="email" name="EMAIL" class="mce-EMAIL transparent min-w-0 flex-1 h-[58px] sm:placeholder:text-[18px] text-white bg-transparent " placeholder="Enter Your Email Here">
-            <input type="hidden" name="FNAME" id="fname"> <!-- Hidden input for first name -->
+            <input type="hidden" name="FNAME" class="fname"> <!-- Hidden input for first name -->
+            <input type="hidden" name="LNAME" class="lname"> <!-- Hidden input for first name -->
             <button type="submit" class="subscribe-btn ml-3 sm:ml-[38px] uppercase" disabled>
                 <p class="text-12-lexend text-color-green px-3 py-[6px] sm:text-[15px] sm:py-[15px] sm:px-[54px]">Get Notified</p>
             </button>
