@@ -1071,7 +1071,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 event.preventDefault(); // Prevent the default form submission
                 document.body.style.cursor = 'wait';
                 const formData = new FormData(form);
-
+                fbq('track', 'Lead');
                 fetch(form.action, {
                     method: 'POST',
                     body: formData,
