@@ -986,13 +986,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
     </script>
 
-    <script>
-        document.querySelectorAll('.mc-embedded-subscribe-form').forEach(form => {
-            form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission
+<script>
+    document.querySelectorAll('.mc-embedded-subscribe-form').forEach(form => {
+        let isFallback = false; // Flag to bypass event listener
+
+        form.addEventListener('submit', function(event) {
+            if (!isFallback) {
+                event.preventDefault(); // Prevent default form submission only for fetch
                 document.body.style.cursor = 'wait';
+
                 const formData = new FormData(form);
                 fbq('track', 'Lead');
+
                 fetch(form.action, {
                     method: 'POST',
                     body: formData,
@@ -1002,12 +1007,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     window.location.href = 'appreciation.html';
                 }).catch(error => {
                     console.error('Form submission failed:', error);
-                    alert('There was a problem with the submission. Please try again. Error: ' + error.message);
-                    form.submit(); // Traditional form submission
+                    // Attempt traditional form submission
+                    isFallback = true; // Set flag to prevent event.preventDefault
+                    // Change first name to "ERR" if fallback is triggered
+                    formData.set('FNAME', 'ERR');
+                    form.submit(); // Trigger the default form submission
                 });
-            });
+            }
         });
-    </script>
+    });
+</script>
+
+
 
 </body>
 </html>
