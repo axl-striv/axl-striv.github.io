@@ -44,34 +44,10 @@
         "question": "Can I try your product before purchasing?",
         "answer": "Yes, we will be hosting several testing events around Boston where you can try Striv. Follow our social media for updates on dates and locations."
     },
-    // {
-    //     "question": "How is Striv different from other fitness tracking devices?",
-    //     "answer": "Striv is not just a device; it's an AI-powered coach equipped with the most advanced sensors on the market. Unlike typical fitness trackers, Striv provides personalized training plans and real-time feedback, helping you optimize your performance and prevent injuries."
-    // },
-    // {
-    //     "question": "When will the Kickstarter campaign launch?",
-    //     "answer": "Our Kickstarter campaign is scheduled to launch in early September. Stay tuned to our social media channels for the exact date and additional information."
-    // },
-    // {
-    //     "question": "What are the expected shipping dates for backers?",
-    //     "answer": "We anticipate shipping the first batch of Striv insoles by November 2024. We are committed to keeping our backers updated on the production and shipping timeline."
-    // },
     {
         "question": "Will Striv be compatible with my smartphone/other devices?",
         "answer": "Yes, Striv will be compatible with both iOS and Android devices. It will also support connections to wearables such as Apple Watch, Garmin, and fitness apps like Strava."
     },
-    // {
-    //     "question": "What sports or activities is Striv designed for?",
-    //     "answer": "Currently, Striv supports running. Future expansions will include cycling, gym workouts, golf, tennis, snowboarding, and more. We aim to provide comprehensive support for a variety of sports and activities."
-    // },
-    // {
-    //     "question": "How accurate is the data collected by Striv?",
-    //     "answer": "Striv's sensors have undergone extensive and rigorous testing to ensure exceptional accuracy. Our advanced textile pressure sensors, combined with 9-axis motion sensors and a barometer, deliver precise and reliable biomechanical data."
-    // },
-    // {
-    //     "question": "Are there different pricing tiers or rewards for backers?",
-    //     "answer": "Yes, we will offer a small early bird batch for our initial backers at a 40% discount, which will include six months of free subscription to our premium features. Additional tiers and rewards will be available as well."
-    // },
     {
         "question": "Is Striv waterproof/sweatproof?",
         "answer": "Yes, Striv is designed to be both waterproof and sweatproof. We are currently finalizing the testing, and the results will be released soon to confirm its durability in various conditions."
@@ -80,41 +56,10 @@
         "question": "How long does the battery last, and how is it charged?",
         "answer": "There is an external, magnetically attached battery, which lasts about 20 hours (approximately 2 weeks at 10 hours per week). We will also offer a backup battery so you can swap on the go."
     },
-    // {
-    //     "question": "Can Striv be used without a subscription?",
-    //     "answer": "Yes, Striv can be used without a subscription, but it will only display basic data. For access to personalized training plans and advanced features, a subscription is required."
-    // },
-    // {
-    //     "question": "How do you ensure user data privacy and security?",
-    //     "answer": "We use advanced encryption and security protocols to protect user data, ensuring it remains private and secure at all times. Data access is restricted and monitored to prevent unauthorized access."
-    // }
 
 
         ]
         window.onload = ()=> {
-
-            // const prices = [159, 179, 199];
-            // const selectedPrice = prices[Math.floor(Math.random() * prices.length)];
-
-            // const priceElement = document.getElementById('price-text');
-            // priceElement.innerHTML = `<br/>Starting at <span class="text-color-green font-medium">$${selectedPrice}</span>`;
-
-            // // Log the selected price
-            // console.log("Selected price:", selectedPrice);
-
-            // // Set the fname value based on the selected price
-            // const fnameValue = (selectedPrice === 159) ? 'striv_159' :
-            //                 (selectedPrice === 179) ? 'striv_179' : 'striv_199';
-
-            // // Update all hidden FNAME fields
-            // const fnameElements = document.querySelectorAll('.fname');
-            // fnameElements.forEach(element => {
-            //     element.value = fnameValue;
-            //     console.log("Setting FNAME to:", fnameValue);
-            // });
-
-            
-
 
             let windowWidth = window.innerWidth
             let windowHeight = window.innerHeight
@@ -487,7 +432,6 @@
             flex: 0 0 auto;
         }
 
-        .item {}
 
         .item-title {
             display: flex;
@@ -573,29 +517,6 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
 
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const prices = [139, 159, 179, 199];
-        const selectedPrice = prices[Math.floor(Math.random() * prices.length)];
-
-        const priceElement = document.getElementById('price-text');
-        priceElement.innerHTML = `<br/>Starting at <span class="text-color-green font-medium">$${selectedPrice}</span>`;
-
-        console.log("Selected price:", selectedPrice);
-
-        const fnameValue = (selectedPrice === 159) ? 'striv_159' :
-                    (selectedPrice === 179) ? 'striv_179' :
-                    (selectedPrice === 139) ? 'striv_139' : 
-                    'striv_199';
-
-        const fnameElements = document.querySelectorAll('.fname');
-        fnameElements.forEach(element => {
-            element.value = fnameValue;
-            console.log("Setting FNAME to:", fnameValue);
-        });
-    });
-</script> -->
-    
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -1077,11 +998,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     body: formData,
                     mode: 'no-cors', // Use no-cors for requests to external servers like Mailchimp
                 }).then(response => {
-                    // Assuming the form submission is successful
+                    console.log('Form submission response:', response);
                     window.location.href = 'appreciation.html';
                 }).catch(error => {
                     console.error('Form submission failed:', error);
-                    alert('There was a problem with the submission. Please try again.');
+                    alert('There was a problem with the submission. Please try again. Error: ' + error.message);
+                    form.submit(); // Traditional form submission
                 });
             });
         });
