@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Striv Smart Insole User Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-color: #231f20;
+            --accent-color: #37ec7f;
+            --text-color: #f5f5f5;
+            --text-dark: #231f20;
+            --light-gray: #333333;
+            --dark-gray: #1a1a1a;
+            --white: #ffffff;
+            --off-white: #f0f0f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--brand-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-weight: 300;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            color: var(--white);
+            font-weight: 500;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            color: var(--white);
+        }
+        
+        p, li {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--dark-gray);
+            padding: 25px;
+            border-radius: 8px;
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            border-left: 3px solid var(--accent-color);
+            padding-right: 20px;
+        }
+        
+        .content {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            transform: translateX(5px);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: var(--dark-gray);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .important-note {
+            background-color: rgba(255, 193, 7, 0.15);
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .tip {
+            background-color: rgba(55, 236, 127, 0.15);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .disclaimer {
+            background-color: rgba(255, 99, 71, 0.15);
+            border-left: 4px solid tomato;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        td {
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .led-indicator {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+        }
+        
+        .led {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+        
+        .led-yellow {
+            background-color: #f1c40f;
+            box-shadow: 0 0 10px #f1c40f;
+        }
+        
+        .led-blue {
+            background-color: #3498db;
+            box-shadow: 0 0 10px #3498db;
+        }
+        
+        .led-purple {
+            background-color: #9b59b6;
+            box-shadow: 0 0 10px #9b59b6;
+        }
+        
+        .led-gradient {
+            background: linear-gradient(to right, #e74c3c, #37ec7f);
+            box-shadow: 0 0 10px #37ec7f;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px 20px;
+            border-top: 1px solid var(--light-gray);
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .footer-link {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        
+        strong {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #37ec7f;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2bc566;
+        }
+        
+        /* For Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #37ec7f #1a1a1a;
+        }
+        
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+                margin-bottom: 20px;
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .content {
+                width: 100%;
+            }
+            
+            .section {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            /* Mobile navigation menu */
+            .mobile-nav-toggle {
+                display: block;
+                background: var(--accent-color);
+                color: var(--text-dark);
+                border: none;
+                padding: 10px 15px;
+                width: 100%;
+                text-align: left;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .sidebar.active {
+                display: block;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-nav-toggle {
+                display: none;
+            }
+            
+            .sidebar {
+                display: block !important;
+            }
+        }
+        
+        /* For very small screens */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .section {
+                padding: 15px 10px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .led-indicator {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .led {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">STRIV</div>
+        <h1>Smart Insole User Manual</h1>
+        <p>Your guide to advanced biomechanical analysis</p>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h3>Quick Navigation</h3>
+            <a href="#introduction" class="nav-link">Introduction</a>
+            <a href="#getting-started" class="nav-link">Getting Started</a>
+            <a href="#connecting" class="nav-link">Connecting Your Insole</a>
+            <a href="#calibration" class="nav-link">Calibration Process</a>
+            <a href="#led-indicators" class="nav-link">LED Indicators</a>
+            <a href="#using-insole" class="nav-link">Using Your Insole</a>
+            <a href="#maintenance" class="nav-link">Maintenance and Care</a>
+            <a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+            <a href="#specifications" class="nav-link">Technical Specifications</a>
+            <a href="#support" class="nav-link">Support and Contact</a>
+            <a href="#disclaimer" class="nav-link">Disclaimer</a>
+        </div>
+        
+        <div class="content">
+            <section id="introduction" class="section">
+                <h2>Introduction</h2>
+                <p>Welcome to your Striv Smart Insole! This advanced wearable device provides real-time biomechanical analysis of your running and walking gait. The insole contains pressure sensors, motion sensors, and environmental sensors to deliver comprehensive data about your movement patterns.</p>
+            </section>
+            
+            <section id="getting-started" class="section">
+                <h2>Getting Started</h2>
+                
+                <h3>What's in the Box</h3>
+                <ul>
+                    <li>Striv Smart Insole (Left or Right)</li>
+                    <li>Charging cable</li>
+                    <li>Quick start guide</li>
+                </ul>
+                
+                <h3>Charging Your Insole</h3>
+                <ol>
+                    <li>Connect the charging cable to the charging port on the insole.</li>
+                    <li>A full charge takes approximately 2-3 hours.</li>
+                    <li>The LED will turn off when charging is complete.</li>
+                </ol>
+            </section>
+            
+            <section id="connecting" class="section">
+                <h2>Connecting Your Insole</h2>
+                
+                <h3>First-Time Setup</h3>
+                <ol>
+                    <li>Download the Striv companion app from the App Store or Google Play Store.</li>
+                    <li>Create an account or log in to your existing account.</li>
+                    <li>Turn on your insole by pressing the power button once.</li>
+                    <li>Enable Bluetooth on your smartphone.</li>
+                    <li>Open the Striv app and follow the on-screen instructions to pair your insole.</li>
+                </ol>
+                
+                <h3>Reconnecting</h3>
+                <ol>
+                    <li>Turn on your insole.</li>
+                    <li>Open the Striv app.</li>
+                    <li>Your insole should automatically reconnect.</li>
+                </ol>
+            </section>
+            
+            <section id="calibration" class="section">
+                <h2>Calibration Process</h2>
+                
+                <div class="important-note">
+                    <strong>Important:</strong> Calibration starts automatically when Bluetooth is connected!
+                </div>
+                
+                <p>For optimal performance, your Striv insole needs to be calibrated to your specific foot pressure patterns:</p>
+                
+                <ol>
+                    <li>After connecting to Bluetooth, the insole will automatically enter calibration mode.</li>
+                    <li>The LED will display a gradual transition from red to green during calibration.</li>
+                    <li>Stand normally with your weight evenly distributed on both feet.</li>
+                    <li>Maintain this position for approximately 5 seconds until calibration is complete.</li>
+                    <li>The LED will turn off once calibration is successful.</li>
+                </ol>
+                
+                <h3>Calibration Tips</h3>
+                <div class="tip">
+                    <ul>
+                        <li>Ensure you're standing on a flat, level surface.</li>
+                        <li>Distribute your weight evenly between both feet.</li>
+                        <li>Remain still during the entire calibration process.</li>
+                        <li>Recalibration is recommended when:
+                            <ul>
+                                <li>Switching between different types of footwear</li>
+                                <li>After not using the insole for an extended period</li>
+                                <li>If you notice inaccurate readings</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="led-indicators" class="section">
+                <h2>Understanding LED Indicators</h2>
+                
+                <p>Your Striv insole uses LED colors and patterns to communicate its status:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>LED Pattern</th>
+                            <th>Color</th>
+                            <th>Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Solid Off</td>
+                            <td>None</td>
+                            <td>Normal operation after calibration</td>
+                        </tr>
+                        <tr>
+                            <td>Gradual Transition</td>
+                            <td>Red → Green</td>
+                            <td>Calibration in progress</td>
+                        </tr>
+                        <tr>
+                            <td>Blinking</td>
+                            <td>Yellow</td>
+                            <td>Low battery (≤20%)</td>
+                        </tr>
+                        <tr>
+                            <td>Blinking</td>
+                            <td>Blue</td>
+                            <td>Bluetooth disconnected</td>
+                        </tr>
+                        <tr>
+                            <td>Blinking</td>
+                            <td>Purple</td>
+                            <td>Low data sampling rate</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="tip">
+                    <p><strong>Note:</strong> The LED indicators follow a priority order. If multiple conditions exist simultaneously, the highest priority condition will be displayed (Low battery > Bluetooth disconnected > Calibration > Low sampling rate).</p>
+                </div>
+                
+                <h3>Visual LED Guide</h3>
+                <div class="led-indicator">
+                    <div class="led led-yellow"></div>
+                    <span>Blinking Yellow: Low Battery</span>
+                </div>
+                <div class="led-indicator">
+                    <div class="led led-blue"></div>
+                    <span>Blinking Blue: Bluetooth Disconnected</span>
+                </div>
+                <div class="led-indicator">
+                    <div class="led led-gradient"></div>
+                    <span>Red to Green Transition: Calibration in Progress</span>
+                </div>
+                <div class="led-indicator">
+                    <div class="led led-purple"></div>
+                    <span>Blinking Purple: Low Data Sampling Rate</span>
+                </div>
+            </section>
+            
+            <section id="using-insole" class="section">
+                <h2>Using Your Insole</h2>
+                
+                <h3>Placement</h3>
+                <ol>
+                    <li>Remove the original insole from your shoe.</li>
+                    <li>Insert the Striv Smart Insole with the sensor side facing up.</li>
+                    <li>Ensure the insole lies flat and doesn't curl at the edges.</li>
+                </ol>
+                
+                <h3>Activity Tracking</h3>
+                <ol>
+                    <li>After successful calibration, the insole will automatically track your movements.</li>
+                    <li>No additional user input is required during activity.</li>
+                    <li>The app will display real-time data as you move.</li>
+                </ol>
+                
+                <h3>Data Collection</h3>
+                <p>Your insole collects the following data:</p>
+                <ul>
+                    <li>Pressure distribution across your foot</li>
+                    <li>Ground contact time</li>
+                    <li>Flight time during running</li>
+                    <li>Loading rate</li>
+                    <li>Pronation/supination angle</li>
+                    <li>Foot strike pattern</li>
+                    <li>Elevation changes</li>
+                    <li>Temperature</li>
+                </ul>
+            </section>
+            
+            <section id="maintenance" class="section">
+                <h2>Maintenance and Care</h2>
+                
+                <h3>Cleaning</h3>
+                <ol>
+                    <li>Remove the insole from your shoe.</li>
+                    <li>Wipe gently with a damp cloth.</li>
+                    <li>Allow to air dry completely before reinserting.</li>
+                    <li>Do NOT machine wash or submerge in water.</li>
+                </ol>
+                
+                <h3>Battery Management</h3>
+                <ul>
+                    <li>A full charge typically lasts 8-10 hours of active use.</li>
+                    <li>When the LED blinks yellow, charge your insole as soon as possible.</li>
+                    <li>To preserve battery life, turn off the insole when not in use.</li>
+                </ul>
+                
+                <h3>Storage</h3>
+                <ul>
+                    <li>Store in a cool, dry place.</li>
+                    <li>Avoid extreme temperatures.</li>
+                    <li>Do not bend or fold the insole.</li>
+                </ul>
+            </section>
+            
+            <section id="troubleshooting" class="section">
+                <h2>Troubleshooting</h2>
+                
+                <h3>Insole Won't Connect</h3>
+                <ol>
+                    <li>Ensure Bluetooth is enabled on your smartphone.</li>
+                    <li>Verify the insole is charged and powered on.</li>
+                    <li>Restart the Striv app.</li>
+                    <li>If problems persist, try restarting your smartphone.</li>
+                </ol>
+                
+                <h3>Calibration Issues</h3>
+                <ol>
+                    <li>Ensure you're standing still during calibration.</li>
+                    <li>Check that the insole is properly positioned in your shoe.</li>
+                    <li>Try recalibrating in a different location.</li>
+                    <li>If calibration repeatedly fails, contact customer support.</li>
+                </ol>
+                
+                <h3>Inaccurate Data</h3>
+                <ol>
+                    <li>Recalibrate the insole.</li>
+                    <li>Ensure the insole is properly positioned in your shoe.</li>
+                    <li>Check for any physical damage to the insole.</li>
+                </ol>
+                
+                <h3>LED Continuously Blinks Blue</h3>
+                <ol>
+                    <li>Check that Bluetooth is enabled on your smartphone.</li>
+                    <li>Verify the Striv app is open and running.</li>
+                    <li>Try moving your smartphone closer to the insole.</li>
+                </ol>
+            </section>
+            
+            <section id="specifications" class="section">
+                <h2>Technical Specifications</h2>
+                
+                <ul>
+                    <li><strong>Battery:</strong> Rechargeable lithium-ion</li>
+                    <li><strong>Battery Life:</strong> 15-20 hours of active use</li>
+                    <li><strong>Connectivity:</strong> Bluetooth Low Energy (BLE)</li>
+                    <li><strong>Sensors:</strong> Pressure array, IMU (motion), barometric (elevation), temperature</li>
+                    <li><strong>Water Resistance:</strong> Splash resistant (not waterproof)</li>
+                    <li><strong>Temperature Range:</strong> -40°C to +85°C (-40°F to +185°F)</li>
+                </ul>
+            </section>
+            
+            <section id="support" class="section">
+                <h2>Support and Contact</h2>
+                
+                <p>For additional support:</p>
+                <ul>
+                    <li>Visit our website: <a href="https://www.striv.run">www.striv.run</a></li>
+                    <li>Email: <a href="mailto:info@striv.run">info@striv.run</a></li>
+                </ul>
+                
+                <h3>Warranty Information</h3>
+                <p>Your Striv Smart Insole comes with a limited one-year warranty covering manufacturing defects. Please register your product on our website to activate your warranty.</p>
+            </section>
+            
+            <section id="disclaimer" class="section">
+                <h2>Disclaimer</h2>
+                
+                <div class="disclaimer">
+                    <p><strong>Medical Disclaimer:</strong> The Striv Smart Insole is not a medical device and is not intended to diagnose, treat, cure, or prevent any disease or health condition. The information provided by the device and companion app is for informational and recreational purposes only.</p>
+                    
+                    <p><strong>Accuracy of Information:</strong> While we strive to provide accurate biomechanical data, the measurements and analyses provided by the Striv Smart Insole should not be considered as precise as clinical-grade equipment. Environmental factors, improper calibration, or incorrect usage may affect the accuracy of the data.</p>
+                    
+                    <p><strong>Consultation with Healthcare Professionals:</strong> Always consult with qualified healthcare professionals regarding any medical questions or concerns. Do not make changes to your exercise routine, footwear, or treatment plans based solely on data from the Striv Smart Insole without consulting appropriate medical professionals.</p>
+                    
+                    <p><strong>Assumption of Risk:</strong> By using the Striv Smart Insole, you acknowledge and assume all risks associated with physical activity and the use of the device. Striv Technologies is not responsible for any injuries or damages that may occur during use.</p>
+                    
+                    <p><strong>Privacy and Data:</strong> Please refer to our Privacy Policy for information on how we collect, use, and protect your data. By using the Striv Smart Insole and companion app, you consent to the data practices described in our Privacy Policy.</p>
+                    
+                    <p><strong>Product Updates:</strong> Specifications, features, and capabilities of the Striv Smart Insole may change with firmware or app updates. This manual represents the product at the time of publication.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Thank you for choosing Striv Smart Insole! We're excited to help you understand your biomechanics and improve your performance.</p>
+        
+        <div class="footer-links">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Register Product</a>
+        </div>
+        
+        <p>&copy; 2025 Striv . All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create mobile navigation toggle button
+            const mobileNavToggle = document.createElement('button');
+            mobileNavToggle.className = 'mobile-nav-toggle';
+            mobileNavToggle.innerHTML = 'Menu ☰';
+            
+            // Get the container and sidebar
+            const container = document.querySelector('.container');
+            const sidebar = document.querySelector('.sidebar');
+            
+            // Insert the toggle button before the container
+            container.parentNode.insertBefore(mobileNavToggle, container);
+            
+            // Toggle sidebar visibility on button click
+            mobileNavToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                this.innerHTML = sidebar.classList.contains('active') ? 'Close ✕' : 'Menu ☰';
+            });
+            
+            // Close sidebar when a nav link is clicked
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('active');
+                        mobileNavToggle.innerHTML = 'Menu ☰';
+                    }
+                });
+            });
+            
+            // Add smooth scrolling to anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
