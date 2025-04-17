@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Cancelled - Striv</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-color: #231f20;
+      --brand-color-light: rgba(248, 248, 248, 0.7);
+      --brand-color-lighter: rgba(248, 248, 248, 0.4);
+      --accent-color: #37ec7f;
+      --accent-color-hover: #2dd972;
+      --accent-color-light: rgba(55, 236, 127, 0.2);
+      --background-color: var(--brand-color);
+      --card-background: #2c2829;
+      --text-color-primary: #f8f8f8;
+      --text-color-secondary: var(--brand-color-light);
+      --border-color: #4a4445;
+      --border-color-light: rgba(74, 68, 69, 0.5);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+      --radius: 0.5rem;
+      --transition: all 0.2s ease;
+      --alert-color: #f27474;
+      --alert-color-light: rgba(242, 116, 116, 0.2);
+      --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-family);
+      background-color: var(--background-color);
+      color: var(--text-color-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .cancel-container {
+      background-color: var(--card-background);
+      max-width: 560px;
+      width: 90%;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .cancel-icon {
+      width: 80px;
+      height: 80px;
+      background-color: var(--alert-color-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: var(--alert-color);
+      font-size: 40px;
+    }
+    
+    .cancel-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color-primary);
+      font-weight: 700;
+    }
+    
+    .cancel-message {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color-secondary);
+    }
+    
+    .action-container {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background-color: rgba(74, 68, 69, 0.2);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color-light);
+    }
+    
+    .support-link {
+      color: var(--accent-color);
+      text-decoration: underline;
+      transition: var(--transition);
+    }
+    
+    .support-link:hover {
+      color: var(--accent-color-hover);
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .return-button {
+      background-color: var(--accent-color);
+      color: var(--brand-color);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-family);
+      text-decoration: none;
+    }
+    
+    .return-button:hover {
+      background-color: var(--accent-color-hover);
+      box-shadow: var(--shadow-md);
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cancel-container">
+    <div class="cancel-icon">✕</div>
+    <h1 class="cancel-title">Order Cancelled</h1>
+    <p class="cancel-message">Your order was not completed and you have not been charged.</p>
+    
+    <div class="action-container">
+      <p>If you experienced any issues during checkout, please <a href="mailto:info@striv.run" class="support-link">contact our support team</a>.</p>
+    </div>
+    
+    <div class="button-group">
+
+      <a href="https://striv.run" target="_blank" class="return-button">Return to Store</a>
+
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Checkout cancelled');
+      // Optional: Track cancellation reasons
+    });
+  </script>
+</body>
+</html> 

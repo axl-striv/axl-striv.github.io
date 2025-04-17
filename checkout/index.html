@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Striv™ Smart Insoles Checkout</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="container">
+    <div class="header">
+      <h1>Striv™</h1>
+      <p>Complete your purchase</p>
+    </div>
+
+    <form id="checkout-form">
+      <!-- Product Selection -->
+      <section class="card" aria-labelledby="product-selection-heading">
+        <h2 id="product-selection-heading">Select Your Striv™ Smart Insole</h2>
+        <div class="description-container">
+          <p class="description-intro">Each base product includes:</p>
+          <ul class="description-list">
+            <li>Striv™ Smart Insole(s) with 250+ sensors</li> 
+            <li>AI Running Coach <span class="highlight-accent">(6-month access included by default)</span>.</li>
+          </ul>
+        </div>
+
+        <div class="product-grid">
+          <!-- Product 1 -->
+          <div class="product-card" data-product-id="insole-1pack">
+            <div class="product-header">
+              <div>
+                <h3>Striv™ Smart Insole (1-Pack)</h3>
+                <p class="product-description">1x Smart Insole </p>
+              </div>
+            </div>  
+            <div class="product-content">
+              <div class="product-image">
+                <img src="assets/x1_pack.webp" alt="Striv™ Smart Insole (1-Pack)">
+              </div>
+              <div class="product-price">$339</div>
+              <div class="quantity-control product-quantity-control" data-product-id="insole-1pack">
+                <button type="button" class="quantity-btn minus" aria-label="Decrease quantity for 1-Pack">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="8" y1="12" x2="16" y2="12"/>
+                  </svg>
+                </button>
+                <span class="quantity">0</span>
+                <button type="button" class="quantity-btn plus" aria-label="Increase quantity for 1-Pack">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="16"/>
+                    <line x1="8" y1="12" x2="16" y2="12"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card" data-product-id="insole-2pack">
+            <div class="product-header">
+              <div>
+                <h3>Striv™ RUNMATE Version (2-Pack)</h3>
+                <p class="product-description">2x Smart Insoles</p>
+              </div>
+            </div>
+            <div class="product-content">
+                <div class="product-image">
+                  <img src="assets/x2_pack.webp" alt="Striv™ Smart Insole (2-Pack)">
+              </div>
+              <div class="product-price">$649</div>
+              <div class="quantity-control product-quantity-control" data-product-id="insole-2pack">
+                <button type="button" class="quantity-btn minus" aria-label="Decrease quantity for 2-Pack">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="8" y1="12" x2="16" y2="12"/>
+                  </svg>
+                </button>
+                <span class="quantity">0</span>
+                <button type="button" class="quantity-btn plus" aria-label="Increase quantity for 2-Pack">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="16"/>
+                    <line x1="8" y1="12" x2="16" y2="12"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add-ons Selection -->
+      <section class="card" aria-labelledby="addons-heading">
+        <div class="addon-header">
+          <h2 id="addons-heading">Optional Add-Ons</h2>
+          <button type="button" id="toggle-addons" class="toggle-button" aria-label="Toggle add-ons visibility">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-up">
+              <path d="m18 15-6-6-6 6"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="addons-container">
+          <div id="no-product-warning" class="warning">
+            Please select a base product first to see available add-ons.
+          </div>
+
+          <div id="addons-grid" class="addons-grid">
+            <!-- Battery Pods -->
+            <div class="addon-card" data-addon-id="battery-pods" data-price="21" data-name="Extra Pair of Battery Pods" data-description="~20 extra hours of battery life per pod.">
+              <div class="addon-header">
+                <div>
+                  <h3>Extra Pair of Battery Pods</h3>
+                  <p class="addon-description">Keep your training going with ~20 extra hours of battery life per pod. Perfect for long sessions or avoiding downtime.</p>
+                </div>
+                <div class="addon-price">$21</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-battery-pods" class="addon-checkbox-input">
+                  <label for="addon-battery-pods">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra Pair of Sensing Insoles -->
+            <div class="addon-card" data-addon-id="extra-insoles" data-price="42" data-name="Extra Pair of Striv Sensing Insoles" data-description="Easily swap insoles between shoes.">
+              <div class="addon-header">
+                <div>
+                  <h3>Extra Pair of Striv Sensing Insoles</h3>
+                  <p class="addon-description">An extra pair of insoles (no electronics) to easily switch your sensors between shoes.</p>
+                </div>
+                <div class="addon-price">$42</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-extra-insoles" class="addon-checkbox-input">
+                  <label for="addon-extra-insoles">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3-Pack of Sensing Insoles -->
+            <div class="addon-card" data-addon-id="3pack-insoles" data-price="90" data-name="Extra 3 Pairs of Striv Sensing Insoles" data-description="3 extra pairs for multiple shoes (50% discount).">
+              <div class="addon-header">
+                <div>
+                  <h3>Extra 3 Pairs of Striv Sensing Insoles</h3>
+                  <p class="addon-description">Easily swap between shoes or keep replacements handy. Includes 3 extra pairs at a 50% discount.</p>
+                </div>
+                <div class="addon-price">$90</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-3pack-insoles" class="addon-checkbox-input">
+                  <label for="addon-3pack-insoles">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 10-Pack of Sensing Insoles -->
+            <div class="addon-card" data-addon-id="10pack-insoles" data-price="240" data-name="Extra 10 Pairs of Striv Sensing Insoles" data-description="10 extra pairs for maximum flexibility (60% discount).">
+              <div class="addon-header">
+                <div>
+                  <h3>Extra 10 Pairs of Striv Sensing Insoles</h3>
+                  <p class="addon-description">Maximum flexibility across multiple shoes or stock up on replacements. Includes 10 extra pairs at a 60% discount.</p>
+                </div>
+                <div class="addon-price">$240</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-10pack-insoles" class="addon-checkbox-input">
+                  <label for="addon-10pack-insoles">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lifetime Access to AI Coach -->
+            <div class="addon-card" data-addon-id="lifetime-coach" data-price="35" data-name="Lifetime Access to AI Coach" data-description="One-time payment for lifetime AI coaching access.">
+              <div class="addon-header">
+                <div>
+                  <h3>Lifetime Access to AI Coach</h3>
+                  <p class="addon-description">
+                    One-time payment for lifetime access to advanced AI coaching features, personalized plans, and performance insights.
+                    <!-- <span class="tooltip" data-tooltip="Limited to one per base unit selected. Price applies to each base unit.">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                      </svg>
+                    </span> -->
+                  </p>
+                </div>
+                <div class="addon-price">$35</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-lifetime-coach" class="addon-checkbox-input">
+                  <label for="addon-lifetime-coach">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Order Summary -->
+      <section id="order-summary" class="card hidden" aria-labelledby="order-summary-heading">
+        <h2 id="order-summary-heading">Order Summary</h2>
+        
+        <div class="summary-content">
+          <!-- Product summary items will be inserted here -->
+          <div id="product-summary">
+            <!-- Individual product items will be inserted here dynamically -->
+          </div>
+          
+          <div id="addons-summary" class="summary-addons hidden">
+            <h3>Add-ons</h3>
+            <div id="addons-list" class="addons-list"></div>
+          </div>
+          
+          <div class="summary-total">
+            <div>Total</div>
+            <div id="total-price">$0</div>
+          </div>
+        </div>
+      </section>
+
+      <div id="error-message" class="error-message hidden" role="alert">
+        Please select a product
+      </div>
+
+      <div class="checkout-button-container">
+        <button type="submit" id="checkout-button" class="checkout-button" disabled>
+          Complete Purchase ($0)
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+  
+  <!-- Centralized product and pricing data -->
+  <script>
+    // Add loading state styling
+    const loadingStyle = document.createElement('style');
+    loadingStyle.textContent = `
+      .container.loading::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        z-index: 1000;
+      }
+      
+      .container.loading::after {
+        content: 'Loading...';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1rem 2rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1001;
+        font-weight: 600;
+        font-family: var(--font-family);
+      }
+
+      .pricing-notice {
+        position: relative;
+        margin-bottom: 1rem;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        background-color: #f8f9fa;
+        border-left: 4px solid #6c757d;
+        color: #495057;
+        animation: slideDown 0.3s ease-out;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        font-family: var(--font-family);
+      }
+
+      .pricing-notice.warning {
+        border-left-color: #f0ad4e;
+        background-color: #fff9f0;
+      }
+
+      .pricing-notice .refresh-button {
+        background: none;
+        border: none;
+        color: var(--accent-color);
+        padding: 0.25rem 0.5rem;
+        font-size: 0.85rem;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: 500;
+        font-family: var(--font-family);
+      }
+
+      .pricing-notice .refresh-button:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      @keyframes slideDown {
+        from { 
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to { 
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(loadingStyle);
+
+    // Add CSS for sale price styling
+    const style = document.createElement('style');
+    style.textContent = `
+      .price-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        font-family: var(--font-family);
+      }
+      .regular-price {
+        color: var(--text-color-secondary);
+        text-decoration: line-through;
+        font-size: 0.9rem;
+      }
+      .sale-price {
+        color: var(--accent-color);
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+      .save-amount {
+        font-size: 0.8rem;
+        color: var(--accent-color);
+      }
+      .addon-header .price-container {
+        align-items: flex-end;
+        text-align: right;
+        min-width: 70px;
+      }
+      .addon-header .regular-price {
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+        font-size: 1.1rem;
+      }
+      .addon-header .sale-price {
+        font-size: 1.1rem;
+      }
+      
+      /* Consistent font sizes in order summary */
+      .summary-item .regular-price,
+      .addon-summary-item .regular-price {
+        font-size: 1rem;
+      }
+      .summary-item .sale-price,
+      .addon-summary-item .sale-price {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Track if we're using backend or fallback prices
+    window.usingFallbackPrices = false;
+
+    // Function to fetch pricing data from backend
+    async function fetchPricingData() {
+      // Before fetching, disable the checkout button
+      const checkoutButton = document.getElementById('checkout-button');
+      if (checkoutButton) {
+        checkoutButton.disabled = true;
+        checkoutButton.textContent = "Loading prices...";
+      }
+      
+      // Remove any existing pricing notice
+      const existingNotice = document.querySelector('.pricing-notice');
+      if (existingNotice) {
+        existingNotice.remove();
+      }
+      
+      // Show loading state
+      document.querySelector('.container').classList.add('loading');
+      
+      try {
+        // In production, this would be your actual backend URL
+        const backendUrl = 'https://striv-backend-6a56be51e868.herokuapp.com/api/pricing';
+        const response = await fetch(backendUrl);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch pricing data: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        // Store pricing data in global object
+        window.strivData = data;
+        
+        // Update the UI with fetched pricing
+        updateProductDisplay();
+        
+        // We're using backend prices
+        window.usingFallbackPrices = false;
+        
+        return data;
+      } catch (error) {
+        console.error('Error fetching pricing data:', error);
+        
+        // Show pricing warning notification
+        showPricingNotice();
+        
+        // Fallback to default pricing data if fetch fails
+        window.strivData = {
+          products: {
+            "insole-1pack": {
+              name: "Striv™ Smart Insole (1-Pack)",
+              description: "1x Smart Insole",
+              price: 339,
+              regularPrice: 399,
+              onSale: true
+            },
+            "insole-2pack": {
+              name: "Striv™ RUNMATE Version (2-Pack)",
+              description: "2x Smart Insoles",
+              price: 649,
+              regularPrice: 799,
+              onSale: true
+            }
+          },
+          addons: {
+            "battery-pods": {
+              name: "Extra Pair of Battery Pods",
+              description: "Keep your training going with ~20 extra hours of battery life per pod. Perfect for long sessions or avoiding downtime.",
+              price: 21,
+              regularPrice: 29,
+              onSale: true
+            },
+            "extra-insoles": {
+              name: "Extra Pair of Striv Sensing Insoles",
+              description: "An extra pair of insoles (no electronics) to easily switch your sensors between shoes.",
+              price: 42,
+              regularPrice: 50,
+              onSale: false
+            },
+            "3pack-insoles": {
+              name: "Extra 3 Pairs of Striv Sensing Insoles",
+              description: "Easily swap between shoes or keep replacements handy. Includes 3 extra pairs at a 50% discount.",
+              price: 90,
+              regularPrice: 150,
+              onSale: true
+            },
+            "10pack-insoles": {
+              name: "Extra 10 Pairs of Striv Sensing Insoles",
+              description: "Maximum flexibility across multiple shoes or stock up on replacements. Includes 10 extra pairs at a 60% discount.",
+              price: 240,
+              regularPrice: 500,
+              onSale: true
+            },
+            "lifetime-coach": {
+              name: "Lifetime Access to AI Coach",
+              description: "One-time payment for lifetime access to advanced AI coaching features, personalized plans, and performance insights.",
+              price: 35,
+              regularPrice: 49,
+              onSale: true,
+              perUnit: true
+            }
+          }
+        };
+        
+        // Set flag that we're using fallback prices
+        window.usingFallbackPrices = true;
+        
+        // Still update the UI with fallback data
+        updateProductDisplay();
+      } finally {
+        // Hide loading state
+        document.querySelector('.container').classList.remove('loading');
+        
+        // Re-enable the checkout button if we have data (even if it's fallback data)
+        if (checkoutButton && window.strivData) {
+          checkoutButton.disabled = true; // Keep disabled until product selected
+          checkoutButton.textContent = "Complete Purchase ($0.00)"; // Reset text to default
+        }
+      }
+    }
+
+    // Function to show pricing notice
+    function showPricingNotice() {
+      const header = document.querySelector('.header');
+      if (!header) return;
+      
+      const notice = document.createElement('div');
+      notice.className = 'pricing-notice warning';
+      notice.innerHTML = `
+        <span>Using estimated prices. Latest pricing unavailable.</span>
+        <button class="refresh-button" onclick="fetchPricingData()">
+          Refresh Prices
+        </button>
+      `;
+      
+      // Insert after header
+      header.parentNode.insertBefore(notice, header.nextSibling);
+    }
+
+    // Function to update the HTML with pricing data
+    function updateProductDisplay() {
+      // Initialize product details from central data
+      for (const [id, data] of Object.entries(window.strivData.products)) {
+        const productEl = document.querySelector(`.product-card[data-product-id="${id}"]`);
+        if (productEl) {
+          // Update product details in the HTML
+          productEl.querySelector('h3').textContent = data.name;
+          productEl.querySelector('.product-description').textContent = data.description;
+          
+          // Update price with sale information if applicable
+          const priceEl = productEl.querySelector('.product-price');
+          if (data.onSale && data.regularPrice > data.price) {
+            const saveAmount = data.regularPrice - data.price;
+            const savePercent = Math.round((saveAmount / data.regularPrice) * 100);
+            
+            priceEl.innerHTML = `
+              <div class="price-container">
+                <span class="regular-price">$${data.regularPrice}</span>
+                <span class="sale-price">$${data.price}</span>
+                <span class="save-amount">Save $${saveAmount} (${savePercent}%)</span>
+              </div>
+            `;
+          } else {
+            priceEl.textContent = `$${data.price}`;
+          }
+        }
+      }
+
+      // Initialize addon details from central data
+      for (const [id, data] of Object.entries(window.strivData.addons)) {
+        const addonEl = document.querySelector(`.addon-card[data-addon-id="${id}"]`);
+        if (addonEl) {
+          // Update addon details in the HTML
+          addonEl.querySelector('h3').textContent = data.name;
+          addonEl.querySelector('.addon-description').textContent = data.description;
+          
+          // Update price with sale information if applicable
+          const priceEl = addonEl.querySelector('.addon-price');
+          if (data.onSale && data.regularPrice > data.price) {
+            const saveAmount = data.regularPrice - data.price;
+            const savePercent = Math.round((saveAmount / data.regularPrice) * 100);
+            
+            priceEl.innerHTML = `
+              <div class="price-container">
+                <span class="regular-price">$${data.regularPrice}</span>
+                <span class="sale-price">$${data.price}</span>
+              </div>
+            `;
+          } else {
+            priceEl.textContent = `$${data.price}`;
+          }
+          
+          // Update data attributes as well
+          addonEl.setAttribute('data-name', data.name);
+          addonEl.setAttribute('data-description', data.description);
+          addonEl.setAttribute('data-price', data.price);
+          if (data.perUnit) {
+            addonEl.setAttribute('data-per-unit', "true");
+          }
+        }
+      }
+    }
+
+    // Fetch pricing data when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      fetchPricingData();
+    });
+  </script>
+</body>
+</html>

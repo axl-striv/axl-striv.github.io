@@ -1,0 +1,674 @@
+/* Base Styles */
+:root {
+  --brand-color: #231f20;
+  --brand-color-light: rgba(248, 248, 248, 0.7);
+  --brand-color-lighter: rgba(248, 248, 248, 0.4);
+  --accent-color: #37ec7f;
+  --accent-color-hover: #2dd972;
+  --accent-color-light: rgba(55, 236, 127, 0.2);
+  --background-color: var(--brand-color);
+  --card-background: #2c2829;
+  --text-color-primary: #f8f8f8;
+  --text-color-secondary: var(--brand-color-light);
+  --border-color: #4a4445;
+  --border-color-light: rgba(74, 68, 69, 0.5);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  --radius: 0.5rem;
+  --transition: all 0.2s ease;
+  --focus-ring-color: rgba(55, 236, 127, 0.5); /* Accent color with alpha */
+  --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color-primary);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-color-primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--text-color-secondary);
+  margin-bottom: 2rem;
+}
+
+.description-container {
+  margin-bottom: 2rem;
+}
+
+.description-intro {
+  color: var(--text-color-secondary);
+  margin-bottom: 0.75rem; /* Space before the list */
+}
+
+.description-list {
+  padding-left: 1.5rem; /* Indent list items */
+  margin-bottom: 0; /* Remove bottom margin as container handles it */
+  color: var(--text-color-secondary);
+}
+
+.description-list li {
+  margin-bottom: 0.5rem; /* Add spacing between list items */
+}
+
+.highlight-accent {
+  color: var(--accent-color);
+  font-weight: 600; /* Make it slightly bolder */
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.header p {
+  color: var(--text-color-secondary);
+  font-size: 1.125rem;
+  margin-top: 0.5rem;
+}
+
+/* Card */
+.card {
+  background-color: var(--card-background);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Product Selection */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.product-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.product-card:hover {
+  border-color: var(--border-color-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.product-card.selected {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--accent-color-light);
+}
+
+/* Add focus-visible for keyboard navigation */
+.product-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--card-background), 0 0 0 5px var(--focus-ring-color);
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.product-description {
+  color: var(--text-color-secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.product-image {
+  height: auto;
+  min-height: 180px;
+  width: 100%;
+  background-color: #3a3536;
+  border-radius: 0.375rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0.5rem;
+}
+
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+/* Quantity Controls for Products */
+.product-quantity-control {
+  margin-top: 0.75rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+}
+
+/* Remove Radio Button Styles */
+/*
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-custom {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--border-color-light);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+input[type="radio"]:checked + .radio-custom {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+}
+
+input[type="radio"]:checked + .radio-custom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: white;
+}
+
+input[type="radio"]:focus-visible + .radio-custom {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--card-background), 0 0 0 5px var(--focus-ring-color);
+}
+*/
+
+/* Add-ons */
+.addon-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color-primary);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: var(--transition);
+}
+
+.toggle-button:hover {
+  background-color: var(--border-color);
+}
+
+/* Add focus-visible for keyboard navigation */
+.toggle-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--card-background), 0 0 0 5px var(--focus-ring-color);
+}
+
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .addons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.addon-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.addon-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.addon-card.selected {
+  border-color: var(--accent-color-light);
+}
+
+.addon-description {
+  color: var(--text-color-secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  min-height: 2.5rem;
+}
+
+.addon-price {
+  font-weight: 600;
+}
+
+.addon-content {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  min-height: 2.5rem;
+}
+
+.addon-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.addon-checkbox label {
+  color: var(--text-color-primary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.addon-checkbox-input {
+  appearance: none;
+  background-color: transparent;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--border-color-light);
+  border-radius: 0.375rem;
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-right: 0.25rem;
+  vertical-align: middle;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.addon-checkbox-input:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.addon-checkbox-input:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.4rem;
+  height: 0.8rem;
+  border: solid var(--brand-color);
+  border-width: 0 3px 3px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+/* Add focus-visible for keyboard navigation */
+.addon-checkbox-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--card-background), 0 0 0 5px var(--focus-ring-color);
+}
+
+/* Quantity Controls */
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.quantity-btn {
+  background: none;
+  border: 1px solid var(--border-color-light);
+  color: var(--text-color-secondary);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.quantity-btn svg {
+  stroke: var(--text-color-primary);
+  width: 1rem;
+  height: 1rem;
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background-color: var(--border-color);
+  border-color: var(--border-color);
+}
+
+.quantity-btn:hover:not(:disabled) svg {
+  stroke: var(--accent-color);
+}
+
+/* Add focus-visible for keyboard navigation */
+.quantity-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--card-background), 0 0 0 5px var(--focus-ring-color);
+}
+
+.quantity-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity {
+  margin: 0 0.75rem;
+  font-weight: 500;
+  min-width: 1rem;
+  text-align: center;
+  color: var(--text-color-primary);
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-color-secondary);
+  margin-left: 0.25rem;
+  cursor: help;
+}
+
+.tooltip svg {
+  stroke: var(--text-color-secondary);
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--brand-color);
+  color: var(--text-color-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  bottom: calc(100% + 5px);
+}
+
+/* Warning */
+.warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  text-align: center;
+}
+
+/* Order Summary */
+.summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#product-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color-light);
+  padding-bottom: 1.5rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color-light);
+  align-items: flex-start;
+  width: 100%;
+}
+
+.summary-content-wrapper {
+  max-width: 70%;
+}
+
+.summary-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  padding-right: 1rem;
+}
+
+.summary-description {
+  color: var(--text-color-secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.summary-price {
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+  font-size: 1.1rem;
+}
+
+.summary-addons {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+}
+
+.summary-addons h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.addons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.addon-summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+}
+
+.addon-summary-name {
+  color: var(--text-color-secondary);
+  padding-right: 1rem;
+}
+
+.addon-summary-price {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 0.75rem;
+}
+
+/* Checkout Button */
+.checkout-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkout-button {
+  background-color: var(--accent-color);
+  color: var(--brand-color);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .checkout-button {
+    width: auto;
+  }
+}
+
+.checkout-button:hover:not(:disabled) {
+  background-color: var(--accent-color-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.checkout-button:disabled {
+  background-color: var(--border-color);
+  color: var(--text-color-secondary);
+  cursor: not-allowed;
+}
+
+/* Add focus-visible for keyboard navigation */
+.checkout-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--background-color), 0 0 0 5px var(--focus-ring-color);
+}
+
+/* Error Message */
+.error-message {
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  color: #b91c1c;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Buttons should explicitly use the font-family to ensure consistency */
+.quantity-btn,
+.checkout-button,
+.toggle-button,
+button {
+  font-family: var(--font-family);
+}
