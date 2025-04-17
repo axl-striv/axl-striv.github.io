@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
       checkoutButton.textContent = "Processing..."
 
       // Send to backend for secure price calculation and Stripe checkout
-      fetch('https://striv-backend-6a56be51e868.herokuapp.com/api/checkout', {
+      fetch(`${window.strivBaseUrl}/api/checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

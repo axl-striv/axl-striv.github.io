@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Striv™ Smart Insoles Checkout</title>
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+
+  <title>Checkout - Striv™ Smart Insole</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -325,6 +327,10 @@
   
   <!-- Centralized product and pricing data -->
   <script>
+    // Centralize backend URL
+    // window.strivBaseUrl = 'https://striv-backend-6a56be51e868.herokuapp.com';
+    window.strivBaseUrl = 'http://localhost:8000';
+
     // Add loading state styling
     const loadingStyle = document.createElement('style');
     loadingStyle.textContent = `
@@ -480,7 +486,7 @@
       
       try {
         // In production, this would be your actual backend URL
-        const backendUrl = 'https://striv-backend-6a56be51e868.herokuapp.com/api/pricing';
+        const backendUrl = `${window.strivBaseUrl}/api/pricing`;
         const response = await fetch(backendUrl);
         
         if (!response.ok) {
