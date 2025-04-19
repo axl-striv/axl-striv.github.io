@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Striv Privacy Policy</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="manual.html" />
+    <style>
+        :root {
+            --brand-color: #231f20;
+            --accent-color: #37ec7f;
+            --text-color: #f5f5f5;
+            --text-dark: #231f20;
+            --light-gray: #333333;
+            --dark-gray: #1a1a1a;
+            --white: #ffffff;
+            --off-white: #f0f0f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--brand-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-weight: 300;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            color: var(--white);
+            font-weight: 500;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            color: var(--white);
+        }
+        
+        p, li {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--dark-gray);
+            padding: 25px;
+            border-radius: 8px;
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            border-left: 3px solid var(--accent-color);
+            padding-right: 20px;
+        }
+        
+        .content {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            transform: translateX(5px);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: var(--dark-gray);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px 20px;
+            border-top: 1px solid var(--light-gray);
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .footer-link {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #37ec7f;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2bc566;
+        }
+        
+        /* For Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #37ec7f #1a1a1a;
+        }
+        
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+                margin-bottom: 20px;
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .content {
+                width: 100%;
+            }
+            
+            .section {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            /* Mobile navigation menu */
+            .mobile-nav-toggle {
+                display: block;
+                background: var(--accent-color);
+                color: var(--text-dark);
+                border: none;
+                padding: 10px 15px;
+                width: 100%;
+                text-align: left;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .sidebar.active {
+                display: block;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-nav-toggle {
+                display: none;
+            }
+            
+            .sidebar {
+                display: block !important;
+            }
+        }
+        
+        /* For very small screens */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .section {
+                padding: 15px 10px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">STRIV</div>
+        <h1>Privacy Policy and Data Collection Terms</h1>
+        <p>How we protect your data and your rights</p>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h3>Quick Navigation</h3>
+            <a href="#introduction" class="nav-link">Introduction</a>
+            <a href="#information" class="nav-link">Information We Collect</a>
+            <a href="#data-use" class="nav-link">How We Use Your Data</a>
+            <a href="#data-sharing" class="nav-link">Data Sharing & Third Parties</a>
+            <a href="#data-security" class="nav-link">Data Security</a>
+            <a href="#your-rights" class="nav-link">Your Rights</a>
+            <a href="#policy-updates" class="nav-link">Policy Updates</a>
+            <a href="#contact" class="nav-link">Contact Us</a>
+            <a href="manual.html" class="nav-link">User Manual</a>
+            <a href="index.html" class="nav-link">Return to App</a>
+        </div>
+        
+        <div class="content">
+            <section id="introduction" class="section">
+                <h2>Introduction</h2>
+                <p>Striv™ is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and protect your personal information, including sensitive health and location data gathered through our smart insoles, mobile app, and related services.</p>
+            </section>
+            
+            <section id="information" class="section">
+                <h2>Information We Collect</h2>
+                <p>We collect the following types of data:</p>
+                
+                <h3>Personal Identifiers</h3>
+                <p>Name, email, shipping address, and payment information.</p>
+                
+                <h3>Health & Activity Data</h3>
+                <p>Sensor data from Striv™ insoles including pressure, gait, stride, impact, step frequency, and related biometric insights.</p>
+                
+                <h3>Device & App Usage Data</h3>
+                <p>App interactions, session duration, device type, OS, crash logs, and diagnostics.</p>
+                
+                <h3>Location Data</h3>
+                <p>With your explicit consent, we collect GPS data to enhance training insights, route tracking, and performance analytics.</p>
+                
+                <h3>Cookies & Analytics</h3>
+                <p>We use cookies and similar technologies to understand usage patterns and improve your experience.</p>
+            </section>
+            
+            <section id="data-use" class="section">
+                <h2>How We Use Your Data</h2>
+                <p>Your data is used to:</p>
+                
+                <ul>
+                    <li><strong>Provide Core Functionality:</strong> Enable insole tracking, AI-powered coaching, and personalized insights.</li>
+                    <li><strong>Improve Product & Support:</strong> Analyze aggregated usage data to enhance hardware/software performance and resolve bugs.</li>
+                    <li><strong>Communicate with You:</strong> Send relevant updates, service notifications, and (if opted in) marketing content.</li>
+                    <li><strong>Comply with Law:</strong> Meet legal obligations and respond to lawful requests.</li>
+                </ul>
+            </section>
+            
+            <section id="data-sharing" class="section">
+                <h2>Data Sharing & Third Parties</h2>
+                <p>We do not sell your data. We only share it with:</p>
+                
+                <ul>
+                    <li>Trusted Vendors (e.g., cloud storage, payment processors, analytics providers) under strict confidentiality agreements.</li>
+                    <li>Legal Authorities, if required by law.</li>
+                </ul>
+            </section>
+            
+            <section id="data-security" class="section">
+                <h2>Data Security</h2>
+                <p>We use industry-standard encryption, secure cloud infrastructure, and regular security audits to protect your information.</p>
+            </section>
+            
+            <section id="your-rights" class="section">
+                <h2>Your Rights</h2>
+                <p>You may:</p>
+                
+                <ul>
+                    <li>Access or correct your personal data</li>
+                    <li>Delete your account and all associated data</li>
+                    <li>Withdraw consent for location or health data tracking at any time</li>
+                    <li>Request data portability</li>
+                    <li>Object to certain types of processing (e.g., marketing)</li>
+                </ul>
+                
+                <p>To exercise these rights, email: <a href="mailto:info@striv.run">info@striv.run</a></p>
+            </section>
+            
+            <section id="policy-updates" class="section">
+                <h2>Policy Updates</h2>
+                <p>We may update this policy as needed. The latest version will always be available at <a href="https://striv.run/privacy.html">https://striv.run/privacy.html</a>. If material changes occur, we'll notify you via email or app alert.</p>
+            </section>
+            
+            <section id="contact" class="section">
+                <h2>Contact Us</h2>
+                <p>For questions or privacy-related concerns:</p>
+                <p>📧 <a href="mailto:info@striv.run">info@striv.run</a></p>
+                <p>📍 Striv, Cambridge, MA</p>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Striv. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="manual.html" class="footer-link">User Manual</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create mobile navigation toggle button
+            const mobileNavToggle = document.createElement('button');
+            mobileNavToggle.className = 'mobile-nav-toggle';
+            mobileNavToggle.innerHTML = 'Menu ☰';
+            
+            // Get the container and sidebar
+            const container = document.querySelector('.container');
+            const sidebar = document.querySelector('.sidebar');
+            
+            // Insert the toggle button before the container
+            container.parentNode.insertBefore(mobileNavToggle, container);
+            
+            // Toggle sidebar visibility on button click
+            mobileNavToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                this.innerHTML = sidebar.classList.contains('active') ? 'Close ✕' : 'Menu ☰';
+            });
+            
+            // Close sidebar when a nav link is clicked
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('active');
+                        mobileNavToggle.innerHTML = 'Menu ☰';
+                    }
+                });
+            });
+            
+            // Add smooth scrolling to anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

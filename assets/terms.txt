@@ -1,22 +1,61 @@
 Privacy Policy and Data Collection Terms
-	1	Introduction
-	◦	Striv™ values your privacy and is committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information.
-	2	Data Collection
-	◦	Personal Information: We collect information such as name, email address, payment details, and any other information you provide.
-	◦	Usage Data: Information on how you use our product and services, including interaction data, device information, and insole sensor data.
-	◦	Cookies: We use cookies to enhance your experience and gather data about site traffic and interactions.
-	3	Use of Data
-	◦	Personalization: To personalize and improve your experience with our AI-powered coaching.
-	◦	Communication: To send updates, newsletters, and other relevant information.
-	◦	Service Improvement: To analyze data for improving our products and services.
-	◦	Legal Requirements: To comply with legal obligations and protect our rights.
-	4	Data Sharing
-	◦	We do not sell, trade, or otherwise transfer your personal information to outside parties, except for trusted partners who assist in operating our website and conducting our business, as long as those parties agree to keep this information confidential.
-	5	Data Security
-	◦	We implement a variety of security measures to maintain the safety of your personal information.
-	6	User Rights
-	◦	You have the right to access, correct, or delete your personal data. You can also object to certain processing activities or request data portability.
-	7	Changes to the Policy
-	◦	We may update this privacy policy periodically. We will notify you of any changes by updating the date at the top of this policy and, if the changes are significant, provide a more prominent notice.
-	8	Contact Information
-	◦	For any questions or concerns regarding this privacy policy, please contact us at info@striv.run.
+
+1. Introduction
+Striv™ is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and protect your personal information, including sensitive health and location data gathered through our smart insoles, mobile app, and related services.
+
+2. Information We Collect
+We collect the following types of data:
+
+Personal Identifiers: Name, email, shipping address, and payment information.
+
+Health & Activity Data: Sensor data from Striv™ insoles including pressure, gait, stride, impact, step frequency, and related biometric insights.
+
+Device & App Usage Data: App interactions, session duration, device type, OS, crash logs, and diagnostics.
+
+Location Data: With your explicit consent, we collect GPS data to enhance training insights, route tracking, and performance analytics.
+
+Cookies & Analytics: We use cookies and similar technologies to understand usage patterns and improve your experience.
+
+3. How We Use Your Data
+Your data is used to:
+
+Provide Core Functionality: Enable insole tracking, AI-powered coaching, and personalized insights.
+
+Improve Product & Support: Analyze aggregated usage data to enhance hardware/software performance and resolve bugs.
+
+Communicate with You: Send relevant updates, service notifications, and (if opted in) marketing content.
+
+Comply with Law: Meet legal obligations and respond to lawful requests.
+
+4. Data Sharing & Third Parties
+We do not sell your data. We only share it with:
+
+Trusted Vendors (e.g., cloud storage, payment processors, analytics providers) under strict confidentiality agreements.
+
+Legal Authorities, if required by law.
+
+5. Data Security
+We use industry-standard encryption, secure cloud infrastructure, and regular security audits to protect your information.
+
+6. Your Rights
+You may:
+
+Access or correct your personal data
+
+Delete your account and all associated data
+
+Withdraw consent for location or health data tracking at any time
+
+Request data portability
+
+Object to certain types of processing (e.g., marketing)
+
+To exercise these rights, email: info@striv.run
+
+7. Policy Updates
+We may update this policy as needed. The latest version will always be available at https://striv.run/assets/terms.txt. If material changes occur, we’ll notify you via email or app alert.
+
+8. Contact Us
+For questions or privacy-related concerns:
+📧 info@striv.run
+📍 Striv, Cambridge, MA
