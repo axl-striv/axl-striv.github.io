@@ -553,13 +553,53 @@
             font-weight: 500;
             line-height: 1.4;
         }
+        
+        /* FAQ styling */
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .faq-item {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .faq-item h3 {
+            padding: 18px 25px;
+            margin: 0;
+            background-color: rgba(55, 236, 127, 0.1);
+            border-left: 4px solid var(--accent-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .faq-answer {
+            padding: 5px 25px 20px;
+        }
+        
+        .faq-answer p, .faq-answer ul, .faq-answer ol {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">STRIV</div>
         <h1>Smart Insole User Manual</h1>
-        <p>Your guide to advanced biomechanical analysis</p>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+            <p>Your guide to advanced biomechanical analysis</p>
+            <div style="margin: 20px 0; padding: 15px; background-color: rgba(55, 236, 127, 0.15); border-radius: 8px; border-left: 4px solid var(--accent-color); display: flex; align-items: center; justify-content: center;">
+                <p style="margin-bottom:0px;"><strong>Spotted an error?</strong> Help us improve by <a href="https://forms.gle/iJNG2GAuEdPNDrzA7" target="_blank" style="font-weight: 600;">submitting a bug report</a>.</p>
+            </div>
     </header>
     
     <div class="container">
@@ -574,6 +614,7 @@
             <a href="#led-indicators" class="nav-link">LED Indicators</a>
             <a href="#maintenance" class="nav-link">Maintenance and Care</a>
             <a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+            <a href="#faq" class="nav-link">FAQ</a>
             <a href="#specifications" class="nav-link">Technical Specifications</a>
             <a href="#support" class="nav-link">Support and Contact</a>
             <a href="#disclaimer" class="nav-link">Disclaimer</a>
@@ -583,6 +624,7 @@
             <section id="introduction" class="section">
                 <h2>Introduction</h2>
                 <p>Welcome to your Striv Smart Insole! This advanced wearable device provides real-time biomechanical analysis of your running and walking gait. The insole contains pressure sensors, motion sensors, and environmental sensors to deliver comprehensive data about your movement patterns.</p>
+                
             </section>
 
 
@@ -927,6 +969,89 @@
                     <li>Verify the Striv app is open and running.</li>
                     <li>Try moving your smartphone closer to the insole.</li>
                 </ol>
+            </section>
+            
+            <section id="faq" class="section">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3>What's in the box?</h3>
+                        <div class="faq-answer">
+                            <ul>
+                                <li>x pairs of Striv insoles (depending on your order)</li>
+                                <li>Battery pods</li>
+                                <li>Striv Pod</li>
+                                <li>Foot clips</li>
+                                <li>Charging dock + cable</li>
+                            </ul>
+                            <div class="important-note">
+                                <strong>Note:</strong> Some backers received sensor-only kits (no black top insoles) — check your order details.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Is there a left and right side for the sensors?</h3>
+                        <div class="faq-answer">
+                            <p>Yes. Look for "L" and "R" on the adapter — this indicates which foot and orientation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>How do I start a run?</h3>
+                        <div class="faq-answer">
+                            <ol>
+                                <li>Make sure both pods are fully charged and connected.</li>
+                                <li>Open the app → Tap "Start Running" → Wait for both L/R to show as connected.</li>
+                                <li>Tap "Start" → Run → Tap "End Run" to save.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>My pod isn't connecting — what should I do?</h3>
+                        <div class="faq-answer">
+                            <ul>
+                                <li>Make sure battery it's charged and clicked into the adapter fully.</li>
+                                <li>Make sure the sensor adaptor is fully connected and you hear a sound of clicking when you push it in.</li>
+                                <li>Avoid twisting or pulling the cable.</li>
+                                <li>Try restarting the app and reconnecting via the "Start Running" screen.</li>
+                            </ul>
+                            <div class="tip">
+                                <p>If it still doesn't connect, <a href="mailto:info@striv.run">contact us</a> or fill out the <a href="https://forms.gle/iJNG2GAuEdPNDrzA7" target="_blank">debug form</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>My calibration doesn't seem to work.</h3>
+                        <div class="faq-answer">
+                            <ol>
+                                <li>Open "Insole Status" in the app — check for pressure bars.</li>
+                                <li>Ensure you're standing still during calibration.</li>
+                                <li>Try unplugging/replugging the adapter and restarting the app.</li>
+                            </ol>
+                            <div class="tip">
+                                <p>If still stuck, <a href="mailto:info@striv.run">reach out to us</a>!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Can I use the sensors with my own insoles?</h3>
+                        <div class="faq-answer">
+                            <p>Yes — sensor-only kits are designed to go under your existing insoles.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>One of my parts is missing or damaged — what now?</h3>
+                        <div class="faq-answer">
+                            <p>Please fill out our <a href="https://forms.gle/9Mi8KLdNvsVMVK3TA" target="_blank">After-Sales Service Request form</a> and we'll help resolve the issue.</p>
+                        </div>
+                    </div>
+                </div>
             </section>
             
             <section id="specifications" class="section">
