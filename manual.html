@@ -269,22 +269,22 @@
         
         .led-yellow {
             background-color: #f1c40f;
-            box-shadow: 0 0 10px #f1c40f;
+            box-shadow: 0 0 25px rgba(241, 196, 15, 0.7);
         }
         
         .led-blue {
             background-color: #3498db;
-            box-shadow: 0 0 10px #3498db;
+            box-shadow: 0 0 25px rgba(52, 152, 219, 0.7);
         }
         
         .led-purple {
             background-color: #9b59b6;
-            box-shadow: 0 0 10px #9b59b6;
+            box-shadow: 0 0 25px rgba(155, 89, 182, 0.7);
         }
         
         .led-gradient {
-            background: linear-gradient(to right, #e74c3c, #37ec7f);
-            box-shadow: 0 0 10px #37ec7f;
+            background: linear-gradient(180deg, #e74c3c 0%, #2ecc71 100%);
+            box-shadow: 0 0 25px rgba(46, 204, 113, 0.7);
         }
         
         footer {
@@ -502,11 +502,12 @@
         .led-card {
             display: flex;
             align-items: center;
-            background-color: #1a1a1a;
+            background-color: #141414;
             border-radius: 10px;
-            padding: 25px;
+            padding: 30px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
+            margin-bottom: 20px;
         }
         
         .led-card:hover {
@@ -514,31 +515,36 @@
         }
         
         .led-circle {
-            width: 40px;
-            height: 40px;
+            min-width: 70px;
+            min-height: 70px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            margin-right: 20px;
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            margin-right: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
         }
         
         .led-yellow {
             background-color: #f1c40f;
-            box-shadow: 0 0 15px #f1c40f;
+            box-shadow: 0 0 25px rgba(241, 196, 15, 0.7);
         }
         
         .led-blue {
             background-color: #3498db;
-            box-shadow: 0 0 15px #3498db;
+            box-shadow: 0 0 25px rgba(52, 152, 219, 0.7);
         }
         
         .led-purple {
             background-color: #9b59b6;
-            box-shadow: 0 0 15px #9b59b6;
+            box-shadow: 0 0 25px rgba(155, 89, 182, 0.7);
         }
         
         .led-gradient {
-            background: linear-gradient(to right, #e74c3c, #37ec7f);
-            box-shadow: 0 0 15px #37ec7f;
+            background: linear-gradient(180deg, #e74c3c 0%, #2ecc71 100%);
+            box-shadow: 0 0 25px rgba(46, 204, 113, 0.7);
         }
         
         .led-text {
@@ -561,7 +567,7 @@
             <h3>Quick Navigation</h3>
             <a href="#introduction" class="nav-link">Introduction</a>
             <a href="#getting-started" class="nav-link">Getting Started</a>
-            <a href="#using-insole" class="nav-link">Using Your Insole</a>
+            <a href="#using-insole" class="nav-link">Start Using Your Insole</a>
             <a href="#connecting" class="nav-link">Connecting & Setup</a>
             <a href="#run-now" class="nav-link">Run Now, Sync Later</a>
             <a href="#calibration" class="nav-link">Calibration Process</a>
@@ -604,7 +610,7 @@
           
             
             <section id="using-insole" class="section">
-                <h2>Using Your Insole</h2>
+                <h2>Start Using Your Insole</h2>
                 
                 <h3>Placement</h3>
 
