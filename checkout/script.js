@@ -223,10 +223,12 @@ document.addEventListener("DOMContentLoaded", () => {
     checkoutForm.addEventListener("submit", (e) => {
       e.preventDefault()
 
-      // Check if any product has quantity > 0
+      // Check if any product has quantity > 0 OR if there are any add-ons
       const hasProducts = Object.values(state.productQuantities).some(qty => qty > 0)
-      if (!hasProducts) {
-        errorMessage.textContent = "Please add at least one product to your order."
+      const hasAddons = state.selectedAddons.length > 0
+      
+      if (!hasProducts && !hasAddons) {
+        errorMessage.textContent = "Please add at least one product or add-on to your order."
         errorMessage.classList.remove("hidden")
         return
       }
@@ -307,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
       quantityDisplay.textContent = "1"
     })
 
-    errorMessage.textContent = "Please select a product" // Reset error text
+    errorMessage.textContent = "Please select a product or add-on" // Update error text
     errorMessage.classList.add("hidden")
 
     // Update addons availability
@@ -323,37 +325,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateAddonsAvailability() {
     const hasProducts = Object.values(state.productQuantities).some(qty => qty > 0)
 
-    if (hasProducts) {
-      noProductWarning.classList.add("hidden")
-      addonsGrid.classList.remove("hidden")
-    } else {
-      noProductWarning.classList.remove("hidden")
-      addonsGrid.classList.add("hidden")
-
-      // Also uncheck and reset addons if product is removed
-      state.selectedAddons = []
-      addonCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-          checkbox.checked = false
-          const addonCard = checkbox.closest(".addon-card")
-          addonCard.classList.remove("selected")
-          const quantityControl = addonCard.querySelector(".quantity-control")
-          const quantityDisplay = quantityControl?.querySelector(".quantity")
-          const minusBtn = quantityControl?.querySelector(".minus")
-          const plusBtn = quantityControl?.querySelector(".plus")
-          if (quantityControl) quantityControl.classList.add("hidden")
-          if (quantityDisplay) quantityDisplay.textContent = "1"
-          if (minusBtn) minusBtn.disabled = true
-          if (plusBtn) plusBtn.disabled = false
-        }
-      })
-    }
+    // Always show add-ons, even if no products are selected
+    noProductWarning.classList.add("hidden")
+    addonsGrid.classList.remove("hidden")
   }
 
   function updateOrderSummary() {
     const hasProducts = Object.values(state.productQuantities).some(qty => qty > 0)
+    const hasAddons = state.selectedAddons.length > 0
 
-    if (!hasProducts && state.selectedAddons.length === 0) {
+    if (!hasProducts && !hasAddons) {
       orderSummary.classList.add("hidden")
       return
     }
@@ -453,9 +434,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateCheckoutButton() {
     const hasProducts = Object.values(state.productQuantities).some(qty => qty > 0)
+    const hasAddons = state.selectedAddons.length > 0
     state.total = calculateTotal() // Ensure total is up-to-date
 
-    if (hasProducts) {
+    if (hasProducts || hasAddons) {
       checkoutButton.disabled = false
       checkoutButton.textContent = `Complete Purchase ($${state.total.toFixed(2)})`
     } else {
@@ -495,7 +477,8 @@ document.addEventListener("DOMContentLoaded", () => {
         totalUnits += quantity * 2 // 2-pack counts as 2 base units
       }
     })
-    return totalUnits
+    // If no product is selected, return at least 1 unit to allow purchasing per-unit add-ons
+    return Math.max(totalUnits, 1)
   }
 
   // Function to update addon quantity limits (needed when base product quantity changes)
