@@ -1037,13 +1037,19 @@
                         <h3>My pod isn't connecting — what should I do?</h3>
                         <div class="faq-answer">
                             <ul>
-                                <li>Make sure battery it's charged and clicked into the adapter fully.</li>
+                                <li>Make sure you've enabled Bluetooth for the Striv App.</li>
+                                <li>Check if the blue light is blinking on the battery pod:
+                                    <ul>
+                                        <li>If not blinking, try charging the battery before using.</li>
+                                        <li>If charged, make sure it's fully clicked into the adapter.</li>
+                                    </ul>
+                                </li>
                                 <li>Make sure the sensor adaptor is fully connected and you hear a sound of clicking when you push it in.</li>
                                 <li>Avoid twisting or pulling the cable.</li>
                                 <li>Try restarting the app and reconnecting via the "Start Running" screen.</li>
                             </ul>
-                            <div class="tip">
-                                <p>If it still doesn't connect, <a href="mailto:info@striv.run">contact us</a> or fill out the <a href="https://forms.gle/iJNG2GAuEdPNDrzA7" target="_blank">debug form</a>.</p>
+                            <div class="important-note">
+                                <p>If blinking blue and still not connecting, please <a href="https://forms.gle/TTiWsY35eRAhmC6n6" target="_blank">submit this form</a> with your email and details. Check your emails for updates from our support team.</p>
                             </div>
                         </div>
                     </div>
@@ -1051,13 +1057,42 @@
                     <div class="faq-item">
                         <h3>My calibration doesn't seem to work.</h3>
                         <div class="faq-answer">
+                            <div class="important-note">
+                                <p><strong>For products received before April 15:</strong> <br/>Please use <a href="https://drive.google.com/drive/u/2/folders/1-nMlawytY_zAmAcPAfTeMbE2-nuEDMtY">Firmware_Update</a> and nRF connect for firmware update.</p>
+                            </div>
+
                             <ol>
-                                <li>Open "Insole Status" in the app — check for pressure bars.</li>
+                                <li>Open "Insole Status" in the app and try recalibrating.</li>
                                 <li>Ensure you're standing still during calibration.</li>
                                 <li>Try unplugging/replugging the adapter and restarting the app.</li>
+                                <li>Check if there was a sound of clicking when you installed the sensor adapter.</li>
+                            </ol>
+                            <div class="important-note">
+
+                                <p><strong>When checking calibration:</strong></p>
+                                <ul>
+                                    <li>Check "mean pressure" in insole status when you step on it vs. when you don't.</li>
+                                    <li>If change is less than 10, the sensors might be broken. Please check <a href="https://striv.run/manual#using-insole">usage guidelines</a> and fill out our <a href="https://forms.gle/787DZQSHobLixiir9" target="_blank">after-sales service request form</a>.</li>
+                                    <li>If there's a huge change (e.g., 100+ from ~10), please <a href="https://forms.gle/TTiWsY35eRAhmC6n6" target="_blank">submit this debug form</a> with your email and details.</li>
+                                </ul>
+                            </div>
+                            <!-- <div class="tip">
+                                <p>If still stuck, <a href="mailto:info@striv.run">contact us</a> or fill out the <a href="https://forms.gle/iJNG2GAuEdPNDrzA7" target="_blank">debug form</a>!</p>
+                            </div> -->
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Sensor calibrated, but no data was received</h3>
+                        <div class="faq-answer">
+                            <ol>
+                                <li>Ensure you have the latest app version.</li>
+                                <li>Check that your iOS/Android system is updated to the newest version.</li>
+                                <li>Verify the sensor adapter is fully connected with a clicking sound.</li>
+                                <li>Check Insole Status for pressure readings during use.</li>
                             </ol>
                             <div class="tip">
-                                <p>If still stuck, <a href="mailto:info@striv.run">contact us</a> or fill out the <a href="https://forms.gle/iJNG2GAuEdPNDrzA7" target="_blank">debug form</a>!</p>
+                                <p>Please submit <a href="https://forms.gle/TTiWsY35eRAhmC6n6" target="_blank">this form</a> with details if problem persists.</p>
                             </div>
                         </div>
                     </div>
@@ -1072,7 +1107,17 @@
                     <div class="faq-item">
                         <h3>One of my parts is missing or damaged — what now?</h3>
                         <div class="faq-answer">
-                            <p>Please fill out our <a href="https://forms.gle/9Mi8KLdNvsVMVK3TA" target="_blank">After-Sales Service Request form</a> and we'll help resolve the issue.</p>
+                            <p>Please fill out our <a href="https://forms.gle/787DZQSHobLixiir9" target="_blank">After-Sales Service Request form</a> and we'll help resolve the issue.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>I'm experiencing software bugs (e.g., elevation, distance error)</h3>
+                        <div class="faq-answer">
+                            <p>Please use our <a href="https://forms.gle/6H5ooTGQW4LvGcE88" target="_blank">Bug Report Form</a> with detailed information about the issue you're experiencing.</p>
+                            <div class="tip">
+                                <p>Be sure to include your device model, app version, and steps to reproduce the bug.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
