@@ -1,0 +1,42 @@
+﻿1. Software & App Issues
+* How do I download the Striv app?
+
+   * iOS: Download from the Apple App Store
+
+   * Android: Use the link in your user manual or visit https://play.google.com/apps/testing/com.runningcapture.android
+
+   * Note: Occasionally, app links may be temporarily unavailable during updates. If you encounter issues, check back in a few hours or contact support.
+
+      * How do I update my Striv app?
+
+         * iOS: Update through the App Store
+
+         * Android: Update through Google Play Store or use the testing link in the user manual
+
+         * If experiencing app issues, ensure you are using the latest version.
+
+            * My sensors won’t connect to the app
+
+               * Ensure Bluetooth is enabled on your phone
+
+               * Check that the battery pods are charged
+
+               * Close the app completely and reopen it
+
+               * Restart your phone
+
+               * Ensure the pod is blinking blue
+
+               * If the app shows “Start to Run” but nothing happens, update to the latest version
+
+               * If still not connecting
+https://docs.google.com/forms/d/1geBZaVl3o2ArvJmdX_FrkB3JRHqZggnxcbemRzBhLD8.
+                  * How do I ensure my run data is saved?
+
+                     * Always end the run properly through the app interface
+
+                     * Wait for the confirmation that the run has been saved
+
+                     * Avoid force-closing the app immediately after finishing a run
+
+                     * Update to the latest app version if issues persist.
