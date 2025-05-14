@@ -1,42 +1,227 @@
-﻿1. Software & App Issues
-* How do I download the Striv app?
+1. Software & App Issues
+How do I download the Striv app?
 
-   * iOS: Download from the Apple App Store
 
-   * Android: Use the link in your user manual or visit https://play.google.com/apps/testing/com.runningcapture.android
+iOS: Download from the Apple App Store
 
-   * Note: Occasionally, app links may be temporarily unavailable during updates. If you encounter issues, check back in a few hours or contact support.
 
-      * How do I update my Striv app?
+Android: Use the link in your user manual or visit https://play.google.com/apps/testing/com.runningcapture.android
 
-         * iOS: Update through the App Store
 
-         * Android: Update through Google Play Store or use the testing link in the user manual
+Note: Occasionally, app links may be temporarily unavailable during updates. If you encounter issues, check back in a few hours or contact support.
 
-         * If experiencing app issues, ensure you are using the latest version.
 
-            * My sensors won’t connect to the app
+How do I update my Striv app?
 
-               * Ensure Bluetooth is enabled on your phone
 
-               * Check that the battery pods are charged
+iOS: Update through the App Store
 
-               * Close the app completely and reopen it
 
-               * Restart your phone
+Android: Update through Google Play Store or use the testing link in the user manual
 
-               * Ensure the pod is blinking blue
 
-               * If the app shows “Start to Run” but nothing happens, update to the latest version
+If experiencing app issues, ensure you are using the latest version.
 
-               * If still not connecting
+
+My sensors won’t connect to the app
+
+
+Ensure Bluetooth is enabled on your phone
+
+
+Check that the battery pods are charged
+
+
+Close the app completely and reopen it
+
+
+Restart your phone
+
+
+Ensure the pod is blinking blue
+
+
+If the app shows “Start to Run” but nothing happens, update to the latest version
+
+
+If still not connecting
 https://docs.google.com/forms/d/1geBZaVl3o2ArvJmdX_FrkB3JRHqZggnxcbemRzBhLD8.
-                  * How do I ensure my run data is saved?
+How do I ensure my run data is saved?
 
-                     * Always end the run properly through the app interface
 
-                     * Wait for the confirmation that the run has been saved
+Always end the run properly through the app interface
 
-                     * Avoid force-closing the app immediately after finishing a run
 
-                     * Update to the latest app version if issues persist.
+Wait for the confirmation that the run has been saved
+
+
+Avoid force-closing the app immediately after finishing a run
+
+
+Update to the latest app version if issues persist.
+
+
+
+2. Hardware & Setup
+My sensor cord broke after minimal use
+
+
+Early batches may have more fragile cables
+
+
+More durable cables are shipping starting May 22nd depending on batches
+
+
+Avoid sharp bends or tension near the connector during installation
+
+
+Follow the L/R markings for correct orientation
+
+
+make sure, that it actually clipped in already
+
+
+If already broken, fill out the support form at https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/
+
+
+My left/right sensor stopped working
+
+
+Check if the sensor was properly reinforced per setup guide
+
+
+Inspect for cable damage or bends
+
+
+Try removing and reinserting the battery
+
+
+Ensure the sensor pod is securely attached
+
+
+If issues persist, request a replacement via the support form at https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/.
+
+
+What’s the correct way to install the sensor pod?
+
+
+Follow the L/R markings for foot placement
+
+
+Route the cable toward the back of the shoe, not forward
+
+
+Avoid sharp bends, especially near the connector
+
+
+Leave adequate slack in the cable to accommodate foot movement
+
+
+Secure the pod to the shoelaces using the provided clip
+
+
+Refer to the installation images in the user manual.
+
+
+I’m missing parts from my package
+
+
+Each package includes:
+
+
+Two sensor pods (L/R)
+
+
+Two batteries
+
+
+Two shoelace clips
+
+
+Two foot sensors
+
+
+User manual
+
+
+If any parts are missing, fill out the replacement form at https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/edit.
+
+
+How long do the batteries last?
+
+
+Batteries typically last for approximately 15 hours
+
+
+Battery life varies based on usage frequency and duration
+
+
+Carry spare batteries for extended runs.
+How do I set up my Striv insoles?
+
+
+Download and install the Striv app
+
+
+Open the app and create an account
+
+
+Follow the in-app instructions to connect the insoles via Bluetooth
+
+
+Complete the calibration process as prompted
+
+
+Ensure sensors are installed correctly based on L/R markings
+
+
+Route the cable on top of shoe tongue, leaving adequate slack to prevent tension.
+
+
+My sensors won’t calibrate. What should I do?
+
+
+Check sensor installation and orientation (listen for a clicking sound)
+
+
+Confirm batch (before April 15 or after) for support options
+
+
+Ensure the app is updated to the latest version
+
+
+Recalibrate through the Insole Status section in the app
+
+
+Check “mean pressure” when stepping vs. not stepping on the insoles.
+
+
+If the change is less than 10, the sensor may be damaged — submit a support form at https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/edit
+
+
+If the change is significant (100+ from ~10), request further assistance from support.
+
+
+
+
+
+
+3. Shipping & Delivery
+More durable cables shipping starting May 22nd depending on batches
+
+
+for package hasn't been delivered yet, Use takesend for most updated info.
+http://k5.takesend.com:8180/WebTrack?action=list&language=en 
+
+
+
+
+4. General Feedback, Impressions & Suggestions
+Early batch users may be eligible for upgraded components with improved durability.
+
+
+Contact support for eligibility verification.
+
+
+	Thank them.
+
