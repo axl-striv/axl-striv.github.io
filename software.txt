@@ -1,227 +1,160 @@
-1. Software & App Issues
-How do I download the Striv app?
+﻿STRIV CUSTOMER SERVICE - SUPPORT REFERENCE
 
 
-iOS: Download from the Apple App Store
+SECTION 1: SOFTWARE & APP
 
 
-Android: Use the link in your user manual or visit https://play.google.com/apps/testing/com.runningcapture.android
+IMPORTANT Links:
 
 
-Note: Occasionally, app links may be temporarily unavailable during updates. If you encounter issues, check back in a few hours or contact support.
+Bug Report Forms:
+https://docs.google.com/forms/d/1geBZaVl3o2ArvJmdX_FrkB3JRHqZggnxcbemRzBhLD8/
 
 
-How do I update my Striv app?
+After-Sale Forms:
+https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/
 
 
-iOS: Update through the App Store
+Our User Manual:
+https://striv.run/manual
 
 
-Android: Update through Google Play Store or use the testing link in the user manual
 
 
-If experiencing app issues, ensure you are using the latest version.
+1.1 Can’t find or download the app
+- Confirm the user's platform: iOS or Android.
+- iOS: Download from the Apple App Store, “Striv insole”
+- Android: Use official testing link: https://play.google.com/apps/testing/com.runningcapture.android or link from user manual.
+- If link is down reported from users, instruct user to retry in 2–3 hours..
 
 
-My sensors won’t connect to the app
+1.2 App won’t update / crashes on launch
+- Ask for the OS version and check if the user has enough storage.
+- Steps: Clear cache, force-quit and relaunch, uninstall/reinstall latest build.
+- If issue persists after reinstall, escalate and let them fill out Debugs Forms
 
 
-Ensure Bluetooth is enabled on your phone
 
 
-Check that the battery pods are charged
+1.3 Sensors not pairing
+- Confirm Bluetooth is enabled, pods are charged, and pod LED blinks blue when powered.
+- Steps: Toggle Bluetooth, reopen app, restart phone
+- If pairing fails three times, have the user submit the Debugs Form.
 
 
-Close the app completely and reopen it
+1.4 Run won’t save.
+ - For iOS, Instruct to download the newest App.
+-  For Android: Keep app open until "Saved" confirmation, ensure stable data connection. If it still failed, Have the users submit the Debug forms
 
 
-Restart your phone
+---
 
 
-Ensure the pod is blinking blue
+SECTION 2: HARDWARE & SETUP
 
 
-If the app shows “Start to Run” but nothing happens, update to the latest version
+2.1 Sensor cord broke or frayed
+- Ask for a batch date. Early batches pre-May 22 may have weaker cables.
+- Advise to avoid 90° bends or strain at the connector.
+- Any break on post-May 22 cable, direct to After-Sale Forms.
 
 
-If still not connecting
-https://docs.google.com/forms/d/1geBZaVl3o2ArvJmdX_FrkB3JRHqZggnxcbemRzBhLD8.
-How do I ensure my run data is saved?
+2.2 One sensor dead
+- Check battery is seated; press to see if LED lights.
+- Swap batteries L↔R, re-pair in app.
+- Check mean pressure in Insole Status.
+- if changes while you stand on it or off is <10, try to re-insert the connector until hearing a sound of clicking, instruct to submit the After-Sale Forms.
+- if > 10, initiate Debug Forms.
 
 
-Always end the run properly through the app interface
 
 
-Wait for the confirmation that the run has been saved
+2.3 Won’t calibrate
+- Instruct the user to check “mean pressure” delta during calibration: less than 10 = likely damaged, over 100 = normal.
+- Steps: Remove and reinstall sensor (listen for click), recalibrate in "Insole Status".
+- If delta remains <10 after reinstall, sensor is damaged—initiate After-Sale Forms.
+- if >10, initiate Debug Forms.
 
 
-Avoid force-closing the app immediately after finishing a run
+2.4 Battery drains quickly (<10h)
+- Ask how long it was, in a cold environment.
+- If the battery is still under 8h after update, initiate Debug Forms.
 
 
-Update to the latest app version if issues persist.
+2.5 Missing parts in package
+- Confirm checklist: 2 pods (L/R), 2 sensors, 2 clips, 2x batteries, manual.
+- If any are missing, initiate After-Sale Forums.
 
 
+---
 
-2. Hardware & Setup
-My sensor cord broke after minimal use
 
+SECTION 3: RUN DATA & ANALYTICS
 
-Early batches may have more fragile cables
 
+3.3 Data export
+- Options: Json now, export by long press the run History.
 
-More durable cables are shipping starting May 22nd depending on batches
 
+---
 
-Avoid sharp bends or tension near the connector during installation
 
+SECTION 4: TRAINING PLANS & COACHING
 
-Follow the L/R markings for correct orientation
 
+4.1 How plans are generated
+- AI uses the last 4 weeks of load (power, cadence, ground time), user goals, and race date.
 
-make sure, that it actually clipped in already
 
+---
 
-If already broken, fill out the support form at https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/
 
+SECTION 6: SHIPPING & DELIVERY
 
-My left/right sensor stopped working
 
+6.1 Track order
+- http://k5.takesend.com:8180/WebTrack?action=list&language=en, your email should contains a tracking numbers from us (axl@striv.run)
 
-Check if the sensor was properly reinforced per setup guide
 
+---
 
-Inspect for cable damage or bends
 
 
-Try removing and reinserting the battery
 
+SECTION 8: COMPATIBILITY & SPECS
 
-Ensure the sensor pod is securely attached
 
+- Supported OS: iOS 15+, Android 11+
+- Bluetooth: 5.0 LE
+- Weight: Pod 20g, Sensor 11g
+- Shoe compatibility: Flat laces, US size 5–15
 
-If issues persist, request a replacement via the support form at https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/.
 
+---
 
-What’s the correct way to install the sensor pod?
 
+SECTION 9: SAFETY & MAINTENANCE
 
-Follow the L/R markings for foot placement
 
+- Do not submerge pods; wipe with damp cloth.
+- Replace batteries every 12 months.
 
-Route the cable toward the back of the shoe, not forward
 
+---
 
-Avoid sharp bends, especially near the connector
 
+SECTION 10: GENERAL INQUIRIES
 
-Leave adequate slack in the cable to accommodate foot movement
 
+- Team/club discounts: (≥10 units, 15% off)
 
-Secure the pod to the shoelaces using the provided clip
 
+---
 
-Refer to the installation images in the user manual.
 
-
-I’m missing parts from my package
-
-
-Each package includes:
-
-
-Two sensor pods (L/R)
-
-
-Two batteries
-
-
-Two shoelace clips
-
-
-Two foot sensors
-
-
-User manual
-
-
-If any parts are missing, fill out the replacement form at https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/edit.
-
-
-How long do the batteries last?
-
-
-Batteries typically last for approximately 15 hours
-
-
-Battery life varies based on usage frequency and duration
-
-
-Carry spare batteries for extended runs.
-How do I set up my Striv insoles?
-
-
-Download and install the Striv app
-
-
-Open the app and create an account
-
-
-Follow the in-app instructions to connect the insoles via Bluetooth
-
-
-Complete the calibration process as prompted
-
-
-Ensure sensors are installed correctly based on L/R markings
-
-
-Route the cable on top of shoe tongue, leaving adequate slack to prevent tension.
-
-
-My sensors won’t calibrate. What should I do?
-
-
-Check sensor installation and orientation (listen for a clicking sound)
-
-
-Confirm batch (before April 15 or after) for support options
-
-
-Ensure the app is updated to the latest version
-
-
-Recalibrate through the Insole Status section in the app
-
-
-Check “mean pressure” when stepping vs. not stepping on the insoles.
-
-
-If the change is less than 10, the sensor may be damaged — submit a support form at https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/edit
-
-
-If the change is significant (100+ from ~10), request further assistance from support.
-
-
-
-
-
-
-3. Shipping & Delivery
-More durable cables shipping starting May 22nd depending on batches
-
-
-for package hasn't been delivered yet, Use takesend for most updated info.
-http://k5.takesend.com:8180/WebTrack?action=list&language=en 
-
-
-
-
-4. General Feedback, Impressions & Suggestions
-Early batch users may be eligible for upgraded components with improved durability.
-
-
-Contact support for eligibility verification.
-
-
-	Thank them.
-
+INSTRUCTIONS FOR SUPPORT AGENT OR MODEL:
+- Always start by confirming the user's issue.
+- Walk through fast checks, then troubleshooting steps.
+- If unresolved, provide a form (debug or after-sale) or link.
+- Responses should be Concise, direct, and factual.
+- Correct the user's assumptions if wrong.
