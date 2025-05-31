@@ -7,7 +7,7 @@
 
   <title>Checkout - Striv™ Smart Insole</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <main class="container">
@@ -24,7 +24,7 @@
           <p class="description-intro">Each base product includes:</p>
           <ul class="description-list">
             <li>Striv™ Smart Insole(s) with 250+ sensors</li> 
-            <li>AI Running Coach <span class="highlight-accent">(6-month access included by default)</span>.</li>
+            <li>AI Running Coach with advanced features and personalized training plans</li>
           </ul>
         </div>
 
@@ -33,13 +33,17 @@
           <div class="product-card" data-product-id="insole-1pack">
             <div class="product-header">
               <div>
-                <h3>Striv™ Smart Insole (1-Pack)</h3>
-                <p class="product-description">1x Smart Insole </p>
+                <h3>Striv™ Solo Plan</h3>
+                <!-- <div class="product-tags">
+                  <span class="popular-tag">✅ Most Popular</span>
+                </div> -->
+                <p class="product-description">For individual runners – 1 core + 1 insole + 6-month AI coaching</p>
               </div>
             </div>  
             <div class="product-content">
               <div class="product-image">
-                <img src="assets/x1_pack.webp" alt="Striv™ Smart Insole (1-Pack)">
+                <img src="assets/x1_pack.webp" alt="Striv™ Solo Plan">
+                <div class="coaching-badge">+ 6-Month AI Coach Included</div>
               </div>
               <div class="product-price">$339</div>
               <div class="quantity-control product-quantity-control" data-product-id="insole-1pack">
@@ -65,13 +69,14 @@
           <div class="product-card" data-product-id="insole-2pack">
             <div class="product-header">
               <div>
-                <h3>Striv™ RUNMATE Version (2-Pack)</h3>
-                <p class="product-description">2x Smart Insoles</p>
+                <h3>Striv™ Dual Plan</h3>
+                <p class="product-description">Best for partners or dual-shoe setup – 2 cores, 2 insoles, 2× coaching</p>
               </div>
             </div>
             <div class="product-content">
                 <div class="product-image">
-                  <img src="assets/x2_pack.webp" alt="Striv™ Smart Insole (2-Pack)">
+                  <img src="assets/x2_pack.webp" alt="Striv™ Dual Plan">
+                  <div class="coaching-badge">+ 6-Month AI Coach Included</div>
               </div>
               <div class="product-price">$649</div>
               <div class="quantity-control product-quantity-control" data-product-id="insole-2pack">
@@ -98,7 +103,7 @@
       <!-- Add-ons Selection -->
       <section class="card" aria-labelledby="addons-heading">
         <div class="addon-header">
-          <h2 id="addons-heading">Optional Add-Ons</h2>
+          <h2 id="addons-heading">✅ Customize Your Kit — Add Coaching or Extras</h2>
           <button type="button" id="toggle-addons" class="toggle-button" aria-label="Toggle add-ons visibility">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-up">
               <path d="m18 15-6-6-6 6"/>
@@ -112,6 +117,42 @@
           </div>
 
           <div id="addons-grid" class="addons-grid">
+            <!-- Lifetime Access to AI Coach - MOVED TO FIRST POSITION -->
+            <div class="addon-card" data-addon-id="lifetime-coach" data-price="35" data-name="Unlock Lifetime AI Coaching" data-description="One-time payment. Normally $6.99/mo.">
+              <div class="addon-header">
+                <div>
+                  <h3>Unlock Lifetime AI Coaching</h3>
+                  <div class="addon-tags">
+                    <span class="recommendation-tag">✅ Best Value</span>
+                  </div>
+                  <p class="addon-description">One-time payment. Normally $6.99/mo.</p>
+                </div>
+                <div class="addon-price">$35</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-lifetime-coach" class="addon-checkbox-input">
+                  <label for="addon-lifetime-coach">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <!-- Battery Pods -->
             <div class="addon-card" data-addon-id="battery-pods" data-price="21" data-name="Extra Pair of Battery Pods" data-description="~20 extra hours of battery life per pod.">
               <div class="addon-header">
@@ -183,6 +224,9 @@
               <div class="addon-header">
                 <div>
                   <h3>Extra 3 Pairs of Striv Sensing Insoles</h3>
+                  <div class="addon-tags">
+                    <span class="recommendation-tag">✅ Great for shoe rotation</span>
+                  </div>
                   <p class="addon-description">Easily swap between shoes or keep replacements handy. Includes 3 extra pairs at a 50% discount.</p>
                 </div>
                 <div class="addon-price">$90</div>
@@ -243,48 +287,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Lifetime Access to AI Coach -->
-            <div class="addon-card" data-addon-id="lifetime-coach" data-price="35" data-name="Lifetime Access to AI Coach" data-description="One-time payment for lifetime AI coaching access.">
-              <div class="addon-header">
-                <div>
-                  <h3>Lifetime Access to AI Coach</h3>
-                  <p class="addon-description">
-                    One-time payment for lifetime access to advanced AI coaching features, personalized plans, and performance insights.
-                    <!-- <span class="tooltip" data-tooltip="Limited to one per base unit selected. Price applies to each base unit.">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="16" x2="12" y2="12"/>
-                        <line x1="12" y1="8" x2="12.01" y2="8"/>
-                      </svg>
-                    </span> -->
-                  </p>
-                </div>
-                <div class="addon-price">$35</div>
-              </div>
-              <div class="addon-content">
-                <div class="addon-checkbox">
-                  <input type="checkbox" id="addon-lifetime-coach" class="addon-checkbox-input">
-                  <label for="addon-lifetime-coach">Add to order</label>
-                </div>
-                <div class="quantity-control hidden">
-                  <button type="button" class="quantity-btn minus">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <line x1="8" y1="12" x2="16" y2="12"/>
-                    </svg>
-                  </button>
-                  <span class="quantity">1</span>
-                  <button type="button" class="quantity-btn plus">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <line x1="12" y1="8" x2="12" y2="16"/>
-                      <line x1="8" y1="12" x2="16" y2="12"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -317,7 +319,7 @@
 
       <div class="checkout-button-container">
         <button type="submit" id="checkout-button" class="checkout-button" disabled>
-          Complete Purchase ($0)
+          Start My Training — $0.00
         </button>
       </div>
     </form>
@@ -515,17 +517,17 @@
         window.strivData = {
           products: {
             "insole-1pack": {
-              name: "Striv™ Smart Insole (1-Pack)",
-              description: "1x Smart Insole",
-              price: 339,
-              regularPrice: 399,
+              name: "Striv™ Solo Plan",
+              description: "For individual runners – 1 core + 1 insole + 6-month AI coaching",
+              price: 249,
+              regularPrice: 339,
               onSale: true
             },
             "insole-2pack": {
-              name: "Striv™ RUNMATE Version (2-Pack)",
-              description: "2x Smart Insoles",
-              price: 649,
-              regularPrice: 799,
+              name: "Striv™ Dual Plan",
+              description: "Best for partners or dual-shoe setup – 2 cores, 2 insoles, 2× coaching",
+              price: 479,
+              regularPrice: 678,
               onSale: true
             }
           },
@@ -534,35 +536,35 @@
               name: "Extra Pair of Battery Pods",
               description: "Keep your training going with ~20 extra hours of battery life per pod. Perfect for long sessions or avoiding downtime.",
               price: 21,
-              regularPrice: 29,
-              onSale: true
+              regularPrice: 21,
+              onSale: False
             },
             "extra-insoles": {
               name: "Extra Pair of Striv Sensing Insoles",
               description: "An extra pair of insoles (no electronics) to easily switch your sensors between shoes.",
-              price: 42,
-              regularPrice: 50,
+              price: 49,
+              regularPrice: 69,
               onSale: false
             },
             "3pack-insoles": {
               name: "Extra 3 Pairs of Striv Sensing Insoles",
               description: "Easily swap between shoes or keep replacements handy. Includes 3 extra pairs at a 50% discount.",
-              price: 90,
-              regularPrice: 150,
+              price: 129,
+              regularPrice: 207,
               onSale: true
             },
             "10pack-insoles": {
               name: "Extra 10 Pairs of Striv Sensing Insoles",
               description: "Maximum flexibility across multiple shoes or stock up on replacements. Includes 10 extra pairs at a 60% discount.",
-              price: 240,
-              regularPrice: 500,
+              price: 399,
+              regularPrice: 690,
               onSale: true
             },
             "lifetime-coach": {
-              name: "Lifetime Access to AI Coach",
-              description: "One-time payment for lifetime access to advanced AI coaching features, personalized plans, and performance insights.",
-              price: 35,
-              regularPrice: 49,
+              name: "Unlock Lifetime AI Coaching",
+              description: "One-time payment. Normally $6.99/mo.",
+              price: 89,
+              regularPrice: 89,
               onSale: true,
               perUnit: true
             }
@@ -581,7 +583,7 @@
         // Re-enable the checkout button if we have data (even if it's fallback data)
         if (checkoutButton && window.strivData) {
           checkoutButton.disabled = true; // Keep disabled until product selected
-          checkoutButton.textContent = "Complete Purchase ($0.00)"; // Reset text to default
+          checkoutButton.textContent = "Start My Training — $0.00"; // Reset text to default
         }
       }
     }

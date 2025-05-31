@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         errorMessage.textContent = "There was a problem processing your checkout. Please try again.";
         errorMessage.classList.remove("hidden");
         checkoutButton.disabled = false;
-        checkoutButton.textContent = `Complete Purchase ($${state.total.toFixed(2)})`;
+        checkoutButton.textContent = `Start My Training — $${state.total.toFixed(2)}`;
       });
     })
   }
@@ -439,10 +439,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (hasProducts || hasAddons) {
       checkoutButton.disabled = false
-      checkoutButton.textContent = `Complete Purchase ($${state.total.toFixed(2)})`
+      checkoutButton.textContent = `Start My Training — $${state.total.toFixed(2)}`
     } else {
       checkoutButton.disabled = true
-      checkoutButton.textContent = "Complete Purchase ($0.00)"
+      checkoutButton.textContent = "Start My Training — $0.00"
     }
   }
 
