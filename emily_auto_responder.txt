@@ -1,0 +1,79 @@
+New Standard Reply
+
+1. Shipping / Tracking
+Hi [Name],
+ Thank you for your message on the Striv After-Sales Service Request and we would love to help.
+ We have just sent out your Striv package and the tracking number is: [Tracking Number]
+ If you haven’t received tracking yet, please ensure your shipping address has been submitted.
+ Thank you and have a great day!
+ Best,
+ Emily
+
+2. Replacement Request (General)
+Hi [Name],
+ Thank you for reaching out on the Striv After-Sales Service Request. We'd be happy to help with a replacement.
+ You can purchase the replacement here: Replacement Link
+ Thank you and have a great day!
+ Best,
+ Emily
+
+3. Broken Sensor
+Hi [Name],
+ Thank you for reaching out to us on the Striv After-Sales Service Request. Sorry to hear about the broken cable.
+ We’d be happy to offer you a free replacement — you would only need to cover the $15 shipping fee. Please let us know if you’d like to proceed.
+ You can purchase it here: Replacement Link using code AFTERSALE-15-PMG9K
+ For future use, please follow these instructions to help prevent cable breakage: Troubleshooting Checklist
+ Thanks again, and have a great day!
+ Best regards,
+ Emily
+
+4. Bluetooth / Pairing Issue
+Hi [Name],
+ Thank you for your message on the Striv After-Sales Service Request.
+ Let’s try to troubleshoot this together. Could you let us know:
+ – Are the pods blinking any light?
+ – Can Bluetooth connect?
+ – Did the sensors work before and stop working now?
+Please also go through this Troubleshooting Checklist
+ and make sure you’re using the Latest Version of the App
+ Thank you and have a great day!
+ Best,
+ Emily
+
+5. Calibration Issue
+Hi [Name],
+ Thank you for your message on the Striv After-Sales Service Request.
+ This might be a calibration issue. Please go to your insole status page and press "Start Calibration".
+ Stand still with weight evenly distributed on both feet for ~5 seconds until the LED turns off.
+ After calibration, check if the “mean pressure” value changes when you step on the insoles.
+ For more help, see: Troubleshooting Checklist and App Update Guide
+ Thank you and have a great day!
+ Best,
+ Emily
+
+6. Battery / Power Issue
+Hi [Name],
+ Thank you for reaching out to us on the Striv After-Sales Service Request.
+ Please try the following:
+ – Charge both pods fully and check for blinking lights
+ – Hold the pod’s button for 10 seconds to reset
+ – Ensure the app is up to date using this guide
+ If that doesn’t help, please let us know what you observe so we can assist further.
+ Thank you and have a great day!
+ Best,
+ Emily
+
+7. Clip Not Secure
+Hi [Name],
+ Thanks for letting us know — sorry to hear the clip isn’t staying secure.
+ Could you send a quick photo or video so we can determine if it’s the pod or the clip?
+ Once confirmed, we’d be happy to send a replacement if needed.
+ Thank you and have a great day!
+ Best,
+ Emily
+
+
+
+
+
+
