@@ -341,10 +341,36 @@ p {
     0 4px 12px rgba(55, 236, 127, 0.3),
     0 0 0 1px rgba(255, 255, 255, 0.1);
   text-transform: uppercase;
-  /* letter-spacing: 0.05em; */
   z-index: 10;
   transition: var(--transition);
   backdrop-filter: blur(10px);
+}
+
+/* Mobile coaching badge - much smaller */
+@media (max-width: 767px) {
+  .coaching-badge {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.6rem;
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 60%;
+    text-align: center;
+    box-shadow: 
+      0 2px 6px rgba(55, 236, 127, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+  .coaching-badge {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.35rem;
+    max-width: 65%;
+  }
 }
 
 .coaching-badge:hover {
@@ -1005,6 +1031,26 @@ button {
   backdrop-filter: blur(5px);
 }
 
+/* Mobile recommendation-tag - much smaller */
+@media (max-width: 767px) {
+  .recommendation-tag {
+    font-size: 0.6rem;
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+  .recommendation-tag {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.35rem;
+  }
+}
+
 .recommendation-tag:hover {
   background: linear-gradient(135deg, rgba(55, 236, 127, 0.25) 0%, rgba(45, 217, 114, 0.25) 100%);
   border-color: rgba(55, 236, 127, 0.5);
@@ -1026,9 +1072,28 @@ button {
   letter-spacing: 0.025em;
   transition: var(--transition);
   backdrop-filter: blur(5px);
-  /* animation: limitedTimePulse 2s ease-in-out infinite; */
   position: relative;
   overflow: hidden;
+}
+
+/* Mobile limited-time-tag - much smaller */
+@media (max-width: 767px) {
+  .limited-time-tag {
+    font-size: 0.6rem;
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+  .limited-time-tag {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.35rem;
+  }
 }
 
 .limited-time-tag::before {

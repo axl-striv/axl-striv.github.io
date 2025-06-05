@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Mobile detection and optimization
+  const isMobile = window.innerWidth <= 767;
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
   // State management
   const state = {
     productQuantities: {}, // { 'productId': quantity }
@@ -34,6 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
   init()
 
   function init() {
+    // Mobile-specific optimizations
+    if (isMobile) {
+      optimizeForMobile()
+    }
+    
     // Set up event listeners
     setupProductQuantityControls()
     setupAddonSelection()
@@ -43,6 +52,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initial UI update
     updateUI()
+  }
+
+  function optimizeForMobile() {
+    // Add mobile class to body for styling hooks
+    document.body.classList.add('mobile-optimized')
+    
+    // Improve touch feedback
+    if (isTouch) {
+      document.body.classList.add('touch-device')
+      
+      // Add touch feedback to interactive elements
+      const touchElements = document.querySelectorAll('.product-card, .addon-card, .quantity-btn, .checkout-button, .toggle-button')
+      touchElements.forEach(element => {
+        element.addEventListener('touchstart', handleTouchStart, { passive: true })
+        element.addEventListener('touchend', handleTouchEnd, { passive: true })
+      })
+    }
+    
+    // Optimize viewport for mobile
+    let viewportMeta = document.querySelector('meta[name="viewport"]')
+    if (viewportMeta) {
+      viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    }
+    
+    // Add momentum scrolling for iOS
+    document.body.style.webkitOverflowScrolling = 'touch'
+    
+    // Prevent double-tap zoom
+    let lastTouchEnd = 0
+    document.addEventListener('touchend', function (event) {
+      const now = (new Date()).getTime()
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault()
+      }
+      lastTouchEnd = now
+    }, false)
+  }
+
+  function handleTouchStart(event) {
+    event.currentTarget.classList.add('touch-active')
+  }
+
+  function handleTouchEnd(event) {
+    setTimeout(() => {
+      event.currentTarget.classList.remove('touch-active')
+    }, 150)
   }
 
   function setupProductQuantityControls() {
@@ -55,9 +110,17 @@ document.addEventListener("DOMContentLoaded", () => {
       // Initial state for button (minus disabled at 0)
       minusBtn.disabled = true 
 
+      // Mobile: Add haptic feedback simulation
+      function addMobileButtonFeedback(button) {
+        if (isMobile && 'vibrate' in navigator) {
+          navigator.vibrate(10) // Short vibration for feedback
+        }
+      }
+
       minusBtn.addEventListener("click", () => {
         const currentQuantity = state.productQuantities[productId] || 0
         if (currentQuantity > 0) {
+          addMobileButtonFeedback(minusBtn)
           const newQuantity = currentQuantity - 1
           state.productQuantities[productId] = newQuantity
           quantityDisplay.textContent = newQuantity
@@ -74,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
 
       plusBtn.addEventListener("click", () => {
+        addMobileButtonFeedback(plusBtn)
         const currentQuantity = state.productQuantities[productId] || 0
         const newQuantity = currentQuantity + 1
         state.productQuantities[productId] = newQuantity
@@ -85,6 +149,16 @@ document.addEventListener("DOMContentLoaded", () => {
         updateOrderSummary()
         updateCheckoutButton()
       })
+
+      // Mobile: Add touch event listeners for better responsiveness
+      if (isMobile) {
+        [minusBtn, plusBtn].forEach(btn => {
+          btn.addEventListener('touchstart', (e) => {
+            e.preventDefault()
+            btn.click()
+          }, { passive: false })
+        })
+      }
     })
   }
 
