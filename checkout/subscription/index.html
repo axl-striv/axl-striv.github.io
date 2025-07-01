@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+
+  <title>AI Running Coach + Smart Insoles - Striv™</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="container">
+    <div class="header">
+      <h1>Striv™</h1>
+      <p class="header-subtitle">Complete your AI Running Coach setup</p>
+      
+      <!-- Progress indicator -->
+      <div class="progress-steps">
+        <div class="step completed">
+          <div class="step-number">1</div>
+          <div class="step-label">Hardware</div>
+        </div>
+        <div class="step active">
+          <div class="step-number">2</div>
+          <div class="step-label">AI Coach Plan</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-label">Checkout</div>
+        </div>
+      </div>
+    </div>
+
+    <form id="checkout-form">
+      <!-- Value Proposition Section -->
+      <section class="card value-proposition" aria-labelledby="value-heading">
+        <div class="value-content">
+          <h2 id="value-heading">Your Complete AI Running Coach System</h2>
+          <p class="value-subtitle">Smart hardware + AI coaching + fresh smart insoles delivered to your door</p>
+          
+          <!-- Hardware Showcase -->
+          <div class="hardware-showcase">
+            <div class="hardware-visual">
+              <img src="../assets/x1_pack.webp" alt="Striv™ Smart Sensor Hardware">
+              <div class="hardware-badge">Smart Sensor Hardware</div>
+            </div>
+            <div class="hardware-details">
+              <h3>🏃‍♂️ Advanced Running Analytics</h3>
+              <div class="hardware-specs">
+                <div class="spec-item">
+                  <span class="spec-icon">⚡</span>
+                  <div class="spec-content">
+                    <strong>250+ Sensors</strong>
+                    <p>Real-time data collection from every step</p>
+                  </div>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-icon">🔋</span>
+                  <div class="spec-content">
+                    <strong>20+ Hour Battery</strong>
+                    <p>Extended training sessions without interruption</p>
+                  </div>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-icon">📡</span>
+                  <div class="spec-content">
+                    <strong>Wireless Connectivity</strong>
+                    <p>Seamless data sync to your smartphone</p>
+                  </div>
+                </div>
+              </div>
+              <div class="hardware-price">
+                <div class="price-label">Hardware (one-time payment)</div>
+                <div class="price-value">$129</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subscription Services
+          <div class="services-grid">
+            <div class="service-item">
+              <div class="service-icon">🧠</div>
+              <div class="service-content">
+                <h4>AI Running Coach</h4>
+                <p>Personalized training plans and real-time feedback</p>
+                <div class="service-price">From $13.25<span>/month</span></div>
+              </div>
+            </div>
+            <div class="service-divider">+</div>
+            <div class="service-item">
+              <div class="service-icon">📦</div>
+              <div class="service-content">
+                <h4>Insole Delivery Service</h4>
+                <p>Fresh insoles shipped automatically every 6 months</p>
+                <div class="service-price">Included<span>$59 value each</span></div>
+              </div>
+            </div>
+          </div>
+           -->
+          <div class="trust-signals">
+            <!-- <div class="trust-item">
+              <span class="trust-icon">✓</span>
+              <span>30-day money-back guarantee</span>
+            </div> -->
+            <div class="trust-item">
+              <span class="trust-icon">✓</span>
+              <span>Cancel anytime</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">✓</span>
+              <span>No hidden fees or shipping costs</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Subscription Plans -->
+      <section class="card subscription-section" aria-labelledby="subscription-heading">
+        <div class="section-header">
+          <h2 id="subscription-heading">Choose Your AI Running Coach Plan</h2>
+          <p class="section-subtitle">All plans include smart sensor hardware, AI coaching, and automatic insole delivery:</p>
+          
+          <!-- <div class="features-grid">
+            <div class="feature-item">
+              <span class="feature-icon">🎯</span>
+              <span>Personalized training plans</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📊</span>
+              <span>Advanced performance analytics</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🛡️</span>
+              <span>Injury prevention insights</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">⚡</span>
+              <span>Real-time coaching feedback</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📦</span>
+              <span>Automatic insole delivery</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🔄</span>
+              <span>Full warranty coverage</span>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="subscription-grid">
+          <!-- Pro Plan (Recommended) -->
+          <div class="subscription-card recommended pro-plan" data-subscription-id="coaching-pro">
+            <div class="subscription-header">
+              <div class="plan-badge">Most Popular</div>
+              <h3>Pro AI Running Coach</h3>
+              <p class="subscription-description">Maximum performance with premium delivery</p>
+            </div>
+            <div class="subscription-content">
+              <div class="subscription-pricing">
+                <div class="subscription-price">$19.99</div>
+                <div class="subscription-interval">per month (billed annually)</div>
+                <!-- <div class="total-savings">Save $99 vs monthly billing</div> -->
+              </div>
+              <div class="subscription-features">
+                <div class="feature-highlight pro-highlight">
+                  <div class="insole-benefit">
+                    <span class="benefit-icon">🚀</span>
+                    <strong>4 Smart Insoles/Year</strong>
+                    <span class="benefit-detail">$196 value - Priority shipping, quarterly delivery</span>
+                  </div>
+                </div>
+                <ul>
+                  <li><strong>Enhanced AI coaching algorithms, powered by the best model (GPT-4.1/O3)</strong></li>
+                  <li><strong>Professional physical therapy reviews of your runs each quarter</strong></li>
+                  <li><strong>Priority support, early access to new hardware/features</strong></li>
+                  <li><strong>Fresh insoles delivered to your door quarterly</strong></li>
+                  <li>All standard features included</li>
+                </ul>
+              </div>
+              <div class="subscription-checkbox">
+                <input type="radio" id="subscription-pro" name="subscription" value="coaching-pro" class="subscription-radio-input">
+                <label for="subscription-pro" class="subscription-label">Choose Pro Coach</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Standard Plan -->
+          <div class="subscription-card" data-subscription-id="coaching-annual">
+            <div class="subscription-header">
+              <h3>Standard AI Running Coach</h3>
+              <p class="subscription-description">Essential coaching with regular insole delivery</p>
+            </div>
+            <div class="subscription-content">
+              <div class="subscription-pricing">
+                <div class="price-comparison">
+                  <span class="regular-price">$16.50/mo</span>
+                  <div class="subscription-price">$13.25</div>
+                  <span class="save-amount">Save $39/year</span>
+                </div>
+                <div class="subscription-interval">per month (billed annually)</div>
+              </div>
+              <div class="subscription-features">
+                <div class="feature-highlight">
+                  <div class="insole-benefit">
+                    <span class="benefit-icon">📦</span>
+                    <strong>2 Smart Insoles/Year</strong>
+                    <span class="benefit-detail">$98 value - Standard delivery (7-10 days)</span>
+                  </div>
+                </div>
+                <ul>
+                  <li>AI-powered coaching feedback, by GPT-4o</li>
+                  <li>  Real-time coaching feedback</li>
+                  <li>Customized training plans</li>
+                  <li>Injury prevention insights</li>
+                  <li>Automatic insole delivery, <strong>Always get most updated sensors</strong></li>
+                  <li>Email support</li>
+                </ul>
+              </div>
+              <div class="subscription-checkbox">
+                <input type="radio" id="subscription-annual" name="subscription" value="coaching-annual" class="subscription-radio-input">
+                <label for="subscription-annual" class="subscription-label">Choose Standard Coach</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alternative Option Toggle -->
+        <div class="alternative-option">
+          <button type="button" id="show-shorter-option" class="alternative-toggle">
+            Need a shorter commitment? <span class="toggle-arrow">↓</span>
+          </button>
+          
+          <div id="shorter-option" class="shorter-option hidden">
+            <div class="subscription-card-compact alternative-layout" data-subscription-id="coaching-6month">
+              <div class="compact-header">
+                <div class="compact-title-section">
+                  <h3 style="text-align: left;">6-Month AI Running Coach</h3>
+                  <p class="compact-description">Essential coaching with flexible commitment</p>
+                </div>
+                <div class="compact-pricing-section">
+                  <div class="compact-price">$16.50<span class="price-period">/mo</span></div>
+                  <div class="compact-billing">Billed every 6 months</div>
+                  <div class="compact-note">Higher rate for flexibility</div>
+                </div>
+              </div>
+              
+              <div class="compact-content">
+                <div class="compact-highlight">
+                  <span class="compact-icon">📦</span>
+                  <div class="compact-benefit">
+                    <strong style="text-align: left;">1 Smart Insole Every 6 Months</strong>
+                    <span class="compact-detail">$59 value • Standard delivery (7-10 days)</span>
+                  </div>
+                </div>
+<!--                 
+                <div class="compact-features">
+                  <div class="feature-grid">
+                    <div class="feature-item-compact">✓ AI coaching (GPT-4o)</div>
+                    <div class="feature-item-compact">✓ Real-time feedback</div>
+                    <div class="feature-item-compact">✓ Custom training plans</div>
+                    <div class="feature-item-compact">✓ Injury prevention</div>
+                    <div class="feature-item-compact">✓ Auto insole delivery</div>
+                    <div class="feature-item-compact">✓ Email support</div>
+                  </div>
+                </div>
+                 -->
+                <div class="compact-checkbox">
+                  <input type="radio" id="subscription-6month" name="subscription" value="coaching-6month" class="subscription-radio-input">
+                  <label for="subscription-6month" class="compact-button">Choose 6-Month Plan</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Order Summary -->
+      <section id="order-summary" class="card summary-card hidden" aria-labelledby="order-summary-heading">
+        <h2 id="order-summary-heading">Order Summary</h2>
+        
+        <div class="summary-content">
+          <!-- Product summary items will be inserted here -->
+          <div id="product-summary">
+            <!-- Individual product items will be inserted here dynamically -->
+          </div>
+          
+          <div id="subscription-summary" class="summary-subscription hidden">
+            <h3>AI Running Coach Subscription</h3>
+            <div id="subscription-details" class="subscription-details"></div>
+          </div>
+          
+          <div class="summary-totals">
+            <div class="summary-item">
+              <span>Today's payment</span>
+              <span id="onetime-total">$0</span>
+            </div>
+            <div class="summary-item subscription-total">
+              <span>Then monthly</span>
+              <span id="recurring-total">$0</span>
+            </div>
+          </div>
+          
+          <div class="summary-guarantee">
+            <span class="guarantee-icon">🛡️</span>
+            <span>Cancel anytime • Free insole delivery</span>
+          </div>
+        </div>
+      </section>
+
+      <div id="error-message" class="error-message hidden" role="alert">
+        Please select an AI running coach plan to continue
+      </div>
+
+      <div class="checkout-button-container">
+        <button type="submit" id="checkout-button" class="checkout-button" disabled>
+          <span class="button-text">Select AI Coach Plan to Continue</span>
+          <span class="button-icon">→</span>
+        </button>
+        
+        <div class="checkout-security">
+          <span class="security-icon">🔒</span>
+          <span>Secure checkout powered by Stripe</span>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+  
+  <!-- Centralized product and pricing data -->
+  <script>
+    // Centralize backend URL
+    window.strivBaseUrl = 'https://striv-backend-6a56be51e868.herokuapp.com';
+    //window.strivBaseUrl = 'http://localhost:8000';
+
+    // Add loading state styling
+    const loadingStyle = document.createElement('style');
+    loadingStyle.textContent = `
+      .container.loading::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        z-index: 1000;
+      }
+      
+      .container.loading::after {
+        content: 'Loading...';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1rem 2rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1001;
+        font-weight: 600;
+        font-family: var(--font-family);
+      }
+
+      .pricing-notice {
+        position: relative;
+        margin-bottom: 1rem;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        background-color: #f8f9fa;
+        border-left: 4px solid #6c757d;
+        color: #495057;
+        animation: slideDown 0.3s ease-out;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        font-family: var(--font-family);
+      }
+
+      .pricing-notice.warning {
+        border-left-color: #f0ad4e;
+        background-color: #fff9f0;
+      }
+
+      .pricing-notice .refresh-button {
+        background: none;
+        border: none;
+        color: var(--accent-color);
+        padding: 0.25rem 0.5rem;
+        font-size: 0.85rem;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: 500;
+        font-family: var(--font-family);
+      }
+
+      .pricing-notice .refresh-button:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      @keyframes slideDown {
+        from { 
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to { 
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(loadingStyle);
+
+    // Track if we're using backend or fallback prices
+    window.usingFallbackPrices = false;
+
+    // Function to fetch pricing data from backend
+    async function fetchPricingData() {
+      // Before fetching, disable the checkout button
+      const checkoutButton = document.getElementById('checkout-button');
+      if (checkoutButton) {
+        checkoutButton.disabled = true;
+        checkoutButton.querySelector('.button-text').textContent = "Loading prices...";
+      }
+      
+      // Remove any existing pricing notice
+      const existingNotice = document.querySelector('.pricing-notice');
+      if (existingNotice) {
+        existingNotice.remove();
+      }
+      
+      // Show loading state
+      document.querySelector('.container').classList.add('loading');
+      
+      try {
+        // In production, this would be your actual backend URL
+        const backendUrl = `${window.strivBaseUrl}/api/subscription-pricing`;
+        const response = await fetch(backendUrl);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch pricing data: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        // Store pricing data in global object
+        window.strivData = data;
+        
+        // Update the UI with fetched pricing
+        updateProductDisplay();
+        
+        // We're using backend prices
+        window.usingFallbackPrices = false;
+        
+        return data;
+      } catch (error) {
+        console.error('Error fetching pricing data:', error);
+        
+        // Show pricing warning notification
+        showPricingNotice();
+        
+        // Fallback to default pricing data if fetch fails
+        window.strivData = {
+          products: {
+            "sensor-base": {
+              name: "Striv™ Smart Sensor",
+              description: "Essential sensor hardware for advanced running analytics",
+              price: 129,
+              type: "one-time"
+            }
+          },
+          subscriptions: {
+            "coaching-6month": {
+              name: "6-Month AI Running Coach",
+              description: "Try our AI coaching system with flexibility",
+              price: 16.50,
+              monthlyPrice: 16.50,
+              totalPrice: 99,
+              interval: "month",
+              billingInterval: "every 6 months",
+              interval_count: 6,
+              type: "subscription"
+            },
+            "coaching-annual": {
+              name: "Standard AI Running Coach", 
+              description: "Essential coaching with regular insole delivery",
+              price: 13.25,
+              monthlyPrice: 13.25,
+              totalPrice: 159,
+              regularPrice: 16.50,
+              regularTotalPrice: 198,
+              interval: "month",
+              billingInterval: "annually",
+              interval_count: 12,
+              type: "subscription"
+            },
+            "coaching-pro": {
+              name: "Pro AI Running Coach",
+              description: "Maximum performance with premium delivery",
+              price: 19.99,
+              monthlyPrice: 19.99,
+              totalPrice: 239.88,
+              interval: "month",
+              billingInterval: "annually",
+              interval_count: 12,
+              type: "subscription",
+              recommended: true
+            }
+          }
+        };
+        
+        // Set flag that we're using fallback prices
+        window.usingFallbackPrices = true;
+        
+        // Still update the UI with fallback data
+        updateProductDisplay();
+      } finally {
+        // Hide loading state
+        document.querySelector('.container').classList.remove('loading');
+        
+        // Re-enable the checkout button if we have data (even if it's fallback data)
+        if (checkoutButton && window.strivData) {
+          checkoutButton.disabled = true; // Keep disabled until product selected
+          checkoutButton.querySelector('.button-text').textContent = "Select AI Coach Plan to Continue"; // Reset text to default
+        }
+      }
+    }
+
+    // Function to show pricing notice
+    function showPricingNotice() {
+      const header = document.querySelector('.header');
+      if (!header) return;
+      
+      const notice = document.createElement('div');
+      notice.className = 'pricing-notice warning';
+      notice.innerHTML = `
+        <span>Using estimated prices. Latest pricing unavailable.</span>
+        <button class="refresh-button" onclick="fetchPricingData()">
+          Refresh Prices
+        </button>
+      `;
+      
+      // Insert after header
+      header.parentNode.insertBefore(notice, header.nextSibling);
+    }
+
+    // Function to update the HTML with pricing data
+    function updateProductDisplay() {
+      // Initialize product details from central data
+      for (const [id, data] of Object.entries(window.strivData.products)) {
+        const productEl = document.querySelector(`.product-card[data-product-id="${id}"]`);
+        if (productEl) {
+          // Update product details in the HTML
+          productEl.querySelector('h3').textContent = data.name;
+          productEl.querySelector('.product-description').textContent = data.description;
+          productEl.querySelector('.product-price').textContent = `$${data.price}`;
+        }
+      }
+
+      // Initialize subscription details from central data
+      for (const [id, data] of Object.entries(window.strivData.subscriptions)) {
+        const subscriptionEl = document.querySelector(`.subscription-card[data-subscription-id="${id}"]`);
+        if (subscriptionEl) {
+          // Update subscription details in the HTML
+          subscriptionEl.querySelector('h3').textContent = data.name;
+          subscriptionEl.querySelector('.subscription-description').textContent = data.description;
+          
+          // Update pricing
+          const priceEl = subscriptionEl.querySelector('.subscription-price');
+          const intervalEl = subscriptionEl.querySelector('.subscription-interval');
+          
+          if (data.regularPrice && data.regularPrice > data.price) {
+            const priceContainer = subscriptionEl.querySelector('.subscription-pricing');
+            const saveAmount = ((data.regularPrice - data.price) * 12).toFixed(0);
+            priceContainer.innerHTML = `
+              <div class="price-comparison">
+                <span class="regular-price">$${data.regularPrice.toFixed(2)}/mo</span>
+                <div class="subscription-price">$${data.price.toFixed(2)}</div>
+                <span class="save-amount">Save $${saveAmount}/year</span>
+              </div>
+              <div class="subscription-interval">per month (billed ${data.billingInterval})</div>
+            `;
+          } else {
+            if (priceEl) priceEl.textContent = `$${data.price.toFixed(2)}`;
+            if (intervalEl) intervalEl.textContent = `per month (billed ${data.billingInterval || data.interval})`;
+          }
+        }
+      }
+    }
+
+    // Fetch pricing data when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      fetchPricingData();
+    });
+  </script>
+</body>
+</html> 
