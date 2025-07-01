@@ -1102,9 +1102,101 @@ p {
   }
   
   .compact-highlight {
+    flex-direction: row;
+    text-align: left;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  
+  .compact-benefit {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .subscription-card-compact {
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .compact-header {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .compact-title-section h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .compact-description {
+    font-size: 0.85rem;
+  }
+  
+  .compact-pricing-section {
+    text-align: left;
+  }
+  
+  .compact-price {
+    font-size: 1.5rem;
+    margin-bottom: 0.125rem;
+  }
+  
+  .price-period {
+    font-size: 0.875rem;
+  }
+  
+  .compact-billing {
+    font-size: 0.8rem;
+    margin-bottom: 0.125rem;
+  }
+  
+  .compact-note {
+    font-size: 0.75rem;
+  }
+  
+  .compact-content {
+    gap: 1rem;
+  }
+  
+  .compact-highlight {
     flex-direction: column;
     text-align: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+  
+  .compact-benefit {
+    text-align: center;
+  }
+  
+  .compact-benefit strong {
+    text-align: center;
+  }
+  
+  .compact-detail {
+    text-align: center;
+  }
+  
+  .compact-icon {
+    font-size: 1.25rem;
+  }
+  
+  .compact-benefit strong {
+    font-size: 0.9rem;
+    margin-bottom: 0.125rem;
+  }
+  
+  .compact-detail {
+    font-size: 0.8rem;
+  }
+  
+  .compact-button {
+    padding: 0.875rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -1946,13 +2038,18 @@ p {
   }
 
   .spec-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 
   .spec-content strong {
     font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .spec-content {
+    text-align: left;
   }
 
   .service-item {
@@ -1964,11 +2061,11 @@ p {
   }
 
   .subscription-header {
-    padding-top: 0.25rem;
+    padding-top: 1rem;
   }
 
   .plan-badge {
-    top: -0.5rem;
+    top: -0.75rem;
     right: -0.5rem;
     padding: 0.3rem 0.6rem;
     font-size: 0.65rem;
@@ -2162,6 +2259,29 @@ p {
 .trust-item {
   word-wrap: break-word;
   hyphens: auto;
+}
+
+/* Fix subscription summary layout on mobile */
+@media (max-width: 480px) {
+  .subscription-summary-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .subscription-summary-name {
+    word-wrap: normal;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .subscription-summary-price {
+    align-self: flex-end;
+    margin-top: 0.25rem;
+  }
 }
 
 /* Fix button text overflow on mobile */
