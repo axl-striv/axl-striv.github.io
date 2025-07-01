@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const state = {
     productQuantities: { 'sensor-base': 1 }, // Always include 1 sensor
     selectedSubscription: null, // subscription plan ID
+    selectedAddons: [],
     oneTimeTotal: 129, // Base sensor price
     recurringTotal: 0,
   }
@@ -20,10 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // DOM Elements
   const subscriptionRadios = document.querySelectorAll(".subscription-radio-input")
   const subscriptionCards = document.querySelectorAll(".subscription-card, .subscription-card-compact")
+  const addonCheckboxes = document.querySelectorAll(".addon-checkbox-input")
+  const addonCards = document.querySelectorAll(".addon-card")
+  const toggleAddonsBtn = document.getElementById("toggle-addons")
+  const addonsContainer = document.getElementById("addons-container")
+  const noSubscriptionWarning = document.getElementById("no-subscription-warning")
+  const addonsGrid = document.getElementById("addons-grid")
   const orderSummary = document.getElementById("order-summary")
   const productSummary = document.getElementById("product-summary")
   const subscriptionSummary = document.getElementById("subscription-summary")
   const subscriptionDetails = document.getElementById("subscription-details")
+  const addonsSummary = document.getElementById("addons-summary")
+  const addonsList = document.getElementById("addons-list")
   const oneTimeTotal = document.getElementById("onetime-total")
   const recurringTotal = document.getElementById("recurring-total")
   const checkoutButton = document.getElementById("checkout-button")
@@ -45,10 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set up event listeners
     setupSubscriptionSelection()
     setupAlternativeToggle()
+    setupAddonSelection()
+    setupAddonQuantityControls()
+    setupToggleAddons()
     setupCheckoutForm()
 
     // Initial UI update
     updateUI()
+    updateAddonsAvailability()
     
     // Add smooth scrolling for better UX
     setupSmoothScrolling()
@@ -146,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
           
           updateOrderSummary()
           updateCheckoutButton()
+          updateAddonsAvailability()
           
           // Show order summary with animation
           if (orderSummary.classList.contains('hidden')) {
@@ -227,6 +241,116 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function setupAddonSelection() {
+    addonCheckboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", function () {
+        const addonCard = this.closest(".addon-card")
+        const addonId = addonCard.dataset.addonId
+        const quantityControl = addonCard.querySelector(".quantity-control")
+
+        if (this.checked) {
+          // Add addon to selected addons - only store ID and quantity
+          state.selectedAddons.push({
+            id: addonId,
+            quantity: 1
+          })
+
+          // Show quantity control
+          quantityControl.classList.remove("hidden")
+          addonCard.classList.add("selected")
+        } else {
+          // Remove addon from selected addons
+          state.selectedAddons = state.selectedAddons.filter((addon) => addon.id !== addonId)
+
+          // Hide quantity control
+          quantityControl.classList.add("hidden")
+          addonCard.classList.remove("selected")
+        }
+
+        updateOrderSummary()
+        updateCheckoutButton()
+      })
+    })
+  }
+
+  function setupAddonQuantityControls() {
+    const quantityControls = document.querySelectorAll(".addon-card .quantity-control")
+
+    quantityControls.forEach((control) => {
+      const minusBtn = control.querySelector(".minus")
+      const plusBtn = control.querySelector(".plus")
+      const quantityDisplay = control.querySelector(".quantity")
+      const addonCard = control.closest(".addon-card")
+      const addonId = addonCard.dataset.addonId
+
+      // Add minus button click handler
+      minusBtn.addEventListener("click", () => {
+        const addonIndex = state.selectedAddons.findIndex((addon) => addon.id === addonId)
+        if (addonIndex !== -1) {
+          const currentQuantity = state.selectedAddons[addonIndex].quantity
+          if (currentQuantity > 1) {
+            state.selectedAddons[addonIndex].quantity = currentQuantity - 1
+            quantityDisplay.textContent = currentQuantity - 1
+            
+            // Update button states
+            minusBtn.disabled = (currentQuantity - 1) <= 1
+            plusBtn.disabled = false
+            
+            updateOrderSummary()
+          }
+        }
+      })
+
+      // Add plus button click handler
+      plusBtn.addEventListener("click", () => {
+        const addonIndex = state.selectedAddons.findIndex((addon) => addon.id === addonId)
+        if (addonIndex !== -1) {
+          const currentQuantity = state.selectedAddons[addonIndex].quantity
+          const maxQuantity = 999 // Default high number
+          
+          if (currentQuantity < maxQuantity) {
+            state.selectedAddons[addonIndex].quantity = currentQuantity + 1
+            quantityDisplay.textContent = currentQuantity + 1
+            
+            // Update button states
+            minusBtn.disabled = false
+            plusBtn.disabled = (currentQuantity + 1) >= maxQuantity
+            
+            updateOrderSummary()
+          }
+        }
+      })
+
+      // Set initial button states
+      const addonIndex = state.selectedAddons.findIndex((addon) => addon.id === addonId)
+      if (addonIndex !== -1) {
+        const currentQuantity = state.selectedAddons[addonIndex].quantity
+        minusBtn.disabled = currentQuantity <= 1
+        plusBtn.disabled = currentQuantity >= 999
+      } else {
+        minusBtn.disabled = true
+        plusBtn.disabled = false
+      }
+    })
+  }
+
+  function setupToggleAddons() {
+    if (toggleAddonsBtn && addonsContainer) {
+      toggleAddonsBtn.addEventListener("click", function() {
+        const isHidden = addonsContainer.classList.contains("hidden")
+        const chevron = this.querySelector("svg")
+        
+        if (isHidden) {
+          addonsContainer.classList.remove("hidden")
+          chevron.innerHTML = '<path d="m18 15-6-6-6 6"/>'
+        } else {
+          addonsContainer.classList.add("hidden")
+          chevron.innerHTML = '<path d="m6 9 6 6 6-6"/>'
+        }
+      })
+    }
+  }
+
   function setupCheckoutForm() {
     checkoutForm.addEventListener("submit", (e) => {
       e.preventDefault()
@@ -258,6 +382,10 @@ document.addEventListener("DOMContentLoaded", () => {
           .filter(([_, quantity]) => quantity > 0)
           .map(([id, quantity]) => ({ id, quantity })),
         subscription: state.selectedSubscription,
+        addons: state.selectedAddons.map((addon) => ({
+          id: addon.id,
+          quantity: addon.quantity,
+        })),
         type: 'subscription'
       }
 
@@ -401,6 +529,50 @@ document.addEventListener("DOMContentLoaded", () => {
       subscriptionSummary.classList.add("hidden")
     }
 
+    // Update addons summary section
+    let addonsTotal = 0
+    if (state.selectedAddons.length > 0) {
+      addonsSummary.classList.remove("hidden")
+      addonsList.innerHTML = ''
+      
+      state.selectedAddons.forEach((addon) => {
+        // Make sure we have data for this addon
+        if (!window.strivData?.addons?.[addon.id]) {
+          console.error(`Addon data not found for ID: ${addon.id}`)
+          return
+        }
+        
+        const addonData = window.strivData.addons[addon.id]
+        const itemPrice = addonData.price * addon.quantity
+        addonsTotal += itemPrice
+        
+        // Create price display with sale information if applicable
+        let priceHtml = `$${itemPrice.toFixed(2)}`
+        if (addonData.onSale && addonData.regularPrice > addonData.price) {
+          const regularTotal = addonData.regularPrice * addon.quantity
+          priceHtml = `
+            <div>
+              <span class="regular-price">$${regularTotal.toFixed(2)}</span>
+              <div class="sale-price">$${itemPrice.toFixed(2)}</div>
+            </div>
+          `
+        }
+
+        const addonItem = document.createElement("div")
+        addonItem.classList.add("addon-summary-item")
+        addonItem.innerHTML = `
+          <span class="addon-summary-name">${addonData.name} ${addon.quantity > 1 ? `(x${addon.quantity})` : ''}</span>
+          <span class="addon-summary-price">${priceHtml}</span>
+        `
+        addonsList.appendChild(addonItem)
+      })
+    } else {
+      addonsSummary.classList.add("hidden")
+    }
+
+    // Add addons total to one-time total
+    state.oneTimeTotal += addonsTotal
+
     // Update total displays
     oneTimeTotal.textContent = `$${state.oneTimeTotal.toFixed(2)}`
     recurringTotal.textContent = state.recurringTotal > 0 ? `$${state.recurringTotal.toFixed(2)}` : '$0'
@@ -441,6 +613,18 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         checkoutButton.textContent = "Select AI Coach Plan"
       }
+    }
+  }
+
+  function updateAddonsAvailability() {
+    const hasSubscription = state.selectedSubscription !== null
+
+    if (hasSubscription) {
+      noSubscriptionWarning.classList.add("hidden")
+      addonsGrid.classList.remove("hidden")
+    } else {
+      noSubscriptionWarning.classList.remove("hidden")
+      addonsGrid.classList.add("hidden")
     }
   }
 

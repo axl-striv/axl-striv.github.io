@@ -167,7 +167,7 @@
                 <div class="feature-highlight pro-highlight">
                   <div class="insole-benefit">
                     <span class="benefit-icon">🚀</span>
-                    <strong>4 Smart Insoles/Year</strong>
+                    <strong>4 Sensing Insoles/Year</strong>
                     <span class="benefit-detail">$196 value - Priority shipping, quarterly delivery</span>
                   </div>
                 </div>
@@ -205,7 +205,7 @@
                 <div class="feature-highlight">
                   <div class="insole-benefit">
                     <span class="benefit-icon">📦</span>
-                    <strong>2 Smart Insoles/Year</strong>
+                    <strong>2 Sensing Insoles/Year</strong>
                     <span class="benefit-detail">$98 value - Standard delivery (7-10 days)</span>
                   </div>
                 </div>
@@ -276,6 +276,161 @@
         </div>
       </section>
 
+      <!-- Add-ons Selection -->
+      <section class="card" aria-labelledby="addons-heading">
+        <div class="addon-header">
+          <h2 id="addons-heading">✅ Customize Your Kit — Add Coaching Extras</h2>
+          <button type="button" id="toggle-addons" class="toggle-button" aria-label="Toggle add-ons visibility">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-up">
+              <path d="m18 15-6-6-6 6"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="addons-container">
+          <div id="no-subscription-warning" class="warning">
+            Please select an AI coach plan first to see available add-ons.
+          </div>
+
+          <div id="addons-grid" class="addons-grid">
+            <!-- Extra Battery Pods -->
+            <div class="addon-card" data-addon-id="battery-pods" data-price="21" data-name="Extra Pair of Battery Pods" data-description="~20 extra hours of battery life per pod.">
+              <div class="addon-header">
+                <div>
+                  <h3>Extra Pair of Battery Pods</h3>
+                  <p class="addon-description">Keep your training going with ~20 extra hours of battery life per pod. Perfect for long sessions or avoiding downtime.</p>
+                </div>
+                <div class="addon-price">$21</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-battery-pods" class="addon-checkbox-input">
+                  <label for="addon-battery-pods">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra Pair of Sensing Insoles -->
+            <div class="addon-card" data-addon-id="extra-insoles" data-price="49" data-name="Extra Pair of Striv Sensing Insoles" data-description="Easily swap insoles between shoes.">
+              <div class="addon-header">
+                <div>
+                  <h3>Extra Pair of Striv Sensing Insoles</h3>
+                  <p class="addon-description">An extra pair of insoles (no electronics) to easily switch your sensors between shoes.</p>
+                </div>
+                <div class="addon-price">$49</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-extra-insoles" class="addon-checkbox-input">
+                  <label for="addon-extra-insoles">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3-Pack of Sensing Insoles -->
+            <div class="addon-card" data-addon-id="3pack-insoles" data-price="129" data-name="Extra 3 Pairs of Striv Sensing Insoles" data-description="Easily swap between shoes or keep replacements handy. Includes 3 extra pairs - save $18.">
+              <div class="addon-header">
+                <div>
+                  <h3>Extra 3 Pairs of Striv Sensing Insoles</h3>
+                  <div class="addon-tags">
+                    <span class="recommendation-tag">✅ Great for shoe rotation</span>
+                  </div>
+                  <p class="addon-description">Easily swap between shoes or keep replacements handy. Includes 3 extra pairs - save $18.</p>
+                </div>
+                <div class="addon-price">$129</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-3pack-insoles" class="addon-checkbox-input">
+                  <label for="addon-3pack-insoles">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 10-Pack of Sensing Insoles -->
+            <div class="addon-card" data-addon-id="10pack-insoles" data-price="399" data-name="Extra 10 Pairs of Striv Sensing Insoles" data-description="Maximum flexibility across multiple shoes or stock up on replacements. Includes 10 extra pairs - save $91.">
+              <div class="addon-header">
+                <div>
+                  <h3>Extra 10 Pairs of Striv Sensing Insoles</h3>
+                  <p class="addon-description">Maximum flexibility across multiple shoes or stock up on replacements. Includes 10 extra pairs - save $91.</p>
+                </div>
+                <div class="addon-price">$399</div>
+              </div>
+              <div class="addon-content">
+                <div class="addon-checkbox">
+                  <input type="checkbox" id="addon-10pack-insoles" class="addon-checkbox-input">
+                  <label for="addon-10pack-insoles">Add to order</label>
+                </div>
+                <div class="quantity-control hidden">
+                  <button type="button" class="quantity-btn minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                  <span class="quantity">1</span>
+                  <button type="button" class="quantity-btn plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="16"/>
+                      <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Order Summary -->
       <section id="order-summary" class="card summary-card hidden" aria-labelledby="order-summary-heading">
         <h2 id="order-summary-heading">Order Summary</h2>
@@ -289,6 +444,11 @@
           <div id="subscription-summary" class="summary-subscription hidden">
             <h3>AI Running Coach Subscription</h3>
             <div id="subscription-details" class="subscription-details"></div>
+          </div>
+          
+          <div id="addons-summary" class="summary-addons hidden">
+            <h3>Add-ons</h3>
+            <div id="addons-list" class="addons-list"></div>
           </div>
           
           <div class="summary-totals">
@@ -510,6 +670,36 @@
               type: "subscription",
               recommended: true
             }
+          },
+          addons: {
+            "battery-pods": {
+              name: "Extra Pair of Battery Pods",
+              description: "Keep your training going with ~20 extra hours of battery life per pod. Perfect for long sessions or avoiding downtime.",
+              price: 21,
+              regularPrice: 21,
+              onSale: false
+            },
+            "extra-insoles": {
+              name: "Extra Pair of Striv Sensing Insoles",
+              description: "An extra pair of insoles (no electronics) to easily switch your sensors between shoes.",
+              price: 49,
+              regularPrice: 59,
+              onSale: true
+            },
+            "3pack-insoles": {
+              name: "Extra 3 Pairs of Striv Sensing Insoles",
+              description: "Easily swap between shoes or keep replacements handy. Includes 3 extra pairs - save $18.",
+              price: 129,
+              regularPrice: 147,
+              onSale: true
+            },
+            "10pack-insoles": {
+              name: "Extra 10 Pairs of Striv Sensing Insoles",
+              description: "Maximum flexibility across multiple shoes or stock up on replacements. Includes 10 extra pairs - save $91.",
+              price: 399,
+              regularPrice: 490,
+              onSale: true
+            }
           }
         };
         
@@ -588,6 +778,37 @@
             if (priceEl) priceEl.textContent = `$${data.price.toFixed(2)}`;
             if (intervalEl) intervalEl.textContent = `per month (billed ${data.billingInterval || data.interval})`;
           }
+        }
+      }
+
+      // Initialize addon details from central data
+      for (const [id, data] of Object.entries(window.strivData.addons || {})) {
+        const addonEl = document.querySelector(`.addon-card[data-addon-id="${id}"]`);
+        if (addonEl) {
+          // Update addon details in the HTML
+          addonEl.querySelector('h3').textContent = data.name;
+          addonEl.querySelector('.addon-description').textContent = data.description;
+          
+          // Update price with sale information if applicable
+          const priceEl = addonEl.querySelector('.addon-price');
+          if (data.onSale && data.regularPrice > data.price) {
+            const saveAmount = data.regularPrice - data.price;
+            const savePercent = Math.round((saveAmount / data.regularPrice) * 100);
+            
+            priceEl.innerHTML = `
+              <div class="price-container">
+                <span class="regular-price">$${data.regularPrice}</span>
+                <span class="sale-price">$${data.price}</span>
+              </div>
+            `;
+          } else {
+            priceEl.textContent = `$${data.price}`;
+          }
+          
+          // Update data attributes as well
+          addonEl.setAttribute('data-name', data.name);
+          addonEl.setAttribute('data-description', data.description);
+          addonEl.setAttribute('data-price', data.price);
         }
       }
     }

@@ -1244,6 +1244,353 @@ p {
   margin-top: 2rem;
 }
 
+/* Add-on Styles */
+.addon-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.toggle-button {
+  background: linear-gradient(145deg, rgba(74, 68, 69, 0.6) 0%, rgba(58, 53, 54, 0.6) 100%);
+  border: 1px solid rgba(74, 68, 69, 0.4);
+  cursor: pointer;
+  color: var(--text-color-primary);
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out;
+  animation-fill-mode: both;
+}
+
+.toggle-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(55, 236, 127, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: var(--transition);
+  transform: translate(-50%, -50%);
+}
+
+.toggle-button:hover::before {
+  width: 150%;
+  height: 150%;
+}
+
+.toggle-button:hover {
+  background: linear-gradient(145deg, rgba(55, 236, 127, 0.15) 0%, rgba(45, 217, 114, 0.15) 100%);
+  border-color: rgba(55, 236, 127, 0.3);
+  transform: scale(1.05);
+}
+
+.toggle-button svg {
+  position: relative;
+  z-index: 1;
+  transition: var(--transition-fast);
+}
+
+.toggle-button:hover svg {
+  transform: rotate(180deg);
+}
+
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .addons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.addon-card {
+  background: linear-gradient(145deg, rgba(44, 40, 41, 0.8) 0%, rgba(35, 31, 32, 0.8) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(74, 68, 69, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  animation: fadeInUp 0.8s ease-out;
+  animation-fill-mode: both;
+}
+
+.addon-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(55, 236, 127, 0.03) 0%, transparent 50%);
+  opacity: 0;
+  transition: var(--transition);
+  pointer-events: none;
+}
+
+.addon-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(55, 236, 127, 0.2);
+}
+
+.addon-card:hover::before {
+  opacity: 1;
+}
+
+.addon-card.selected {
+  border-color: var(--accent-color-light);
+  box-shadow: 
+    var(--shadow-md),
+    0 0 0 1px var(--accent-color-light),
+    0 0 15px rgba(55, 236, 127, 0.15);
+  transform: translateY(-2px);
+}
+
+.addon-card.selected::before {
+  opacity: 0.6;
+}
+
+.addon-description {
+  color: var(--text-color-secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  min-height: 2.5rem;
+}
+
+.addon-price {
+  font-weight: 600;
+}
+
+.addon-content {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  min-height: 2.5rem;
+}
+
+.addon-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.addon-checkbox label {
+  color: var(--text-color-primary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.addon-checkbox-input {
+  appearance: none;
+  background: linear-gradient(145deg, rgba(74, 68, 69, 0.6) 0%, rgba(58, 53, 54, 0.6) 100%);
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid rgba(74, 68, 69, 0.4);
+  border-radius: var(--radius);
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.addon-checkbox-input:checked {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-hover) 100%);
+  border-color: var(--accent-color);
+  box-shadow: 
+    0 0 0 2px rgba(55, 236, 127, 0.2),
+    0 2px 8px rgba(55, 236, 127, 0.3);
+}
+
+.addon-checkbox-input:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.9rem;
+  border: solid var(--brand-color);
+  border-width: 0 3px 3px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+.addon-checkbox-input:hover {
+  border-color: rgba(55, 236, 127, 0.4);
+  transform: scale(1.05);
+}
+
+.addon-checkbox-input:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px var(--card-background), 
+    0 0 0 6px var(--focus-ring-color);
+}
+
+/* Quantity Controls */
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.quantity-btn {
+  background: linear-gradient(145deg, rgba(74, 68, 69, 0.8) 0%, rgba(58, 53, 54, 0.8) 100%);
+  border: 1px solid rgba(74, 68, 69, 0.6);
+  color: var(--text-color-secondary);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out;
+  animation-fill-mode: both;
+}
+
+.quantity-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(55, 236, 127, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: var(--transition);
+  transform: translate(-50%, -50%);
+}
+
+.quantity-btn:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.quantity-btn svg {
+  stroke: var(--text-color-primary);
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: var(--transition-fast);
+  position: relative;
+  z-index: 1;
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background: linear-gradient(145deg, rgba(55, 236, 127, 0.2) 0%, rgba(45, 217, 114, 0.2) 100%);
+  border-color: rgba(55, 236, 127, 0.5);
+  transform: scale(1.1);
+}
+
+.quantity-btn:hover:not(:disabled) svg {
+  stroke: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.quantity-btn:active:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.quantity-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.quantity {
+  margin: 0 0.5rem;
+  font-weight: 600;
+  font-family: var(--font-family-mono);
+  min-width: 1.5rem;
+  text-align: center;
+  color: var(--text-color-primary);
+  font-size: 1.1rem;
+}
+
+.warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  text-align: center;
+}
+
+.summary-addons {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+}
+
+.summary-addons h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.addons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.addon-summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+}
+
+.addon-summary-name {
+  color: var(--text-color-secondary);
+  padding-right: 1rem;
+}
+
+.addon-summary-price {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.addon-tags {
+  margin: 0.5rem 0;
+}
+
+.recommendation-tag {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-hover) 100%);
+  color: var(--brand-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Checkout Button */
 .checkout-button {
   background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-hover) 100%);
   color: var(--brand-color);
