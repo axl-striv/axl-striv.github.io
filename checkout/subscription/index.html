@@ -43,7 +43,6 @@
           <div class="hardware-showcase">
             <div class="hardware-visual">
               <img src="../assets/x1_pack.webp" alt="Striv™ Smart Sensor Hardware">
-              <div class="hardware-badge">Smart Sensor Hardware</div>
             </div>
             <div class="hardware-details">
               <h3>🏃‍♂️ Advanced Running Analytics</h3>
@@ -196,7 +195,7 @@
               <div class="subscription-pricing">
                 <div class="price-comparison">
                   <span class="regular-price">$16.50/mo</span>
-                  <div class="subscription-price">$13.25</div>
+                  <div class="subscription-price">$12.99</div>
                   <span class="save-amount">Save $39/year</span>
                 </div>
                 <div class="subscription-interval">per month (billed annually)</div>
@@ -250,8 +249,8 @@
                 <div class="compact-highlight">
                   <span class="compact-icon">📦</span>
                   <div class="compact-benefit">
-                    <strong style="text-align: left;">1 Smart Insole Every 6 Months</strong>
-                    <span style="text-align: left;" class="compact-detail">$59 value • Standard delivery (7-10 days)</span>
+                    <strong>1 Smart Insole Every 6 Months</strong>
+                    <span class="compact-detail">$59 value • Standard delivery (7-10 days)</span>
                   </div>
                 </div>
 <!--                 
@@ -492,8 +491,8 @@
   <!-- Centralized product and pricing data -->
   <script>
     // Centralize backend URL
-    window.strivBaseUrl = 'https://striv-backend-6a56be51e868.herokuapp.com';
-    //window.strivBaseUrl = 'http://localhost:8000';
+    //window.strivBaseUrl = 'https://striv-backend-6a56be51e868.herokuapp.com';
+    window.strivBaseUrl = 'http://localhost:8000';
 
     // Add loading state styling
     const loadingStyle = document.createElement('style');
@@ -598,7 +597,7 @@
       
       try {
         // In production, this would be your actual backend URL
-        const backendUrl = `${window.strivBaseUrl}/api/subscription-pricing`;
+        const backendUrl = `${window.strivBaseUrl}/api/pricing`;
         const response = await fetch(backendUrl);
         
         if (!response.ok) {
@@ -648,7 +647,7 @@
             "coaching-annual": {
               name: "Standard AI Running Coach", 
               description: "Essential coaching with regular insole delivery",
-              price: 13.25,
+              price: 12.99,
               monthlyPrice: 13.25,
               totalPrice: 159,
               regularPrice: 16.50,
