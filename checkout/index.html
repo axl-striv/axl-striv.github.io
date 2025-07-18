@@ -45,7 +45,7 @@
                 <img src="assets/x1_pack.webp" alt="Striv™ Solo Plan">
                 <div class="coaching-badge">+ 6-Month AI Coach Included</div>
               </div>
-              <div class="product-price">$339</div>
+              <div class="product-price"><span class="original-price">$339</span> $249 <span class="savings">SAVE $90</span></div>
               <div class="quantity-control product-quantity-control" data-product-id="insole-1pack">
                 <button type="button" class="quantity-btn minus" aria-label="Decrease quantity for 1-Pack">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -330,8 +330,8 @@
   <!-- Centralized product and pricing data -->
   <script>
     // Centralize backend URL
-    window.strivBaseUrl = 'https://striv-backend-6a56be51e868.herokuapp.com';
-    //window.strivBaseUrl = 'http://localhost:8000';
+    //window.strivBaseUrl = 'https://striv-backend-6a56be51e868.herokuapp.com';
+    window.strivBaseUrl = 'http://localhost:8000';
 
     // Add loading state styling
     const loadingStyle = document.createElement('style');
@@ -537,7 +537,7 @@
               description: "Keep your training going with ~20 extra hours of battery life per pod. Perfect for long sessions or avoiding downtime.",
               price: 21,
               regularPrice: 21,
-              onSale: False
+              onSale: false
             },
             "extra-insoles": {
               name: "Extra Pair of Striv Sensing Insoles",
