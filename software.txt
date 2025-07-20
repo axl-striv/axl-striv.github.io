@@ -1,160 +1,581 @@
-﻿STRIV CUSTOMER SERVICE - SUPPORT REFERENCE
+# STRIV CUSTOMER SERVICE GUIDE
+## Comprehensive Guide for Customer Support Representatives
 
-
-SECTION 1: SOFTWARE & APP
-
-
-IMPORTANT Links:
-
-
-Bug Report Forms:
-https://docs.google.com/forms/d/1geBZaVl3o2ArvJmdX_FrkB3JRHqZggnxcbemRzBhLD8/
-
-
-After-Sale Forms:
-https://docs.google.com/forms/d/1y8OADidR7OKkLL5x3d_rQSApszc2C4XvXG_N_TBy98Q/
-
-
-Our User Manual:
-https://striv.run/manual
-
-
-
-
-1.1 Can’t find or download the app
-- Confirm the user's platform: iOS or Android.
-- iOS: Download from the Apple App Store, “Striv insole”
-- Android: Use official testing link: https://play.google.com/apps/testing/com.runningcapture.android or link from user manual.
-- If link is down reported from users, instruct user to retry in 2–3 hours..
-
-
-1.2 App won’t update / crashes on launch
-- Ask for the OS version and check if the user has enough storage.
-- Steps: Clear cache, force-quit and relaunch, uninstall/reinstall latest build.
-- If issue persists after reinstall, escalate and let them fill out Debugs Forms
-
-
-
-
-1.3 Sensors not pairing
-- Confirm Bluetooth is enabled, pods are charged, and pod LED blinks blue when powered.
-- Steps: Toggle Bluetooth, reopen app, restart phone
-- If pairing fails three times, have the user submit the Debugs Form.
-
-
-1.4 Run won’t save.
- - For iOS, Instruct to download the newest App.
--  For Android: Keep app open until "Saved" confirmation, ensure stable data connection. If it still failed, Have the users submit the Debug forms
-
+### Table of Contents
+1. [General Response Guidelines](#general-response-guidelines)
+2. [Hardware Issues](#hardware-issues)
+3. [Software/App Issues](#software-app-issues)
+4. [Account Management & Billing Issues](#account-management--billing-issues)
+5. [Shipping & Order Issues](#shipping--order-issues)
+6. [After-Sales Service Process](#after-sales-service-process)
+7. [Diagnostic Procedures & Evidence Gathering](#diagnostic-procedures--evidence-gathering)
+8. [Data & Calibration Issues](#data--calibration-issues)
+9. [Beta Testing & Access Issues](#beta-testing--access-issues)
+10. [Escalation Procedures](#escalation-procedures)
+11. [Email Templates](#email-templates)
 
 ---
 
+## General Response Guidelines
 
-SECTION 2: HARDWARE & SETUP
+### Response Timing
+- Respond to customer emails within 24-48 hours
+- For urgent hardware failures, prioritize response within 24 hours
+- Set clear expectations for resolution timelines
 
+### Tone & Communication Style
+- **Professional but friendly**: Use "Hi [Name]" as greeting
+- **Empathetic**: Acknowledge customer frustration with phrases like "Sorry for this experience" or "I'm really sorry to hear about the continued trouble"
+- **Solution-oriented**: Always provide next steps or troubleshooting options
+- **Clear and concise**: Avoid technical jargon when possible
 
-2.1 Sensor cord broke or frayed
-- Ask for a batch date. Early batches pre-May 22 may have weaker cables.
-- Advise to avoid 90° bends or strain at the connector.
-- Any break on post-May 22 cable, direct to After-Sale Forms.
-
-
-2.2 One sensor dead
-- Check battery is seated; press to see if LED lights.
-- Swap batteries L↔R, re-pair in app.
-- Check mean pressure in Insole Status.
-- if changes while you stand on it or off is <10, try to re-insert the connector until hearing a sound of clicking, instruct to submit the After-Sale Forms.
-- if > 10, initiate Debug Forms.
-
-
-
-
-2.3 Won’t calibrate
-- Instruct the user to check “mean pressure” delta during calibration: less than 10 = likely damaged, over 100 = normal.
-- Steps: Remove and reinstall sensor (listen for click), recalibrate in "Insole Status".
-- If delta remains <10 after reinstall, sensor is damaged—initiate After-Sale Forms.
-- if >10, initiate Debug Forms.
-
-
-2.4 Battery drains quickly (<10h)
-- Ask how long it was, in a cold environment.
-- If the battery is still under 8h after update, initiate Debug Forms.
-
-
-2.5 Missing parts in package
-- Confirm checklist: 2 pods (L/R), 2 sensors, 2 clips, 2x batteries, manual.
-- If any are missing, initiate After-Sale Forums.
-
+### Standard Email Structure
+1. Greeting with customer name
+2. Acknowledgment of issue
+3. Apology if appropriate
+4. Troubleshooting steps or solution
+5. Next steps or follow-up actions
+6. Professional closing with name
 
 ---
 
+## Hardware Issues
 
-SECTION 3: RUN DATA & ANALYTICS
+### Sensor Connection Problems
+**Common Issues:**
+- Sensors not connecting to app
+- Blue flashing lights but no connection
+- One sensor working, other not responding
 
+**Response Protocol:**
+1. **First Response**: Direct to troubleshooting checklist
+   - Link: https://docs.google.com/document/d/1TJnuaT0ScPPLhI--WvTJ25RcePc-su13UirRnPnfyMw/edit?tab=t.0
+   - Ask for specific symptoms and which sensor generation they have
 
-3.3 Data export
-- Options: Json now, export by long press the run History.
+2. **Follow-up Actions:**
+   - If troubleshooting fails, offer replacement
+   - For Gen 3 sensors with persistent issues, send new Gen 3 replacement
+   - Document number of runs used before failure
 
+**Template Response:**
+```
+Hi [Name],
 
----
+Sorry for this experience, it's our first time seeing this bug.
 
+Can you please double check Striv app in setting and in there, there should be a "ALLOW STRIV TO ACCESS" list.
 
-SECTION 4: TRAINING PLANS & COACHING
+Is bluetooth also turned on there?
 
+Please also try our troubleshooting checklist: [link]
 
-4.1 How plans are generated
-- AI uses the last 4 weeks of load (power, cadence, ground time), user goals, and race date.
+Best,
+[Your name]
+```
 
+### Physical Hardware Damage
+**Common Issues:**
+- Broken cables/connectors
+- Snapped sensor parts
+- Pin connection issues
 
----
+**Response Protocol:**
+1. **Immediate Assessment**: Ask for photos of damaged components
+2. **Quick Resolution**: For clear hardware failures, offer immediate replacement
+3. **Version Consideration**: Replace with same generation or upgrade if appropriate
 
+**Key Questions to Ask:**
+- How many runs have you used the sensors for?
+- Did you unplug the sensor from the green pod before removing shoes?
+- Which sensor generation do you have?
+- Can you provide photos of the damage?
 
-SECTION 6: SHIPPING & DELIVERY
+### Low Pressure Readings
+**Common Issue:** Left or right sensor showing consistently low pressure (below 5)
 
-
-6.1 Track order
-- http://k5.takesend.com:8180/WebTrack?action=list&language=en, your email should contains a tracking numbers from us (axl@striv.run)
-
-
----
-
-
-
-
-SECTION 8: COMPATIBILITY & SPECS
-
-
-- Supported OS: iOS 15+, Android 11+
-- Bluetooth: 5.0 LE
-- Weight: Pod 20g, Sensor 11g
-- Shoe compatibility: Flat laces, US size 5–15
-
-
----
-
-
-SECTION 9: SAFETY & MAINTENANCE
-
-
-- Do not submerge pods; wipe with damp cloth.
-- Replace batteries every 12 months.
-
-
----
-
-
-SECTION 10: GENERAL INQUIRIES
-
-
-- Team/club discounts: (≥10 units, 15% off)
-
+**Response Protocol:**
+1. **Calibration Check**: Guide through recalibration process
+2. **Connection Verification**: Ensure proper clicking sound when connecting
+3. **Replacement Option**: If calibration fails, offer sensor replacement
 
 ---
 
+## Software/App Issues
 
-INSTRUCTIONS FOR SUPPORT AGENT OR MODEL:
-- Always start by confirming the user's issue.
-- Walk through fast checks, then troubleshooting steps.
-- If unresolved, provide a form (debug or after-sale) or link.
-- Responses should be Concise, direct, and factual.
-- Correct the user's assumptions if wrong.
+### App Connectivity Problems
+**Common Issues:**
+- App shows "waiting" but pods won't connect
+- Bluetooth connection failures
+- Data not transferring after runs
+
+**Response Protocol:**
+1. **App Update**: Direct to latest internal version
+   - Link: https://play.google.com/apps/internaltest/4701520350640449140
+2. **Connection Reset**: Suggest clearing previous connections
+3. **Permissions Check**: Verify Bluetooth and app permissions
+
+**Template Response:**
+```
+Hi [Name],
+
+Can you test with the newest internal version: [link]?
+
+It might be due to the last connections not cleaned up properly. The newer version should fix it.
+
+Best,
+[Your name]
+```
+
+### Calibration Issues
+**Common Problems:**
+- Cannot click calibrate button (button unresponsive)
+- Calibration stuck at low percentages (e.g., 3.9%)
+- Inaccurate readings during calibration
+
+**Response Protocol:**
+1. **Troubleshooting Guide**: Direct to calibration section of troubleshooting doc
+2. **App Version Check**: Ensure latest version installed
+3. **Sensor Generation**: Confirm which generation and provide specific guidance
+
+### Android vs iOS Feature Parity
+**Issue:** Android users requesting features available on iOS
+
+**Response Protocol:**
+- Acknowledge the delay in Android development
+- Provide timeline if available
+- Offer beta access for testing new features
+- Add to internal testing group when appropriate
+
+### API Server Errors
+**Issue:** "HTTP 429 too many requests" errors when accessing run summaries
+
+**Symptoms:**
+- Error occurs when ending runs
+- Summary page fails to load
+- Happens consistently on certain devices
+
+**Response Protocol:**
+```
+Thank you for the detailed bug report. The "HTTP 429" error indicates our servers are receiving too many requests. This is a known issue our technical team is addressing.
+
+As a temporary workaround:
+- Wait 2-3 minutes before trying to access the summary
+- Try accessing your run data from the main dashboard instead
+
+We'll include your device information in our bug tracking system and notify you when this is resolved.
+```
+
+### Navigation & UI Issues
+**Common Problems:**
+- Summary button redirects to home instead of showing run history
+- Unwanted training plans appearing automatically
+- Difficulty finding standalone session options
+
+**For Summary Navigation Issues:**
+```
+This appears to be a navigation bug in the current app version. Please try:
+1. Force close and restart the app
+2. Access your run history through Profile > Run History
+
+If the issue persists, please share:
+- Your device model and Android/iOS version
+- App version number
+- Screenshot of the issue
+```
+
+**For Training Plan Issues:**
+```
+You can disable automatic training plans by:
+1. Go to Settings > Training Preferences
+2. Turn off "Auto-generate training plans"
+3. Select "Manual sessions only"
+
+To record standalone sessions:
+- Tap "Start Run" directly from the home screen
+- Skip any training plan prompts
+
+Would you like me to walk you through these settings?
+```
+
+### Hardware Pairing Issues
+**Issue:** Customer receives two left pods instead of left/right pair
+
+**Response Protocol:**
+1. **Immediate Acknowledgment**: Apologize for shipping error
+2. **Photo Verification**: Ask for photo showing both pods
+3. **Replacement Process**: Ship correct right pod immediately
+4. **Quality Control**: Note batch number for internal review
+
+**Template Response:**
+```
+Hi [Name],
+
+I apologize for this shipping error. It appears you received two left pods instead of a left/right pair.
+
+To resolve this quickly:
+1. Can you send a photo showing both pods for our records?
+2. We'll immediately ship the correct right pod to you
+3. You can keep the extra left pod as backup
+
+This should reach you within [shipping timeline].
+
+Best,
+[Your name]
+```
+
+---
+
+## Account Management & Billing Issues
+
+### Account Access Issues
+**Common Problems:**
+- Access ended unexpectedly
+- Account credentials not working
+- User profile incorrect
+
+**Response Protocol:**
+1. **Verify Identity**: Confirm email address and order details
+2. **Check Account Status**: Verify if early access period ended
+3. **Reset Process**: Guide through account recovery steps
+
+**Template Response:**
+```
+Hi [Name],
+
+I can help you resolve this account access issue. To assist you better, please confirm:
+1. The email address associated with your Striv account
+2. Your order/backer number if available
+3. When you first noticed the access issue
+
+I'll check your account status and get this resolved quickly.
+
+Best,
+[Your name]
+```
+
+### Billing & Refund Requests
+**Issue:** Unexpected charges or refund requests
+
+**Response Protocol:**
+1. **Charge Investigation**: Check billing history and reason for charges
+2. **Refund Eligibility**: Determine if refund is appropriate
+3. **Process Timeline**: Provide clear timeline for refund processing
+
+**Template Response:**
+```
+Hi [Name],
+
+I understand your concern about the unexpected charges on your account. Let me investigate this for you.
+
+Could you please provide:
+- Your account email address
+- The amount and date of the charge in question
+- Any relevant invoice or transaction details
+
+I'll review your billing history and work to resolve this promptly. If a refund is warranted, I'll process it immediately.
+
+Best,
+[Your name]
+```
+
+---
+
+## Shipping & Order Issues
+
+### Order Tracking
+**Standard Information to Provide:**
+- Tracking number format: Alphanumeric (e.g., 6A02825038343)
+- Tracking website: https://www.17track.net/en/track?nums=[tracking_number]
+- Timeline expectation: Up to one week to reach local hub
+
+**Template Response:**
+```
+Hi [Name],
+
+Great news! Your Striv order has been shipped and is on its way to you.
+
+Your tracking number: [tracking_number]
+Track it here: [tracking_link]
+
+Please note: It may take up to one week for your package to reach the local hub before detailed tracking information becomes available.
+
+Best,
+[Your name]
+```
+
+### Shipping Addresses & Changes
+**For Address Updates:**
+- Confirm old address details
+- Process new address if shipment hasn't left facility
+- Provide updated timeline if changes affect delivery
+
+---
+
+## After-Sales Service Process
+
+### Replacement Requests
+**Documentation Required:**
+1. Customer email (used for Kickstarter/purchase)
+2. Faulty parts identification
+3. Issue description
+4. Number of runs used
+5. Sensor generation
+6. Photos of setup/damage if applicable
+
+### Replacement Decision Matrix
+**Immediate Replacement:**
+- Physical damage (broken cables, snapped connectors)
+- Complete sensor failure
+- Manufacturing defects
+
+**Troubleshooting First:**
+- Connectivity issues
+- Calibration problems
+- Software-related issues
+
+**Partial Solutions:**
+- App updates for software issues
+- Troubleshooting guides for user error
+- Beta access for missing features
+
+### Refund Considerations
+**Valid Refund Scenarios:**
+- Multiple hardware failures
+- Persistent software issues affecting core functionality
+- Product not meeting basic promised features
+
+**Refund Process:**
+- Escalate to management for approval
+- Document all previous troubleshooting attempts
+- Consider partial refunds for persistent issues
+
+---
+
+## Diagnostic Procedures & Evidence Gathering
+
+### Photo Requests for Hardware Issues
+**When to Request Photos:**
+- Sensor damage or suspected defects
+- Connection problems
+- Physical appearance concerns
+- Setup verification
+
+**Standard Photo Requests:**
+1. **Sensor Status Photos**: Both left and right sensors when stepping on them after calibration
+2. **Setup Photos**: Complete insole placement and pod connection
+3. **Damage Documentation**: Close-up photos of broken or damaged parts
+4. **Connection Verification**: Photos showing cable connections and LED status
+
+**Template for Photo Requests:**
+```
+To help diagnose the issue, could you please send photos of:
+1. Both insoles with sensors when you step on them (after calibration)
+2. The connection between pods and sensors
+3. Any visible damage or unusual wear
+
+You can upload photos to Google Drive and share the link, or attach them directly to your reply.
+
+This will help me understand exactly what's happening and provide the best solution.
+```
+
+### Bug Report Collection
+**Required Information for Bug Reports:**
+- Date and time of occurrence
+- Device type (Android/iOS) and version
+- App version
+- Step-by-step reproduction steps
+- Screenshot/video evidence
+- Severity rating (1-5 scale)
+- Reproducibility (always/sometimes/once)
+
+**Bug Report Follow-up:**
+```
+Thank you for the detailed bug report. I've forwarded this to our development team with priority level [X].
+
+Your report includes:
+- Device: [device details]
+- Issue: [brief description]
+- Severity: [rating]
+
+We'll update you as soon as we have a fix or workaround available.
+```
+
+### Order Information Verification
+**For Hardware Issues, Always Collect:**
+- Order/backer number
+- Batch identification (helps identify known issues)
+- Purchase date or delivery date
+- Number of runs completed before issue
+
+**Template for Information Gathering:**
+```
+To provide you with the best support, I need to understand your specific situation better.
+
+Could you please provide:
+1. Your order/backer number
+2. Approximately how many runs you've completed
+3. When you received your Striv kit
+4. Which specific components are having issues
+
+This information helps me identify if this is a known batch issue and provide the most appropriate solution.
+```
+
+---
+
+## Data & Calibration Issues
+
+### Data Access Problems
+**Common Issues:**
+- Data not transferring after offline runs
+- Historical data missing
+- Export functionality problems
+
+**Response Protocol:**
+1. **App Version**: Ensure latest version installed
+2. **Connection Process**: Guide through proper data sync procedure
+3. **Technical Escalation**: For persistent data loss, escalate to technical team
+
+### Inaccurate Readings
+**Common Complaints:**
+- Voice feedback showing unrealistic fatigue levels (e.g., "3000% more fatigue")
+- Pressure readings inconsistent
+- Calibration not reflecting actual use
+
+**Response Protocol:**
+1. **Recalibration**: Guide through proper calibration process
+2. **Usage Verification**: Confirm proper installation and use
+3. **Software Update**: Check if issue resolved in newer versions
+
+---
+
+## Beta Testing & Access Issues
+
+### Internal Testing Access
+**For Android Users:**
+- Add qualified users to internal testing group
+- Provide link: https://play.google.com/apps/internaltest/4701520350640449140
+- Set expectations for beta stability
+
+**Qualification Criteria:**
+- Existing customers with legitimate issues
+- Users reporting specific bugs
+- Early adopters willing to test new features
+
+### Feature Requests
+**Process:**
+1. Acknowledge the request
+2. Add to feature request tracking
+3. Provide timeline if available
+4. Offer alternative solutions where possible
+
+---
+
+## Escalation Procedures
+
+### When to Escalate
+**Technical Issues:**
+- Unusual bugs not covered in troubleshooting
+- Multiple users reporting same problem
+- Data corruption or loss issues
+
+**Business Issues:**
+- Refund requests
+- Multiple hardware failures for same customer
+- Complaints about product quality/design
+
+**Escalation Contacts:**
+- Technical issues: Development team
+- Refunds/Business: Management approval required
+- Manufacturing defects: QA team
+
+### Escalation Documentation
+**Required Information:**
+- Customer communication history
+- Troubleshooting steps attempted
+- Hardware/software versions involved
+- Customer's requested resolution
+
+---
+
+## Email Templates
+
+### Hardware Replacement Approval
+```
+Hi [Name],
+
+Thank you for your patience while we reviewed your case.
+
+We will send you a replacement for the [faulty component] and hopefully that will fix the problem!
+
+[Shipping information if available]
+
+Best,
+[Your name]
+```
+
+### Troubleshooting First Response
+```
+Hi [Name],
+
+Thank you for your message and I'm really sorry to hear about the trouble with the device.
+
+To help us better understand what's happening, could you please go through this quick checklist and see if any of the steps help resolve the issue?
+
+👉 Quick Troubleshooting Checklist: [link]
+
+Once you've gone through it, feel free to let us know what you find — and we'll be happy to assist you further based on the results.
+
+Thanks again for your patience, and we're committed to resolving this for you as soon as possible.
+
+Best regards,
+[Your name]
+```
+
+### App Update Recommendation
+```
+Hi [Name],
+
+Thanks for reaching out. Just added you!
+
+Definitely not later, it's right on time that we released a newer version with all synced up features with iOS!
+
+Check it out at: [beta link]
+
+If you encounter anything, let me know!
+
+Best,
+[Your name]
+```
+
+### Issue Resolution Confirmation
+```
+Hi [Name],
+
+I'm glad to hear that [solution] resolved the issue! If you need any further assistance or have more questions, feel free to reach out.
+
+Best regards,
+[Your name]
+```
+
+---
+
+## Quality Assurance & Follow-up
+
+### Follow-up Timeline
+- **Hardware replacements**: Check delivery confirmation after 1-2 weeks
+- **Software issues**: Follow up after app updates released
+- **Troubleshooting**: Check back if no response within 3-5 days
+
+### Customer Satisfaction
+- Monitor for repeat issues from same customers
+- Track resolution success rates
+- Document common problems for product improvement
+
+### Continuous Improvement
+- Update troubleshooting guides based on common issues
+- Refine response templates based on customer feedback
+- Share insights with development team for product improvements
+
+---
+
+*This guide should be reviewed and updated regularly based on new product developments, common customer issues, and feedback from the support team.* 
