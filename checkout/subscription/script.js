@@ -377,8 +377,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       errorMessage.classList.add("hidden")
-      console.log("✅ New script loaded");
-      
       // Prepare checkout data for backend
       const checkoutData = {
         products: Object.entries(state.productQuantities)
@@ -391,8 +389,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })),
         type: 'subscription'
       }
-
-      console.log("Sending to backend:", checkoutData)
 
       // Store order data in sessionStorage for the success page
       const orderItems = [];
@@ -499,17 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Save to sessionStorage with more detailed logging
       try {
-        console.log("Saving order data to sessionStorage:", orderData);
         sessionStorage.setItem('orderData', JSON.stringify(orderData));
-        
-        // Verify data was saved correctly
-        const savedData = sessionStorage.getItem('orderData');
-        if (savedData) {
-          console.log("✅ Order data successfully saved to sessionStorage");
-          console.log("Parsed saved data:", JSON.parse(savedData));
-        } else {
-          console.warn("⚠️ Failed to save order data to sessionStorage");
-        }
       } catch (error) {
         console.error("❌ Error saving to sessionStorage:", error);
       }
@@ -538,23 +524,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.json();
       })
       .then(data => {
-        console.log("Checkout response:", data);
         
         if (data.success && data.checkout_url) {
           // Store order ID in sessionStorage if available
           if (data.session_id) {
-            console.log("Saving order ID to sessionStorage:", data.session_id);
             sessionStorage.setItem('orderId', data.session_id);
-            
-            // Verify order ID was saved
-            const savedOrderId = sessionStorage.getItem('orderId');
-            if (savedOrderId === data.session_id) {
-              console.log("✅ Order ID successfully saved to sessionStorage");
-            } else {
-              console.warn("⚠️ Order ID may not have been saved correctly");
-            }
-          } else {
-            console.warn("⚠️ No session_id received from server");
           }
           
           // Show success state briefly before redirect

@@ -295,13 +295,10 @@
         if (storedData) {
           orderData = JSON.parse(storedData);
           dataSource = "sessionStorage";
-          console.log("Using order data from sessionStorage:", orderData);
         } else {
           orderData = getDefaultOrderData();
-          console.log("No order data in sessionStorage, using default data");
         }
       } catch (error) {
-        console.error("Error parsing order data:", error);
         orderData = getDefaultOrderData();
       }
       
@@ -393,9 +390,6 @@
       } else {
         membershipSectionEl.style.display = 'none';
       }
-      
-      // Optional: Send conversion event to analytics
-      console.log('Order complete page loaded', { orderId, orderData });
       
       // Helper function to get default order data for testing
       function getDefaultOrderData() {
