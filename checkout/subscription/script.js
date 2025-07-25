@@ -582,7 +582,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (quantity > 0) {
         // Make sure we have data for this product
         if (!window.strivData?.products?.[id]) {
-          console.error(`Product data not found for ID: ${id}`)
+          console.warn(`Product data not found for ID: ${id} - this may be normal during initial load`)
           return
         }
         
