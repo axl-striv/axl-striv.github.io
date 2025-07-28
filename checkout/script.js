@@ -317,22 +317,19 @@ document.addEventListener("DOMContentLoaded", () => {
         addons: state.selectedAddons.map((addon) => ({
           id: addon.id,
           quantity: addon.quantity,
-        }))
+        })),
+        type: "legacy"
       }
-
-      console.log("Sending to backend:", checkoutData)
 
       // Show loading state
       checkoutButton.disabled = true
       checkoutButton.textContent = "Processing..."
 
       // Send to backend for secure price calculation and Stripe checkout
-      fetch(`${window.strivBaseUrl}/api/checkout`, {
+      fetch(`${window.strivBaseUrl}/api/checkout?checkout_type=legacy`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(checkoutData)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(checkoutData),
       })
       .then(response => {
         if (!response.ok) {
@@ -341,13 +338,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.json();
       })
       .then(data => {
-        console.log("Checkout response:", data);
-        
         if (data.success && data.checkout_url) {
-          // Redirect to Stripe checkout page
           window.location.href = data.checkout_url;
         } else {
-          // Redirect to cancel page if there's no valid checkout URL
           window.location.href = 'checkout-cancel.html';
         }
       })

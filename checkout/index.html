@@ -488,7 +488,7 @@
       
       try {
         // In production, this would be your actual backend URL
-        const backendUrl = `${window.strivBaseUrl}/api/pricing`;
+        const backendUrl = `${window.strivBaseUrl}/api/pricing?checkout_type=legacy`;
         const response = await fetch(backendUrl);
         
         if (!response.ok) {
