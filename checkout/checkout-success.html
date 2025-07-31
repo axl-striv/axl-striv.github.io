@@ -286,20 +286,39 @@
       const urlParams = new URLSearchParams(window.location.search);
       const orderId = urlParams.get('order_id') || sessionStorage.getItem('orderId') || '643iPg5D';
       
-      // Try to get data from sessionStorage first, fall back to default if not available
+      // Try to get data from sessionStorage first, show generic success if not available
       let orderData;
-      let dataSource = "default";
+      let hasRealData = false;
       
       try {
         const storedData = sessionStorage.getItem('orderData');
         if (storedData) {
           orderData = JSON.parse(storedData);
-          dataSource = "sessionStorage";
-        } else {
-          orderData = getDefaultOrderData();
+          hasRealData = true;
         }
       } catch (error) {
-        orderData = getDefaultOrderData();
+        console.error('Error parsing order data:', error);
+      }
+      
+      // If no real data, show generic success page
+      if (!hasRealData) {
+        // Hide detailed order information
+        document.querySelector('.order-details').style.display = 'none';
+        
+        // Update success message
+        document.querySelector('.success-message').innerHTML = `
+          <p>Thank you for your purchase!</p>
+          <p>Your order has been successfully processed.</p>
+          <p>You will receive a confirmation email shortly with your order details.</p>
+        `;
+        
+        // Hide membership section
+        document.getElementById('membership-section').style.display = 'none';
+        
+        // Update email note
+        document.querySelector('.email-note').textContent = 'You will receive a confirmation email shortly with your order details.';
+        
+        return; // Exit early, don't populate order details
       }
       
       // Display order ID
@@ -310,13 +329,13 @@
       document.getElementById('order-id').textContent = shortOrderId;
       
       // Add data source indicator (for debugging)
-      const orderInfo = document.querySelector('.order-info');
-      const dataSourceIndicator = document.createElement('div');
-      dataSourceIndicator.style.fontSize = '12px';
-      dataSourceIndicator.style.color = '#666';
-      dataSourceIndicator.style.marginTop = '5px';
-      dataSourceIndicator.textContent = `Data source: ${dataSource}`;
-      orderInfo.appendChild(dataSourceIndicator);
+      // const orderInfo = document.querySelector('.order-info');
+      // const dataSourceIndicator = document.createElement('div');
+      // dataSourceIndicator.style.fontSize = '12px';
+      // dataSourceIndicator.style.color = '#666';
+      // dataSourceIndicator.style.marginTop = '5px';
+      // dataSourceIndicator.textContent = `Data source: ${dataSource}`;
+      // orderInfo.appendChild(dataSourceIndicator);
       
       // Populate order items
       const orderItemsEl = document.getElementById('order-items');
@@ -391,35 +410,7 @@
         membershipSectionEl.style.display = 'none';
       }
       
-      // Helper function to get default order data for testing
-      function getDefaultOrderData() {
-        return {
-          items: [
-            { name: 'Striv™ Smart Sensor', quantity: 1, price: 129.00 },
-            { name: 'Pro AI Running Coach', details: 'Billed annually', quantity: 1, price: 239.88 },
-            { name: 'Extra Pair of Battery Pods', quantity: 1, price: 21.00 },
-            { name: 'Extra Pair of Striv Sensing Insoles', quantity: 1, price: 49.00 },
-            { name: 'Extra 3 Pairs of Striv Sensing Insoles', quantity: 1, price: 129.00 },
-            { name: 'Extra 10 Pairs of Striv Sensing Insoles', quantity: 1, price: 399.00 }
-          ],
-          oneTimeTotal: 727.00,
-          recurringTotal: 19.99,
-          billingInterval: 'month',
-          billingDetails: 'billed annually as $239.88',
-          totalPaid: 966.88,
-          membership: {
-            name: 'Pro AI Running Coach',
-            level: 'Pro',
-            features: [
-              'Personalized AI coaching based on your running data',
-              '4 Sensing Insoles/Year delivered quarterly',
-              'Enhanced AI coaching algorithms, powered by the best model (GPT-4.1/O3)',
-              'Professional physical therapy reviews of your runs each quarter',
-              'Priority support and early access to new features'
-            ]
-          }
-        };
-      }
+
     });
   </script>
 </body>
