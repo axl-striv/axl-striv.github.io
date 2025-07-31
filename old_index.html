@@ -209,7 +209,6 @@
             // Iterate over each element and set its value
             lnameElements.forEach(element => {
                 element.value = lnameValue;
-                console.log("Setting LNAME to:", lnameValue);
             });
 
             // Optional: Log the value to verify it's set correctly on all elements
@@ -1018,7 +1017,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     body: formData,
                     mode: 'no-cors', // Use no-cors for requests to external servers like Mailchimp
                 }).then(response => {
-                    console.log('Form submission response:', response);
                     window.location.href = 'appreciation.html';
                 }).catch(error => {
                     console.error('Form submission failed:', error);
