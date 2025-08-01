@@ -43,7 +43,6 @@
           <div class="hardware-showcase">
             <div class="hardware-visual">
               <img src="../assets/x1_pack.webp" alt="Striv™ Smart Sensor Hardware">
-              <div class="hardware-badge">Smart Sensor Hardware</div>
             </div>
             <div class="hardware-details">
               <h3>🏃‍♂️ Advanced Running Analytics</h3>
@@ -84,7 +83,7 @@
               <div class="service-content">
                 <h4>AI Running Coach</h4>
                 <p>Personalized training plans and real-time feedback</p>
-                <div class="service-price">From $13.25<span>/month</span></div>
+                <div class="service-price">From <span id="dynamic-price">$--</span><span>/month</span></div>
               </div>
             </div>
             <div class="service-divider">+</div>
@@ -196,7 +195,7 @@
               <div class="subscription-pricing">
                 <div class="price-comparison">
                   <span class="regular-price">$16.50/mo</span>
-                  <div class="subscription-price">$13.25</div>
+                  <div class="subscription-price">$12.99</div>
                   <span class="save-amount">Save $39/year</span>
                 </div>
                 <div class="subscription-interval">per month (billed annually)</div>
@@ -250,8 +249,8 @@
                 <div class="compact-highlight">
                   <span class="compact-icon">📦</span>
                   <div class="compact-benefit">
-                    <strong style="text-align: left;">1 Smart Insole Every 6 Months</strong>
-                    <span style="text-align: left;" class="compact-detail">$59 value • Standard delivery (7-10 days)</span>
+                    <strong>1 Smart Insole Every 6 Months</strong>
+                    <span class="compact-detail">$59 value • Standard delivery (7-10 days)</span>
                   </div>
                 </div>
 <!--                 
@@ -493,7 +492,7 @@
   <script>
     // Centralize backend URL
     window.strivBaseUrl = 'https://striv-backend-6a56be51e868.herokuapp.com';
-    //window.strivBaseUrl = 'http://localhost:8000';
+    // window.strivBaseUrl = 'http://localhost:8000';
 
     // Add loading state styling
     const loadingStyle = document.createElement('style');
@@ -598,7 +597,7 @@
       
       try {
         // In production, this would be your actual backend URL
-        const backendUrl = `${window.strivBaseUrl}/api/subscription-pricing`;
+        const backendUrl = `${window.strivBaseUrl}/api/pricing?checkout_type=subscription`;
         const response = await fetch(backendUrl);
         
         if (!response.ok) {
@@ -629,7 +628,7 @@
             "sensor-base": {
               name: "Striv™ Smart Sensor",
               description: "Essential sensor hardware for advanced running analytics",
-              price: 129,
+              price: 199,
               type: "one-time"
             }
           },
@@ -648,7 +647,7 @@
             "coaching-annual": {
               name: "Standard AI Running Coach", 
               description: "Essential coaching with regular insole delivery",
-              price: 13.25,
+              price: 12.99,
               monthlyPrice: 13.25,
               totalPrice: 159,
               regularPrice: 16.50,
@@ -740,6 +739,29 @@
 
     // Function to update the HTML with pricing data
     function updateProductDisplay() {
+      // Update the main dynamic price display at the top of the page
+      const dynamicPriceEl = document.getElementById('dynamic-price');
+      if (dynamicPriceEl && window.strivData?.subscriptions) {
+        // Find the cheapest subscription price to display
+        let cheapestPrice = Infinity;
+        for (const [id, data] of Object.entries(window.strivData.subscriptions)) {
+          const price = data.monthlyPrice || data.price;
+          if (price < cheapestPrice) {
+            cheapestPrice = price;
+          }
+        }
+        if (cheapestPrice !== Infinity) {
+          dynamicPriceEl.textContent = `$${parseFloat(cheapestPrice).toFixed(0)}`;
+        }
+      }
+
+      // Update hardware price display
+      const hardwarePriceEl = document.querySelector('.hardware-price .price-value');
+      if (hardwarePriceEl && window.strivData?.products?.['sensor-base']) {
+        const sensorPrice = window.strivData.products['sensor-base'].price;
+        hardwarePriceEl.textContent = `$${parseFloat(sensorPrice).toFixed(0)}`;
+      }
+
       // Initialize product details from central data
       for (const [id, data] of Object.entries(window.strivData.products)) {
         const productEl = document.querySelector(`.product-card[data-product-id="${id}"]`);
@@ -763,19 +785,22 @@
           const priceEl = subscriptionEl.querySelector('.subscription-price');
           const intervalEl = subscriptionEl.querySelector('.subscription-interval');
           
-          if (data.regularPrice && data.regularPrice > data.price) {
+          // 使用monthlyPrice作为显示价格（如果可用）
+          const displayPrice = data.monthlyPrice || data.price;
+          
+          if (data.regularPrice && data.regularPrice > displayPrice) {
             const priceContainer = subscriptionEl.querySelector('.subscription-pricing');
-            const saveAmount = ((data.regularPrice - data.price) * 12).toFixed(0);
+            const saveAmount = ((data.regularPrice - displayPrice) * 12).toFixed(0);
             priceContainer.innerHTML = `
               <div class="price-comparison">
-                <span class="regular-price">$${data.regularPrice.toFixed(2)}/mo</span>
-                <div class="subscription-price">$${data.price.toFixed(2)}</div>
+                <span class="regular-price">$${parseFloat(data.regularPrice).toFixed(2)}/mo</span>
+                <div class="subscription-price">$${parseFloat(displayPrice).toFixed(2)}</div>
                 <span class="save-amount">Save $${saveAmount}/year</span>
               </div>
               <div class="subscription-interval">per month (billed ${data.billingInterval})</div>
             `;
           } else {
-            if (priceEl) priceEl.textContent = `$${data.price.toFixed(2)}`;
+            if (priceEl) priceEl.textContent = `$${parseFloat(displayPrice).toFixed(2)}`;
             if (intervalEl) intervalEl.textContent = `per month (billed ${data.billingInterval || data.interval})`;
           }
         }

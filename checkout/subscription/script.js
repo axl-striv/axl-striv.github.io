@@ -109,7 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handleTouchEnd(event) {
     setTimeout(() => {
+      if (event.currentTarget) {
       event.currentTarget.classList.remove('touch-active')
+      }
     }, 150)
   }
 
@@ -375,7 +377,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       errorMessage.classList.add("hidden")
-
       // Prepare checkout data for backend
       const checkoutData = {
         products: Object.entries(state.productQuantities)
@@ -389,7 +390,115 @@ document.addEventListener("DOMContentLoaded", () => {
         type: 'subscription'
       }
 
-      console.log("Sending to backend:", checkoutData)
+      // Store order data in sessionStorage for the success page
+      const orderItems = [];
+      
+      // Add products to order items
+      Object.entries(state.productQuantities).forEach(([id, quantity]) => {
+        if (quantity > 0 && window.strivData?.products?.[id]) {
+          const product = window.strivData.products[id];
+          orderItems.push({
+            name: product.name,
+            quantity: quantity,
+            price: product.price
+          });
+        }
+      });
+      
+      // Add subscription to order items
+      if (state.selectedSubscription && window.strivData?.subscriptions?.[state.selectedSubscription]) {
+        const sub = window.strivData.subscriptions[state.selectedSubscription];
+        orderItems.push({
+          name: sub.name,
+          details: sub.billingInterval ? `Billed ${sub.billingInterval}` : '',
+          quantity: 1,
+          price: sub.totalPrice || (sub.price * (sub.interval_count || 12))
+        });
+      }
+      
+      // Add addons to order items
+      state.selectedAddons.forEach(addon => {
+        if (window.strivData?.addons?.[addon.id]) {
+          const addonData = window.strivData.addons[addon.id];
+          orderItems.push({
+            name: addonData.name,
+            quantity: addon.quantity,
+            price: addonData.price * addon.quantity
+          });
+        }
+      });
+      
+      // Calculate totals
+      const oneTimeTotal = state.oneTimeTotal;
+      const recurringTotal = state.recurringTotal;
+      let totalPaid = oneTimeTotal;
+      
+      // Add subscription price to total paid if applicable
+      if (state.selectedSubscription && window.strivData?.subscriptions?.[state.selectedSubscription]) {
+        const sub = window.strivData.subscriptions[state.selectedSubscription];
+        if (sub.totalPrice) {
+          totalPaid += sub.totalPrice;
+        }
+      }
+      
+      // Create membership data if applicable
+      let membership = null;
+      if (state.selectedSubscription && window.strivData?.subscriptions?.[state.selectedSubscription]) {
+        const sub = window.strivData.subscriptions[state.selectedSubscription];
+        
+        // Map subscription to membership level
+        let level = "Standard";
+        if (state.selectedSubscription === "coaching-pro") {
+          level = "Pro";
+        } else if (state.selectedSubscription === "coaching-6month") {
+          level = "Flex";
+        }
+        
+        // Create features list based on subscription
+        const features = [
+          'Personalized AI coaching based on your running data'
+        ];
+        
+        // Add insole delivery based on subscription
+        if (state.selectedSubscription === "coaching-pro") {
+          features.push('4 Sensing Insoles/Year delivered quarterly');
+          features.push('Enhanced AI coaching algorithms, powered by the best model (GPT-4.1/O3)');
+          features.push('Professional physical therapy reviews of your runs each quarter');
+          features.push('Priority support and early access to new features');
+        } else if (state.selectedSubscription === "coaching-annual") {
+          features.push('2 Sensing Insoles/Year delivered bi-annually');
+          features.push('Standard AI coaching features');
+        } else if (state.selectedSubscription === "coaching-6month") {
+          features.push('1 Smart Insole Every 6 Months');
+          features.push('Standard AI coaching features');
+        }
+        
+        membership = {
+          name: sub.name,
+          level: level,
+          features: features
+        };
+      }
+      
+      // Store the complete order data in sessionStorage
+      const orderData = {
+        items: orderItems,
+        oneTimeTotal: oneTimeTotal,
+        recurringTotal: recurringTotal,
+        billingInterval: 'month',
+        billingDetails: state.selectedSubscription === "coaching-6month" ? 
+          "billed every 6 months" : 
+          `billed annually as $${(recurringTotal * 12).toFixed(2)}`,
+        totalPaid: totalPaid,
+        membership: membership
+      };
+      
+      // Save to sessionStorage with more detailed logging
+      try {
+        sessionStorage.setItem('orderData', JSON.stringify(orderData));
+      } catch (error) {
+        console.error("❌ Error saving to sessionStorage:", error);
+      }
 
       // Show loading state with better UX
       checkoutButton.disabled = true
@@ -415,9 +524,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.json();
       })
       .then(data => {
-        console.log("Checkout response:", data);
         
         if (data.success && data.checkout_url) {
+          // Store order ID in sessionStorage if available
+          if (data.session_id) {
+            sessionStorage.setItem('orderId', data.session_id);
+          }
+          
           // Show success state briefly before redirect
           if (checkoutButtonText) {
             checkoutButtonText.textContent = "Redirecting to checkout..."
@@ -469,7 +582,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (quantity > 0) {
         // Make sure we have data for this product
         if (!window.strivData?.products?.[id]) {
-          console.error(`Product data not found for ID: ${id}`)
+          console.warn(`Product data not found for ID: ${id} - this may be normal during initial load`)
           return
         }
         
@@ -508,21 +621,24 @@ document.addEventListener("DOMContentLoaded", () => {
       let priceHtml = `$${state.recurringTotal.toFixed(2)}`
       if (subData.regularPrice && subData.regularPrice > subData.price) {
         priceHtml = `
-          <div>
+          <span>
             <span class="regular-price">$${subData.regularPrice.toFixed(2)}</span>
-            <div class="sale-price">$${state.recurringTotal.toFixed(2)}</div>
-          </div>
+            <span class="sale-price">$${state.recurringTotal.toFixed(2)}</span>
+          </span>
         `
       }
 
-      const billingText = subData.billingInterval ? `per month (billed ${subData.billingInterval})` : `per ${subData.interval}`
+      const billingText = subData.billingInterval ? `<div class="billing-interval">per month (billed ${subData.billingInterval})</div>` : `<div class="billing-interval">per ${subData.interval}</div>`
 
       subscriptionDetails.innerHTML = ''
       const subscriptionItem = document.createElement("div")
       subscriptionItem.classList.add("subscription-summary-item")
       subscriptionItem.innerHTML = `
         <span class="subscription-summary-name">${subData.name}</span>
-        <span class="subscription-summary-price">${priceHtml} ${billingText}</span>
+        <div class="subscription-summary-price-container">
+          <span class="subscription-summary-price">${priceHtml}</span>
+          ${billingText}
+        </div>
       `
       subscriptionDetails.appendChild(subscriptionItem)
     } else {

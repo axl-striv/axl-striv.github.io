@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
 
-  <title>Order Successful - Striv</title>
+  <title>Order Successful - Striv™</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -44,11 +44,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 2rem 0;
     }
     
     .success-container {
       background-color: var(--card-background);
-      max-width: 560px;
+      max-width: 600px;
       width: 90%;
       margin: 0 auto;
       padding: 3rem 2rem;
@@ -91,6 +92,96 @@
       background-color: rgba(55, 236, 127, 0.05);
       border-radius: var(--radius);
       border: 1px solid var(--accent-color-light);
+      text-align: left;
+    }
+    
+    .order-number {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .order-details {
+      margin-top: 1.5rem;
+    }
+    
+    .order-summary-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--accent-color-light);
+    }
+    
+    .order-summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+    
+    .order-summary-table th {
+      text-align: left;
+      padding: 8px 5px;
+      color: var(--text-color-secondary);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    
+    .order-summary-table td {
+      padding: 8px 5px;
+      border-top: 1px solid rgba(74, 68, 69, 0.2);
+    }
+    
+    .order-summary-table .item-price {
+      text-align: right;
+    }
+    
+    .order-summary-table .item-quantity {
+      text-align: center;
+    }
+    
+    .order-totals {
+      text-align: right;
+      margin-top: 1rem;
+    }
+    
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      color: var(--text-color-secondary);
+    }
+    
+    .total-row.final {
+      font-weight: 600;
+      color: var(--text-color-primary);
+      border-top: 1px solid rgba(74, 68, 69, 0.2);
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+    }
+    
+    .membership-section {
+      margin-top: 1.5rem;
+      background-color: rgba(55, 236, 127, 0.05);
+      padding: 1rem;
+      border-radius: var(--radius);
+      text-align: left;
+    }
+    
+    .membership-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .membership-badge {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: var(--brand-color);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
     }
     
     .return-button {
@@ -106,11 +197,18 @@
       margin-top: 1.5rem;
       font-family: var(--font-family);
       text-decoration: none;
+      display: inline-block;
     }
     
     .return-button:hover {
       background-color: var(--accent-color-hover);
       box-shadow: var(--shadow-md);
+    }
+    
+    .email-note {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-color-secondary);
     }
     
     @keyframes fadeIn {
@@ -123,6 +221,23 @@
         transform: translateY(0);
       }
     }
+    
+    @media (max-width: 600px) {
+      .success-container {
+        width: 95%;
+        padding: 2rem 1rem;
+      }
+      
+      .success-title {
+        font-size: 1.75rem;
+      }
+      
+      .success-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 35px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -133,15 +248,169 @@
     <p class="success-message">Your order has been successfully processed.</p>
     
     <div class="order-info">
-      <p>You will receive a confirmation email shortly with your order details.</p>
+      <p class="order-number">Order #<span id="order-id">643iPg5D</span></p>
+      
+      <div class="order-details">
+        <h3 class="order-summary-title">Order Summary</h3>
+        <table class="order-summary-table">
+          <thead>
+            <tr>
+              <th style="width: 60%;">Item</th>
+              <th style="width: 20%;">Quantity</th>
+              <th style="width: 20%;">Price</th>
+            </tr>
+          </thead>
+          <tbody id="order-items">
+            <!-- Items will be populated by JavaScript -->
+          </tbody>
+        </table>
+        
+        <div class="order-totals" id="order-totals">
+          <!-- Totals will be populated by JavaScript -->
+        </div>
+      </div>
+      
+      <div class="membership-section" id="membership-section">
+        <!-- Membership details will be populated by JavaScript if applicable -->
+      </div>
     </div>
+    
+    <p class="email-note">You will receive a confirmation email shortly with your order details.</p>
     
     <a href="https://striv.run" target="_blank" class="return-button">Return to Store</a>
   </div>
+  
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Optional: Send conversion event to analytics
-      console.log('Order complete page loaded');
+      // Get order details from URL parameters or session storage
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderId = urlParams.get('order_id') || sessionStorage.getItem('orderId') || '643iPg5D';
+      
+      // Try to get data from sessionStorage first, show generic success if not available
+      let orderData;
+      let hasRealData = false;
+      
+      try {
+        const storedData = sessionStorage.getItem('orderData');
+        if (storedData) {
+          orderData = JSON.parse(storedData);
+          hasRealData = true;
+        }
+      } catch (error) {
+        console.error('Error parsing order data:', error);
+      }
+      
+      // If no real data, show generic success page
+      if (!hasRealData) {
+        // Hide detailed order information
+        document.querySelector('.order-details').style.display = 'none';
+        
+        // Update success message
+        document.querySelector('.success-message').innerHTML = `
+          <p>Thank you for your purchase!</p>
+          <p>Your order has been successfully processed.</p>
+          <p>You will receive a confirmation email shortly with your order details.</p>
+        `;
+        
+        // Hide membership section
+        document.getElementById('membership-section').style.display = 'none';
+        
+        // Update email note
+        document.querySelector('.email-note').textContent = 'You will receive a confirmation email shortly with your order details.';
+        
+        return; // Exit early, don't populate order details
+      }
+      
+      // Display order ID
+      let shortOrderId = orderId;
+      if (orderId.length > 16) {
+        shortOrderId = orderId.substring(0, 8) + '...' + orderId.substring(orderId.length - 4);
+      }
+      document.getElementById('order-id').textContent = shortOrderId;
+      
+      // Add data source indicator (for debugging)
+      // const orderInfo = document.querySelector('.order-info');
+      // const dataSourceIndicator = document.createElement('div');
+      // dataSourceIndicator.style.fontSize = '12px';
+      // dataSourceIndicator.style.color = '#666';
+      // dataSourceIndicator.style.marginTop = '5px';
+      // dataSourceIndicator.textContent = `Data source: ${dataSource}`;
+      // orderInfo.appendChild(dataSourceIndicator);
+      
+      // Populate order items
+      const orderItemsEl = document.getElementById('order-items');
+      orderData.items.forEach(item => {
+        const row = document.createElement('tr');
+        
+        const nameCell = document.createElement('td');
+        nameCell.innerHTML = item.name;
+        if (item.details) {
+          nameCell.innerHTML += `<br><small style="color: var(--text-color-secondary);">${item.details}</small>`;
+        }
+        
+        const quantityCell = document.createElement('td');
+        quantityCell.className = 'item-quantity';
+        quantityCell.textContent = item.quantity;
+        
+        const priceCell = document.createElement('td');
+        priceCell.className = 'item-price';
+        priceCell.textContent = `$${item.price.toFixed(2)}`;
+        
+        row.appendChild(nameCell);
+        row.appendChild(quantityCell);
+        row.appendChild(priceCell);
+        
+        orderItemsEl.appendChild(row);
+      });
+      
+      // Populate order totals
+      const orderTotalsEl = document.getElementById('order-totals');
+      
+      if (orderData.oneTimeTotal > 0) {
+        const oneTimeRow = document.createElement('div');
+        oneTimeRow.className = 'total-row';
+        oneTimeRow.innerHTML = `
+          <span>One-time payment:</span>
+          <span>$${orderData.oneTimeTotal.toFixed(2)}</span>
+        `;
+        orderTotalsEl.appendChild(oneTimeRow);
+      }
+      
+      if (orderData.recurringTotal > 0) {
+        const recurringRow = document.createElement('div');
+        recurringRow.className = 'total-row';
+        recurringRow.innerHTML = `
+          <span>Recurring payment:</span>
+          <span>$${orderData.recurringTotal.toFixed(2)}/${orderData.billingInterval} ${orderData.billingDetails ? `(${orderData.billingDetails})` : ''}</span>
+        `;
+        orderTotalsEl.appendChild(recurringRow);
+      }
+      
+      const totalRow = document.createElement('div');
+      totalRow.className = 'total-row final';
+      totalRow.innerHTML = `
+        <span>Total paid today:</span>
+        <span>$${orderData.totalPaid.toFixed(2)}</span>
+      `;
+      orderTotalsEl.appendChild(totalRow);
+      
+      // Populate membership section if applicable
+      const membershipSectionEl = document.getElementById('membership-section');
+      if (orderData.membership) {
+        membershipSectionEl.innerHTML = `
+          <h3 class="membership-title">Your AI Coach Membership</h3>
+          <p>You've successfully subscribed to our <strong>${orderData.membership.name}</strong> plan.</p>
+          <p>Your membership includes:</p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            ${orderData.membership.features.map(feature => `<li>${feature}</li>`).join('')}
+          </ul>
+          <div class="membership-badge">${orderData.membership.level} Member</div>
+        `;
+      } else {
+        membershipSectionEl.style.display = 'none';
+      }
+      
+
     });
   </script>
 </body>
