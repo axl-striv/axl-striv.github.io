@@ -53,7 +53,7 @@ Object to certain types of processing (e.g., marketing)
 To exercise these rights, email: info@striv.run
 
 7. Policy Updates
-We may update this policy as needed. The latest version will always be available at https://striv.run/assets/terms.txt. If material changes occur, we’ll notify you via email or app alert.
+We may update this policy as needed. The latest version will always be available at https://a.striv.run/assets/terms.txt. If material changes occur, we’ll notify you via email or app alert.
 
 8. Contact Us
 For questions or privacy-related concerns:
