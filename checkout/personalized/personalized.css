@@ -1,0 +1,797 @@
+/* Basic Functional Styles for Personalized Checkout */
+/* Note: This is a foundation for functionality - detailed styling will be refined later */
+
+:root {
+  --brand-color: #231f20;
+  --accent-color: #37ec7f;
+  --accent-hover: #2dd972;
+  --text-primary: #f8f8f8;
+  --text-secondary: rgba(248, 248, 248, 0.7);
+  --card-bg: rgba(44, 40, 41, 0.9);
+  --border-color: #4a4445;
+  --border-light: rgba(74, 68, 69, 0.5);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --radius: 0.5rem;
+  --transition: all 0.3s ease;
+  --font-family: "Lexend", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #1e1e1e 50%, #252525 75%, #1a1a1a 100%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.header-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+}
+
+/* Progress Steps */
+.progress-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.4;
+  transition: var(--transition);
+}
+
+.step.active,
+.step.completed {
+  opacity: 1;
+}
+
+.step-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border: 2px solid var(--border-color);
+  background: var(--card-bg);
+  transition: var(--transition);
+}
+
+.step.active .step-number {
+  border-color: var(--accent-color);
+  background: rgba(55, 236, 127, 0.1);
+  color: var(--accent-color);
+}
+
+.step.completed .step-number {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--brand-color);
+}
+
+.step-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.step.active .step-label,
+.step.completed .step-label {
+  color: var(--text-primary);
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Step Sections */
+.step-section {
+  transition: opacity 0.3s ease;
+}
+
+.step-section.hidden {
+  display: none;
+}
+
+/* Step 1: Training Goals */
+.training-goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.goal-card {
+  background: rgba(44, 40, 41, 0.6);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.goal-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.goal-card.selected {
+  border-color: var(--accent-color);
+  background: rgba(55, 236, 127, 0.1);
+}
+
+.goal-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.goal-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.goal-content p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.goal-features {
+  list-style: none;
+  text-align: left;
+}
+
+.goal-features li {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Step 2: Mileage */
+.mileage-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mileage-card {
+  background: rgba(44, 40, 41, 0.6);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.mileage-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.mileage-card.selected {
+  border-color: var(--accent-color);
+  background: rgba(55, 236, 127, 0.1);
+}
+
+.mileage-range {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.mileage-label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.mileage-description {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.custom-mileage {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.custom-mileage label {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.custom-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.custom-input input {
+  background: rgba(44, 40, 41, 0.8);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  width: 100px;
+  text-align: center;
+}
+
+.custom-input input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* Step 3: Recommendation */
+.recommendation-card {
+  background: linear-gradient(145deg, rgba(55, 236, 127, 0.05) 0%, rgba(44, 40, 41, 0.8) 100%);
+  border: 2px solid var(--accent-color);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.recommendation-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.recommendation-badge {
+  background: var(--accent-color);
+  color: var(--brand-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.recommendation-header h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.plan-section {
+  border-bottom: 1px solid var(--border-light);
+  padding: 1rem 0;
+}
+
+.plan-section:last-child {
+  border-bottom: none;
+}
+
+.plan-section h4 {
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.plan-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.item-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.item-price {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.plan-description {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.plan-features {
+  margin-top: 0.5rem;
+}
+
+.feature-item {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.plan-total {
+  background: rgba(55, 236, 127, 0.05);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.total-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.total-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-item.major {
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.recommendation-reason {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(55, 236, 127, 0.05);
+  border-radius: var(--radius);
+}
+
+.recommendation-reason h5 {
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+
+.edit-plan-section {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.edit-plan-button {
+  background: rgba(44, 40, 41, 0.8);
+  border: 2px solid var(--accent-color);
+  color: var(--text-primary);
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 0.5rem;
+}
+
+.edit-plan-button:hover {
+  background: rgba(55, 236, 127, 0.1);
+}
+
+.edit-plan-note {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Step 3b: Customization */
+.customization-section {
+  margin-bottom: 2rem;
+}
+
+.customization-section h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.ai-options,
+.insole-options {
+  display: grid;
+  gap: 1rem;
+}
+
+.ai-option,
+.insole-option {
+  background: rgba(44, 40, 41, 0.6);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.ai-option:hover,
+.insole-option:hover {
+  border-color: var(--accent-color);
+}
+
+.ai-option.selected,
+.insole-option.selected {
+  border-color: var(--accent-color);
+  background: rgba(55, 236, 127, 0.1);
+}
+
+.option-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.option-header h4 {
+  font-size: 1.125rem;
+  color: var(--text-primary);
+}
+
+.option-price {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.recommended-badge {
+  background: var(--accent-color);
+  color: var(--brand-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.option-features {
+  list-style: none;
+}
+
+.option-features li {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.option-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.delivery-amount {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.delivery-note {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.updated-totals {
+  background: rgba(55, 236, 127, 0.05);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.updated-totals h4 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.save-button {
+  background: var(--accent-color);
+  color: var(--brand-color);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.save-button:hover {
+  background: var(--accent-hover);
+}
+
+/* Step 4: Final Checkout */
+.final-order-summary {
+  background: rgba(55, 236, 127, 0.05);
+  border: 2px solid var(--accent-color);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.order-header {
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.order-header h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.training-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.summary-label {
+  color: var(--text-secondary);
+}
+
+.summary-value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.order-items {
+  margin-bottom: 1rem;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-totals {
+  border-top: 2px solid var(--accent-color);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.checkout-button {
+  background: var(--accent-color);
+  color: var(--brand-color);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.checkout-button:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.checkout-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.checkout-security {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.back-button {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.back-button:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Navigation */
+.navigation-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.nav-button {
+  background: rgba(44, 40, 41, 0.8);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 150px;
+  justify-content: center;
+}
+
+.nav-button:hover:not(:disabled) {
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.next-button {
+  background: var(--accent-color);
+  color: var(--brand-color);
+  border-color: var(--accent-color);
+  margin-left: auto;
+}
+
+.next-button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Error Message */
+.error-message {
+  background: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  color: #ff6b7d;
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .progress-steps {
+    gap: 0.5rem;
+  }
+  
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+  
+  .step-label {
+    font-size: 0.75rem;
+  }
+  
+  .training-goals-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mileage-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .navigation-container {
+    flex-direction: column;
+  }
+  
+  .nav-button {
+    width: 100%;
+  }
+  
+  .next-button {
+    margin-left: 0;
+  }
+  
+  .option-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .mileage-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-steps {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+}

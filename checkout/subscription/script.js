@@ -1,764 +1,567 @@
+// Modern Checkout Experience - Ultra Simplified
 document.addEventListener("DOMContentLoaded", () => {
-  // Mobile detection and optimization
-  const isMobile = window.innerWidth <= 767;
-  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  
-  // State management
+  // App State
   const state = {
-    productQuantities: { 'sensor-base': 1 }, // Always include 1 sensor
-    selectedSubscription: null, // subscription plan ID
-    selectedAddons: [],
-    oneTimeTotal: 129, // Base sensor price
-    recurringTotal: 0,
-  }
+    currentStep: 1,
+    selections: {
+      hardware: { selected: true, price: 149 },
+      subscription: { plan: null, price: 0 },
+      delivery: { frequency: null, price: 0 },
+      addons: []
+    },
+    totals: {
+      today: 149,
+      monthly: 0,
+      delivery: 0
+    }
+  };
 
-  // Use centralized product data from index.html
-  // Wait for strivData to be populated with data from the backend
-  // If strivData isn't available yet (fetch still in progress), use default empty objects
-  const productDetails = window.strivData?.products || {}
-  const subscriptionPlans = window.strivData?.subscriptions || {}
-
-  // DOM Elements
-  const subscriptionRadios = document.querySelectorAll(".subscription-radio-input")
-  const subscriptionCards = document.querySelectorAll(".subscription-card, .subscription-card-compact")
-  const addonCheckboxes = document.querySelectorAll(".addon-checkbox-input")
-  const addonCards = document.querySelectorAll(".addon-card")
-  const toggleAddonsBtn = document.getElementById("toggle-addons")
-  const addonsContainer = document.getElementById("addons-container")
-  const noSubscriptionWarning = document.getElementById("no-subscription-warning")
-  const addonsGrid = document.getElementById("addons-grid")
-  const orderSummary = document.getElementById("order-summary")
-  const productSummary = document.getElementById("product-summary")
-  const subscriptionSummary = document.getElementById("subscription-summary")
-  const subscriptionDetails = document.getElementById("subscription-details")
-  const addonsSummary = document.getElementById("addons-summary")
-  const addonsList = document.getElementById("addons-list")
-  const oneTimeTotal = document.getElementById("onetime-total")
-  const recurringTotal = document.getElementById("recurring-total")
-  const checkoutButton = document.getElementById("checkout-button")
-  const checkoutButtonText = checkoutButton?.querySelector(".button-text")
-  const checkoutForm = document.getElementById("checkout-form")
-  const errorMessage = document.getElementById("error-message")
-  const showShorterOptionBtn = document.getElementById("show-shorter-option")
-  const shorterOption = document.getElementById("shorter-option")
+  // DOM References
+  const elements = {
+    progressFill: document.getElementById('progress-fill'),
+    progressText: document.getElementById('progress-text'),
+    stepSlides: document.querySelectorAll('.step-slide'),
+    navBack: document.getElementById('nav-back'),
+    navNext: document.getElementById('nav-next'),
+    navComplete: document.getElementById('nav-complete'),
+    errorToast: document.getElementById('error-message'),
+    errorText: document.querySelector('.error-text'),
+    
+    // Order summary
+    orderItems: document.getElementById('order-items'),
+    totalToday: document.getElementById('total-today'),
+    totalMonthly: document.getElementById('total-monthly'),
+    totalDelivery: document.getElementById('total-delivery'),
+    recurringSubscription: document.getElementById('recurring-subscription'),
+    recurringDelivery: document.getElementById('recurring-delivery'),
+    
+    // Form inputs
+    planInputs: document.querySelectorAll('input[name="subscription"]'),
+    frequencyInputs: document.querySelectorAll('input[name="frequency"]'),
+    quantityInputs: document.querySelectorAll('input[name="quantity"]'),
+    addonInputs: document.querySelectorAll('.addon-checkbox-input'),
+    
+    // Delivery elements
+    deliverySummaryText: document.getElementById('delivery-summary-text'),
+    deliveryTotalPrice: document.getElementById('delivery-total-price')
+  };
 
   // Initialize
-  init()
+  init();
 
   function init() {
-    // Mobile-specific optimizations
-    if (isMobile) {
-      optimizeForMobile()
+    setupEventListeners();
+    updateUI();
+    updateProgressIndicator();
+    updateOrderSummary();
+    
+    // Initialize default quantity selection (2 pairs is checked by default)
+    const defaultQuantity = 2;
+    if (!state.selections.delivery) {
+      state.selections.delivery = {};
     }
+    state.selections.delivery.quantity = defaultQuantity;
+    document.querySelector('.quantity-option[data-quantity="2"]').classList.add('selected');
+    updateDeliveryPricing();
     
-    // Set up event listeners
-    setupSubscriptionSelection()
-    setupAlternativeToggle()
-    setupAddonSelection()
-    setupAddonQuantityControls()
-    setupToggleAddons()
-    setupCheckoutForm()
-
-    // Initial UI update
-    updateUI()
-    updateAddonsAvailability()
-    
-    // Add smooth scrolling for better UX
-    setupSmoothScrolling()
+    // Ensure step 1 is active on load
+    goToStep(1);
   }
 
-  function optimizeForMobile() {
-    // Add mobile class to body for styling hooks
-    document.body.classList.add('mobile-optimized')
-    
-    // Improve touch feedback
-    if (isTouch) {
-      document.body.classList.add('touch-device')
-      
-      // Add touch feedback to interactive elements
-      const touchElements = document.querySelectorAll('.subscription-card, .checkout-button, .alternative-toggle')
-      touchElements.forEach(element => {
-        element.addEventListener('touchstart', handleTouchStart, { passive: true })
-        element.addEventListener('touchend', handleTouchEnd, { passive: true })
-      })
-    }
-    
-    // Optimize viewport for mobile
-    let viewportMeta = document.querySelector('meta[name="viewport"]')
-    if (viewportMeta) {
-      viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-    }
-    
-    // Add momentum scrolling for iOS
-    document.body.style.webkitOverflowScrolling = 'touch'
-    
-    // Prevent double-tap zoom
-    let lastTouchEnd = 0
-    document.addEventListener('touchend', function (event) {
-      const now = (new Date()).getTime()
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault()
-      }
-      lastTouchEnd = now
-    }, false)
+  function setupEventListeners() {
+    // Navigation
+    elements.navNext.addEventListener('click', handleNext);
+    elements.navBack.addEventListener('click', handleBack);
+    elements.navComplete.addEventListener('click', handleComplete);
+
+    // Form inputs
+    elements.planInputs.forEach(input => {
+      input.addEventListener('change', handlePlanSelection);
+    });
+
+    elements.frequencyInputs.forEach(input => {
+      input.addEventListener('change', handleFrequencySelection);
+    });
+
+    elements.quantityInputs.forEach(input => {
+      input.addEventListener('change', handleQuantitySelection);
+    });
+
+    elements.addonInputs.forEach(input => {
+      input.addEventListener('change', handleAddonSelection);
+    });
+
+    // Card click handlers for better UX
+    setupCardClickHandlers();
   }
 
-  function handleTouchStart(event) {
-    event.currentTarget.classList.add('touch-active')
-  }
-
-  function handleTouchEnd(event) {
-    setTimeout(() => {
-      if (event.currentTarget) {
-      event.currentTarget.classList.remove('touch-active')
-      }
-    }, 150)
-  }
-
-  function setupSmoothScrolling() {
-    // Smooth scroll to order summary when plan is selected
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          const target = mutation.target
-          if (target.classList.contains('selected') && (target.classList.contains('subscription-card') || target.classList.contains('subscription-card-compact'))) {
-            // Small delay to ensure DOM updates are complete
-            setTimeout(() => {
-              const summary = document.getElementById('order-summary')
-              if (summary && !summary.classList.contains('hidden')) {
-                summary.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-              }
-            }, 300)
-          }
-        }
-      })
-    })
-
-    subscriptionCards.forEach(card => {
-      observer.observe(card, { attributes: true })
-    })
-  }
-
-  function setupSubscriptionSelection() {
-    subscriptionRadios.forEach((radio) => {
-      radio.addEventListener("change", function () {
-        if (this.checked) {
-          state.selectedSubscription = this.value
-          
-          // Update card styling
-          subscriptionCards.forEach(card => {
-            card.classList.remove("selected")
-          })
-          
-          const selectedCard = this.closest(".subscription-card, .subscription-card-compact")
-          selectedCard.classList.add("selected")
-          
-          // Add selection animation
-          selectedCard.style.transform = 'scale(1.02)'
-          setTimeout(() => {
-            selectedCard.style.transform = ''
-          }, 200)
-          
-          updateOrderSummary()
-          updateCheckoutButton()
-          updateAddonsAvailability()
-          
-          // Show order summary with animation
-          if (orderSummary.classList.contains('hidden')) {
-            orderSummary.classList.remove('hidden')
-            orderSummary.style.opacity = '0'
-            orderSummary.style.transform = 'translateY(20px)'
-            
-            requestAnimationFrame(() => {
-              orderSummary.style.transition = 'all 0.3s ease-out'
-              orderSummary.style.opacity = '1'
-              orderSummary.style.transform = 'translateY(0)'
-            })
-          }
-        }
-      })
-    })
-
-    // Make subscription cards clickable
-    subscriptionCards.forEach(card => {
+  function setupCardClickHandlers() {
+    // Plan cards
+    document.querySelectorAll('.plan-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        if (e.target.closest('.subscription-checkbox')) return // Don't interfere with radio button
-        
-        const radio = card.querySelector('.subscription-radio-input')
-        if (radio && !radio.checked) {
-          radio.checked = true
-          radio.dispatchEvent(new Event('change'))
-        }
-      })
-    })
-  }
-
-  function setupAlternativeToggle() {
-    if (showShorterOptionBtn && shorterOption) {
-      showShorterOptionBtn.addEventListener("click", function() {
-        const isHidden = shorterOption.classList.contains("hidden")
-        const arrow = this.querySelector(".toggle-arrow")
-        
-        if (isHidden) {
-          shorterOption.classList.remove("hidden")
-          arrow.textContent = "↑"
-          this.innerHTML = 'Hide shorter option <span class="toggle-arrow">↑</span>'
-          
-          // Smooth reveal animation
-          shorterOption.style.maxHeight = '0'
-          shorterOption.style.overflow = 'hidden'
-          requestAnimationFrame(() => {
-            shorterOption.style.transition = 'max-height 0.3s ease-out'
-            shorterOption.style.maxHeight = '500px'
-          })
-          
-        } else {
-          arrow.textContent = "↓"
-          this.innerHTML = 'Need a shorter commitment? <span class="toggle-arrow">↓</span>'
-          
-          // Smooth hide animation
-          shorterOption.style.maxHeight = '0'
-          setTimeout(() => {
-            shorterOption.classList.add("hidden")
-            shorterOption.style.maxHeight = ''
-            shorterOption.style.transition = ''
-          }, 300)
-          
-          // If 6-month plan was selected, clear selection
-          const sixMonthRadio = document.getElementById("subscription-6month")
-          if (sixMonthRadio && sixMonthRadio.checked) {
-            sixMonthRadio.checked = false
-            state.selectedSubscription = null
-            subscriptionCards.forEach(card => {
-              card.classList.remove("selected")
-            })
-            updateOrderSummary()
-            updateCheckoutButton()
-            
-            // Hide order summary
-            orderSummary.classList.add("hidden")
+        if (e.target.type !== 'radio') {
+          const radio = card.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = true;
+            radio.dispatchEvent(new Event('change'));
           }
         }
-      })
+      });
+    });
+
+    // Frequency cards
+    document.querySelectorAll('.frequency-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.type !== 'radio') {
+          const radio = card.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = true;
+            radio.dispatchEvent(new Event('change'));
+          }
+        }
+      });
+    });
+
+    // Quantity options
+    document.querySelectorAll('.quantity-option').forEach(option => {
+      option.addEventListener('click', (e) => {
+        if (e.target.type !== 'radio') {
+          const radio = option.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = true;
+            radio.dispatchEvent(new Event('change'));
+          }
+        }
+      });
+    });
+
+    // Addon cards
+    document.querySelectorAll('.addon-item').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.type !== 'checkbox') {
+          const checkbox = card.querySelector('input[type="checkbox"]');
+          if (checkbox) {
+            checkbox.checked = !checkbox.checked;
+            checkbox.dispatchEvent(new Event('change'));
+          }
+        }
+      });
+    });
+  }
+
+  function handleNext() {
+    if (validateCurrentStep()) {
+      if (state.currentStep < 3) {
+        goToStep(state.currentStep + 1);
+      }
     }
   }
 
-  function setupAddonSelection() {
-    addonCheckboxes.forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        const addonCard = this.closest(".addon-card")
-        const addonId = addonCard.dataset.addonId
-        const quantityControl = addonCard.querySelector(".quantity-control")
-
-        if (this.checked) {
-          // Add addon to selected addons - only store ID and quantity
-          state.selectedAddons.push({
-            id: addonId,
-            quantity: 1
-          })
-
-          // Show quantity control
-          quantityControl.classList.remove("hidden")
-          addonCard.classList.add("selected")
-        } else {
-          // Remove addon from selected addons
-          state.selectedAddons = state.selectedAddons.filter((addon) => addon.id !== addonId)
-
-          // Hide quantity control
-          quantityControl.classList.add("hidden")
-          addonCard.classList.remove("selected")
-        }
-
-        updateOrderSummary()
-        updateCheckoutButton()
-      })
-    })
-  }
-
-  function setupAddonQuantityControls() {
-    const quantityControls = document.querySelectorAll(".addon-card .quantity-control")
-
-    quantityControls.forEach((control) => {
-      const minusBtn = control.querySelector(".minus")
-      const plusBtn = control.querySelector(".plus")
-      const quantityDisplay = control.querySelector(".quantity")
-      const addonCard = control.closest(".addon-card")
-      const addonId = addonCard.dataset.addonId
-
-      // Add minus button click handler
-      minusBtn.addEventListener("click", () => {
-        const addonIndex = state.selectedAddons.findIndex((addon) => addon.id === addonId)
-        if (addonIndex !== -1) {
-          const currentQuantity = state.selectedAddons[addonIndex].quantity
-          if (currentQuantity > 1) {
-            state.selectedAddons[addonIndex].quantity = currentQuantity - 1
-            quantityDisplay.textContent = currentQuantity - 1
-            
-            // Update button states
-            minusBtn.disabled = (currentQuantity - 1) <= 1
-            plusBtn.disabled = false
-            
-            updateOrderSummary()
-          }
-        }
-      })
-
-      // Add plus button click handler
-      plusBtn.addEventListener("click", () => {
-        const addonIndex = state.selectedAddons.findIndex((addon) => addon.id === addonId)
-        if (addonIndex !== -1) {
-          const currentQuantity = state.selectedAddons[addonIndex].quantity
-          const maxQuantity = 999 // Default high number
-          
-          if (currentQuantity < maxQuantity) {
-            state.selectedAddons[addonIndex].quantity = currentQuantity + 1
-            quantityDisplay.textContent = currentQuantity + 1
-            
-            // Update button states
-            minusBtn.disabled = false
-            plusBtn.disabled = (currentQuantity + 1) >= maxQuantity
-            
-            updateOrderSummary()
-          }
-        }
-      })
-
-      // Set initial button states
-      const addonIndex = state.selectedAddons.findIndex((addon) => addon.id === addonId)
-      if (addonIndex !== -1) {
-        const currentQuantity = state.selectedAddons[addonIndex].quantity
-        minusBtn.disabled = currentQuantity <= 1
-        plusBtn.disabled = currentQuantity >= 999
-      } else {
-        minusBtn.disabled = true
-        plusBtn.disabled = false
-      }
-    })
-  }
-
-  function setupToggleAddons() {
-    if (toggleAddonsBtn && addonsContainer) {
-      toggleAddonsBtn.addEventListener("click", function() {
-        const isHidden = addonsContainer.classList.contains("hidden")
-        const chevron = this.querySelector("svg")
-        
-        if (isHidden) {
-          addonsContainer.classList.remove("hidden")
-          chevron.innerHTML = '<path d="m18 15-6-6-6 6"/>'
-        } else {
-          addonsContainer.classList.add("hidden")
-          chevron.innerHTML = '<path d="m6 9 6 6 6-6"/>'
-        }
-      })
+  function handleBack() {
+    if (state.currentStep > 1) {
+      goToStep(state.currentStep - 1);
     }
   }
 
-  function setupCheckoutForm() {
-    checkoutForm.addEventListener("submit", (e) => {
-      e.preventDefault()
+  function handleComplete() {
+    if (validateAllSteps()) {
+      processCheckout();
+    }
+  }
 
-      // Check if subscription is selected (sensor is always included)
-      const hasSubscription = state.selectedSubscription !== null
-      
-      if (!hasSubscription) {
-        errorMessage.textContent = "Please select an AI coach plan to continue."
-        errorMessage.classList.remove("hidden")
-        
-        // Scroll to error message
-        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        
-        // Shake animation for error
-        errorMessage.style.animation = 'shake 0.5s ease-in-out'
-        setTimeout(() => {
-          errorMessage.style.animation = ''
-        }, 500)
-        
-        return
-      }
+  function handlePlanSelection(e) {
+    const planId = e.target.value;
+    const planData = window.strivData.subscriptions[planId];
+    
+    state.selections.subscription = {
+      plan: planId,
+      price: planData.monthlyPrice
+    };
 
-      errorMessage.classList.add("hidden")
-      // Prepare checkout data for backend
-      const checkoutData = {
-        products: Object.entries(state.productQuantities)
-          .filter(([_, quantity]) => quantity > 0)
-          .map(([id, quantity]) => ({ id, quantity })),
-        subscription: state.selectedSubscription,
-        addons: state.selectedAddons.map((addon) => ({
-          id: addon.id,
-          quantity: addon.quantity,
-        })),
-        type: 'subscription'
-      }
+    // Update visual selection state
+    document.querySelectorAll('.plan-card').forEach(card => {
+      card.classList.remove('selected');
+    });
+    e.target.closest('.plan-card').classList.add('selected');
 
-      // Store order data in sessionStorage for the success page
-      const orderItems = [];
-      
-      // Add products to order items
-      Object.entries(state.productQuantities).forEach(([id, quantity]) => {
-        if (quantity > 0 && window.strivData?.products?.[id]) {
-          const product = window.strivData.products[id];
-          orderItems.push({
-            name: product.name,
-            quantity: quantity,
-            price: product.price
-          });
-        }
+    updateOrderSummary();
+    updateUI();
+    
+    // Add selection animation
+    animateSelection(e.target.closest('.plan-card'));
+  }
+
+  function handleFrequencySelection(e) {
+    const frequency = parseInt(e.target.value);
+    
+    if (!state.selections.delivery) {
+      state.selections.delivery = {};
+    }
+    
+    state.selections.delivery.frequency = frequency;
+
+    // Update visual selection state
+    document.querySelectorAll('.frequency-card').forEach(card => {
+      card.classList.remove('selected');
+    });
+    e.target.closest('.frequency-card').classList.add('selected');
+
+    updateDeliveryPricing();
+    updateOrderSummary();
+    updateUI();
+    
+    // Add selection animation
+    animateSelection(e.target.closest('.frequency-card'));
+  }
+
+  function handleQuantitySelection(e) {
+    const quantity = parseInt(e.target.value);
+    
+    if (!state.selections.delivery) {
+      state.selections.delivery = {};
+    }
+    
+    state.selections.delivery.quantity = quantity;
+
+    // Update visual selection state
+    document.querySelectorAll('.quantity-option').forEach(option => {
+      option.classList.remove('selected');
+    });
+    e.target.closest('.quantity-option').classList.add('selected');
+
+    updateDeliveryPricing();
+    updateOrderSummary();
+    updateUI();
+    
+    // Add selection animation
+    animateSelection(e.target.closest('.quantity-option'));
+  }
+
+  function updateDeliveryPricing() {
+    const delivery = state.selections.delivery;
+    
+    if (!delivery || !delivery.frequency || !delivery.quantity) {
+      elements.deliverySummaryText.textContent = 'Select frequency and quantity';
+      elements.deliveryTotalPrice.textContent = '$0';
+      return;
+    }
+
+    const basePrice = window.strivData.delivery.basePrice[delivery.quantity];
+    const frequencyData = window.strivData.delivery.frequencies[delivery.frequency];
+    const shippingCost = frequencyData.shipping;
+    const totalPrice = basePrice + shippingCost;
+    
+    // Update state
+    state.selections.delivery.price = totalPrice;
+    
+    // Update UI
+    const quantityText = delivery.quantity === 1 ? 'pair' : 'pairs';
+    const frequencyText = delivery.frequency === 3 ? '3 months' : '6 months';
+    const summaryText = `${delivery.quantity} ${quantityText} every ${frequencyText}`;
+    
+    elements.deliverySummaryText.textContent = summaryText;
+    elements.deliveryTotalPrice.textContent = `$${totalPrice}`;
+  }
+
+  function handleAddonSelection(e) {
+    const addonItem = e.target.closest('.addon-item');
+    const addonId = addonItem.dataset.addonId;
+    const addonPrice = parseInt(addonItem.dataset.price);
+    const addonData = window.strivData.addons[addonId];
+
+    if (e.target.checked) {
+      state.selections.addons.push({
+        id: addonId,
+        name: addonData.name,
+        price: addonPrice
       });
-      
-      // Add subscription to order items
-      if (state.selectedSubscription && window.strivData?.subscriptions?.[state.selectedSubscription]) {
-        const sub = window.strivData.subscriptions[state.selectedSubscription];
-        orderItems.push({
-          name: sub.name,
-          details: sub.billingInterval ? `Billed ${sub.billingInterval}` : '',
-          quantity: 1,
-          price: sub.totalPrice || (sub.price * (sub.interval_count || 12))
-        });
-      }
-      
-      // Add addons to order items
-      state.selectedAddons.forEach(addon => {
-        if (window.strivData?.addons?.[addon.id]) {
-          const addonData = window.strivData.addons[addon.id];
-          orderItems.push({
-            name: addonData.name,
-            quantity: addon.quantity,
-            price: addonData.price * addon.quantity
-          });
-        }
-      });
-      
-      // Calculate totals
-      const oneTimeTotal = state.oneTimeTotal;
-      const recurringTotal = state.recurringTotal;
-      let totalPaid = oneTimeTotal;
-      
-      // Add subscription price to total paid if applicable
-      if (state.selectedSubscription && window.strivData?.subscriptions?.[state.selectedSubscription]) {
-        const sub = window.strivData.subscriptions[state.selectedSubscription];
-        if (sub.totalPrice) {
-          totalPaid += sub.totalPrice;
-        }
-      }
-      
-      // Create membership data if applicable
-      let membership = null;
-      if (state.selectedSubscription && window.strivData?.subscriptions?.[state.selectedSubscription]) {
-        const sub = window.strivData.subscriptions[state.selectedSubscription];
-        
-        // Map subscription to membership level
-        let level = "Standard";
-        if (state.selectedSubscription === "coaching-pro") {
-          level = "Pro";
-        } else if (state.selectedSubscription === "coaching-6month") {
-          level = "Flex";
-        }
-        
-        // Create features list based on subscription
-        const features = [
-          'Personalized AI coaching based on your running data'
-        ];
-        
-        // Add insole delivery based on subscription
-        if (state.selectedSubscription === "coaching-pro") {
-          features.push('4 Sensing Insoles/Year delivered quarterly');
-          features.push('Enhanced AI coaching algorithms, powered by the best model (GPT-4.1/O3)');
-          features.push('Professional physical therapy reviews of your runs each quarter');
-          features.push('Priority support and early access to new features');
-        } else if (state.selectedSubscription === "coaching-annual") {
-          features.push('2 Sensing Insoles/Year delivered bi-annually');
-          features.push('Standard AI coaching features');
-        } else if (state.selectedSubscription === "coaching-6month") {
-          features.push('1 Smart Insole Every 6 Months');
-          features.push('Standard AI coaching features');
-        }
-        
-        membership = {
-          name: sub.name,
-          level: level,
-          features: features
-        };
-      }
-      
-      // Store the complete order data in sessionStorage
-      const orderData = {
-        items: orderItems,
-        oneTimeTotal: oneTimeTotal,
-        recurringTotal: recurringTotal,
-        billingInterval: 'month',
-        billingDetails: state.selectedSubscription === "coaching-6month" ? 
-          "billed every 6 months" : 
-          `billed annually as $${(recurringTotal * 12).toFixed(2)}`,
-        totalPaid: totalPaid,
-        membership: membership
-      };
-      
-      // Save to sessionStorage with more detailed logging
-      try {
-        sessionStorage.setItem('orderData', JSON.stringify(orderData));
-      } catch (error) {
-        console.error("❌ Error saving to sessionStorage:", error);
-      }
+      addonItem.classList.add('selected');
+    } else {
+      state.selections.addons = state.selections.addons.filter(
+        addon => addon.id !== addonId
+      );
+      addonItem.classList.remove('selected');
+    }
 
-      // Show loading state with better UX
-      checkoutButton.disabled = true
-      if (checkoutButtonText) {
-        checkoutButtonText.textContent = "Processing..."
-      } else {
-        checkoutButton.textContent = "Processing..."
-      }
-      checkoutButton.style.opacity = '0.7'
+    updateOrderSummary();
+    
+    // Add selection animation
+    animateSelection(addonItem);
+  }
 
-      // Send to backend for secure price calculation and Stripe checkout
-      fetch(`${window.strivBaseUrl}/api/checkout`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(checkoutData)
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Checkout request failed');
+  function goToStep(stepNumber) {
+    if (stepNumber < 1 || stepNumber > 3) return;
+
+    // Hide all steps
+    elements.stepSlides.forEach(slide => {
+      slide.classList.remove('active');
+    });
+
+    // Show new step
+    const newSlide = document.getElementById(`step-${stepNumber}`);
+    if (newSlide) {
+      newSlide.classList.add('active');
+    }
+
+    state.currentStep = stepNumber;
+    updateProgressIndicator();
+    updateUI();
+    
+    // Smooth scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function validateCurrentStep() {
+    hideError();
+
+    switch (state.currentStep) {
+      case 1:
+        return true; // Hardware is always selected
+      
+      case 2:
+        if (!state.selections.subscription.plan) {
+          showError("Please select an AI coaching plan to continue");
+          return false;
         }
-        return response.json();
-      })
-      .then(data => {
-        
-        if (data.success && data.checkout_url) {
-          // Store order ID in sessionStorage if available
-          if (data.session_id) {
-            sessionStorage.setItem('orderId', data.session_id);
-          }
-          
-          // Show success state briefly before redirect
-          if (checkoutButtonText) {
-            checkoutButtonText.textContent = "Redirecting to checkout..."
-          } else {
-            checkoutButton.textContent = "Redirecting to checkout..."
-          }
-          checkoutButton.style.background = 'linear-gradient(135deg, #28a745 0%, #20c997 100%)'
-          
-          setTimeout(() => {
-            window.location.href = data.checkout_url;
-          }, 500)
-        } else {
-          // Redirect to cancel page if there's no valid checkout URL
-          window.location.href = '../checkout-cancel.html';
+        return true;
+      
+      case 3:
+        if (!state.selections.delivery || !state.selections.delivery.frequency || !state.selections.delivery.quantity) {
+          showError("Please select both delivery frequency and quantity to continue");
+          return false;
         }
-      })
-      .catch(error => {
-        console.error("Checkout error:", error);
-        errorMessage.textContent = "There was a problem processing your checkout. Please try again.";
-        errorMessage.classList.remove("hidden");
-        
-        // Reset button state
-        checkoutButton.disabled = false;
-        checkoutButton.style.opacity = '1'
-        checkoutButton.style.background = ''
-        updateCheckoutButton(); // Reset button text
-        
-        // Scroll to error
-        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      });
-    })
+        return true;
+      
+      default:
+        return true;
+    }
+  }
+
+  function validateAllSteps() {
+    if (!state.selections.subscription.plan) {
+      showError("Please select an AI coaching plan");
+      goToStep(2);
+      return false;
+    }
+
+    if (!state.selections.delivery.frequency) {
+      showError("Please select a delivery schedule");
+      goToStep(3);
+      return false;
+    }
+
+    return true;
+  }
+
+  function updateProgressIndicator() {
+    const progress = (state.currentStep / 3) * 100;
+    elements.progressFill.style.width = `${progress}%`;
+    elements.progressText.textContent = `Step ${state.currentStep} of 3`;
   }
 
   function updateUI() {
-    updateOrderSummary()
-    updateCheckoutButton()
+    // Update navigation buttons
+    elements.navBack.classList.toggle('hidden', state.currentStep === 1);
+    
+    if (state.currentStep === 3) {
+      elements.navNext.classList.add('hidden');
+      elements.navComplete.classList.remove('hidden');
+      
+      // Update complete button state
+      const isValid = state.selections.subscription.plan && state.selections.delivery.frequency;
+      elements.navComplete.disabled = !isValid;
+    } else {
+      elements.navNext.classList.remove('hidden');
+      elements.navComplete.classList.add('hidden');
+      
+      // Update next button state and text
+      let buttonText = 'Continue';
+      let isDisabled = false;
+      
+      if (state.currentStep === 2) {
+        buttonText = state.selections.subscription.plan ? 'Continue to Delivery' : 'Select a Plan';
+        isDisabled = !state.selections.subscription.plan;
+      }
+      
+      elements.navNext.querySelector('span').textContent = buttonText;
+      elements.navNext.disabled = isDisabled;
+    }
   }
 
   function updateOrderSummary() {
-    const hasSubscription = state.selectedSubscription !== null
-
     // Calculate totals
-    state.oneTimeTotal = 0
-    state.recurringTotal = 0
+    state.totals.today = state.selections.hardware.price;
+    state.totals.monthly = state.selections.subscription.price;
+    state.totals.delivery = state.selections.delivery.price;
 
-    // Update product summary section
-    productSummary.innerHTML = ''
-    Object.entries(state.productQuantities).forEach(([id, quantity]) => {
-      if (quantity > 0) {
-        // Make sure we have data for this product
-        if (!window.strivData?.products?.[id]) {
-          console.warn(`Product data not found for ID: ${id} - this may be normal during initial load`)
-          return
-        }
-        
-        const details = window.strivData.products[id]
-        const itemPrice = details.price * quantity
-        state.oneTimeTotal += itemPrice
-        
-        const productItem = document.createElement('div')
-        productItem.classList.add('summary-item')
-        
-        productItem.innerHTML = `
-          <div class="summary-content-wrapper">
-            <div class="summary-title">${details.name} ${quantity > 1 ? `(x${quantity})` : ''}</div>
-            <div class="summary-description">${details.description}</div>
-          </div>
-          <div class="summary-price">$${itemPrice.toFixed(2)}</div>
-        `
-        productSummary.appendChild(productItem)
-      }
-    })
+    // Add addon prices to today's total
+    state.selections.addons.forEach(addon => {
+      state.totals.today += addon.price;
+    });
 
-    // Update subscription summary section
-    if (state.selectedSubscription) {
-      subscriptionSummary.classList.remove("hidden")
-      
-      // Make sure we have data for this subscription
-      if (!window.strivData?.subscriptions?.[state.selectedSubscription]) {
-        console.error(`Subscription data not found for ID: ${state.selectedSubscription}`)
-        return
-      }
-      
-      const subData = window.strivData.subscriptions[state.selectedSubscription]
-      state.recurringTotal = subData.monthlyPrice || subData.price
-      
-      // Create subscription summary display
-      let priceHtml = `$${state.recurringTotal.toFixed(2)}`
-      if (subData.regularPrice && subData.regularPrice > subData.price) {
-        priceHtml = `
-          <span>
-            <span class="regular-price">$${subData.regularPrice.toFixed(2)}</span>
-            <span class="sale-price">$${state.recurringTotal.toFixed(2)}</span>
-          </span>
-        `
-      }
-
-      const billingText = subData.billingInterval ? `<div class="billing-interval">per month (billed ${subData.billingInterval})</div>` : `<div class="billing-interval">per ${subData.interval}</div>`
-
-      subscriptionDetails.innerHTML = ''
-      const subscriptionItem = document.createElement("div")
-      subscriptionItem.classList.add("subscription-summary-item")
-      subscriptionItem.innerHTML = `
-        <span class="subscription-summary-name">${subData.name}</span>
-        <div class="subscription-summary-price-container">
-          <span class="subscription-summary-price">${priceHtml}</span>
-          ${billingText}
-        </div>
-      `
-      subscriptionDetails.appendChild(subscriptionItem)
-    } else {
-      subscriptionSummary.classList.add("hidden")
-    }
-
-    // Update addons summary section
-    let addonsTotal = 0
-    if (state.selectedAddons.length > 0) {
-      addonsSummary.classList.remove("hidden")
-      addonsList.innerHTML = ''
-      
-      state.selectedAddons.forEach((addon) => {
-        // Make sure we have data for this addon
-        if (!window.strivData?.addons?.[addon.id]) {
-          console.error(`Addon data not found for ID: ${addon.id}`)
-          return
-        }
-        
-        const addonData = window.strivData.addons[addon.id]
-        const itemPrice = addonData.price * addon.quantity
-        addonsTotal += itemPrice
-        
-        // Create price display with sale information if applicable
-        let priceHtml = `$${itemPrice.toFixed(2)}`
-        if (addonData.onSale && addonData.regularPrice > addonData.price) {
-          const regularTotal = addonData.regularPrice * addon.quantity
-          priceHtml = `
-            <div>
-              <span class="regular-price">$${regularTotal.toFixed(2)}</span>
-              <div class="sale-price">$${itemPrice.toFixed(2)}</div>
-            </div>
-          `
-        }
-
-        const addonItem = document.createElement("div")
-        addonItem.classList.add("addon-summary-item")
-        addonItem.innerHTML = `
-          <span class="addon-summary-name">${addonData.name} ${addon.quantity > 1 ? `(x${addon.quantity})` : ''}</span>
-          <span class="addon-summary-price">${priceHtml}</span>
-        `
-        addonsList.appendChild(addonItem)
-      })
-    } else {
-      addonsSummary.classList.add("hidden")
-    }
-
-    // Add addons total to one-time total
-    state.oneTimeTotal += addonsTotal
-
-    // Update total displays
-    oneTimeTotal.textContent = `$${state.oneTimeTotal.toFixed(2)}`
-    recurringTotal.textContent = state.recurringTotal > 0 ? `$${state.recurringTotal.toFixed(2)}` : '$0'
+    // Update order items
+    updateOrderItems();
     
-    updateCheckoutButton()
+    // Update totals
+    elements.totalToday.textContent = `$${state.totals.today}`;
+    
+    // Show/hide recurring items
+    if (state.totals.monthly > 0) {
+      elements.recurringSubscription.classList.remove('hidden');
+      elements.totalMonthly.textContent = `$${state.totals.monthly}`;
+    } else {
+      elements.recurringSubscription.classList.add('hidden');
+    }
+
+    if (state.totals.delivery > 0) {
+      elements.recurringDelivery.classList.remove('hidden');
+      elements.totalDelivery.textContent = `$${state.totals.delivery}`;
+    } else {
+      elements.recurringDelivery.classList.add('hidden');
+    }
   }
 
-  function updateCheckoutButton() {
-    const hasSubscription = state.selectedSubscription !== null
+  function updateOrderItems() {
+    const container = elements.orderItems;
+    
+    // Clear existing items except hardware
+    const hardwareItem = container.querySelector('.hardware-item');
+    container.innerHTML = '';
+    container.appendChild(hardwareItem);
 
-    if (hasSubscription) {
-      checkoutButton.disabled = false
-      checkoutButton.style.opacity = '1'
+    // Add subscription
+    if (state.selections.subscription.plan) {
+      const subData = window.strivData.subscriptions[state.selections.subscription.plan];
+      addOrderItem(subData.name, `$${state.selections.subscription.price}/mo`);
+    }
+
+    // Add delivery
+    if (state.selections.delivery && state.selections.delivery.frequency && state.selections.delivery.quantity) {
+      const quantity = state.selections.delivery.quantity;
+      const frequency = state.selections.delivery.frequency;
+      const quantityText = quantity === 1 ? 'pair' : 'pairs';
+      const frequencyText = frequency === 3 ? '3 months' : '6 months';
+      const deliveryName = `${quantity} ${quantityText} every ${frequencyText}`;
+      addOrderItem(deliveryName, `$${state.selections.delivery.price}`);
+    }
+
+    // Add addons
+    state.selections.addons.forEach(addon => {
+      addOrderItem(addon.name, `$${addon.price}`);
+    });
+  }
+
+  function addOrderItem(name, price) {
+    const item = document.createElement('div');
+    item.className = 'order-item';
+    item.innerHTML = `
+      <div class="item-info">
+        <span class="item-name">${name}</span>
+      </div>
+      <span class="item-price">${price}</span>
+    `;
+    elements.orderItems.appendChild(item);
+  }
+
+  function animateSelection(element) {
+    element.style.transform = 'scale(0.98)';
+    element.style.transition = 'transform 0.1s ease';
+    
+    setTimeout(() => {
+      element.style.transform = '';
+      element.style.transition = '';
+    }, 100);
+  }
+
+  function showError(message) {
+    elements.errorText.textContent = message;
+    elements.errorToast.classList.remove('hidden');
+    
+    // Auto hide after 5 seconds
+    setTimeout(hideError, 5000);
+  }
+
+  function hideError() {
+    elements.errorToast.classList.add('hidden');
+  }
+
+  function processCheckout() {
+    // Show loading state
+    elements.navComplete.disabled = true;
+    elements.navComplete.querySelector('span').textContent = 'Processing...';
+
+    // Prepare order data
+    const orderData = {
+      hardware: state.selections.hardware,
+      subscription: state.selections.subscription,
+      delivery: state.selections.delivery,
+      addons: state.selections.addons,
+      totals: state.totals
+    };
+
+    // Store in session for potential backend processing
+    try {
+      sessionStorage.setItem('strivOrder', JSON.stringify(orderData));
+    } catch (error) {
+      console.error('Failed to store order data:', error);
+    }
+
+    // Simulate processing
+    setTimeout(() => {
+      elements.navComplete.querySelector('span').textContent = 'Order Complete!';
+      elements.navComplete.style.background = 'var(--brand-success)';
       
-    //   const totalText = state.recurringTotal > 0 
-    //     ? `Start AI Coach Now — $${state.oneTimeTotal.toFixed(2)} + $${state.recurringTotal.toFixed(2)}/mo`
-    //     : `Start AI Coach Now — $${state.oneTimeTotal.toFixed(2)}`
-      
-      const totalText = "Get AI Coached Now!"
-      if (checkoutButtonText) {
-        checkoutButtonText.textContent = totalText
-      } else {
-        checkoutButton.textContent = totalText
-      }
-      
-      // Add pulse animation to draw attention
-      checkoutButton.style.animation = 'pulse 2s ease-in-out 3'
       setTimeout(() => {
-        checkoutButton.style.animation = ''
-      }, 6000)
-      
-    } else {
-      checkoutButton.disabled = true
-      checkoutButton.style.opacity = '0.6'
-      
-      if (checkoutButtonText) {
-        checkoutButtonText.textContent = "Select AI Coach Plan"
-      } else {
-        checkoutButton.textContent = "Select AI Coach Plan"
-      }
-    }
+        alert('Order completed successfully! (Stripe integration pending)');
+        resetCheckout();
+      }, 1000);
+    }, 2000);
   }
 
-  function updateAddonsAvailability() {
-    const hasSubscription = state.selectedSubscription !== null
+  function resetCheckout() {
+    // Reset state
+    state.currentStep = 1;
+    state.selections.subscription = { plan: null, price: 0 };
+    state.selections.delivery = { frequency: null, price: 0 };
+    state.selections.addons = [];
 
-    if (hasSubscription) {
-      noSubscriptionWarning.classList.add("hidden")
-      addonsGrid.classList.remove("hidden")
-    } else {
-      noSubscriptionWarning.classList.remove("hidden")
-      addonsGrid.classList.add("hidden")
-    }
-  }
+    // Reset form
+    elements.planInputs.forEach(input => input.checked = false);
+    elements.frequencyInputs.forEach(input => input.checked = false);
+    elements.quantityInputs.forEach(input => input.checked = false);
+    elements.addonInputs.forEach(input => input.checked = false);
 
-  // Add CSS for shake animation
-  const shakeCSS = `
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
-    }
+    // Reset visual states
+    document.querySelectorAll('.plan-card, .frequency-card, .quantity-option, .addon-item').forEach(card => {
+      card.classList.remove('selected');
+    });
+
+    // Reset UI
+    goToStep(1);
+    updateOrderSummary();
     
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-    }
-  `
-  
-  const style = document.createElement('style')
-  style.textContent = shakeCSS
-  document.head.appendChild(style)
-})
+    // Reset button
+    elements.navComplete.disabled = false;
+    elements.navComplete.style.background = '';
+    elements.navComplete.querySelector('span').textContent = 'Complete Order';
+  }
+
+  // Enhanced mobile experience
+  if ('ontouchstart' in window) {
+    document.body.classList.add('touch-device');
+    
+    // Add touch feedback to interactive elements
+    const touchElements = document.querySelectorAll('.plan-card, .delivery-card, .addon-item, .nav-btn');
+    touchElements.forEach(element => {
+      element.addEventListener('touchstart', () => {
+        element.style.transform = 'scale(0.98)';
+      }, { passive: true });
+      
+      element.addEventListener('touchend', () => {
+        setTimeout(() => {
+          element.style.transform = '';
+        }, 150);
+      }, { passive: true });
+    });
+  }
+});

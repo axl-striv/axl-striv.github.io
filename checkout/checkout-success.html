@@ -9,21 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --brand-color: #231f20;
-      --brand-color-light: rgba(248, 248, 248, 0.7);
-      --brand-color-lighter: rgba(248, 248, 248, 0.4);
+      --brand-color: #1a1a1a;
+      --brand-color-light: rgba(26, 26, 26, 0.7);
+      --brand-color-lighter: rgba(26, 26, 26, 0.4);
       --accent-color: #37ec7f;
       --accent-color-hover: #2dd972;
-      --accent-color-light: rgba(55, 236, 127, 0.2);
-      --background-color: var(--brand-color);
-      --card-background: #2c2829;
-      --text-color-primary: #f8f8f8;
-      --text-color-secondary: var(--brand-color-light);
-      --border-color: #4a4445;
-      --border-color-light: rgba(74, 68, 69, 0.5);
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+      --accent-color-light: rgba(55, 236, 127, 0.1);
+      --background-color: #ffffff;
+      --card-background: #ffffff;
+      --text-color-primary: #1a1a1a;
+      --text-color-secondary: rgba(26, 26, 26, 0.7);
+      --border-color: #e5e7eb;
+      --border-color-light: rgba(229, 231, 235, 0.5);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       --radius: 0.5rem;
       --transition: all 0.2s ease;
       --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -129,7 +129,7 @@
     
     .order-summary-table td {
       padding: 8px 5px;
-      border-top: 1px solid rgba(74, 68, 69, 0.2);
+      border-top: 1px solid var(--border-color-light);
     }
     
     .order-summary-table .item-price {
@@ -155,14 +155,14 @@
     .total-row.final {
       font-weight: 600;
       color: var(--text-color-primary);
-      border-top: 1px solid rgba(74, 68, 69, 0.2);
+      border-top: 1px solid var(--border-color-light);
       margin-top: 0.5rem;
       padding-top: 0.5rem;
     }
     
     .membership-section {
       margin-top: 1.5rem;
-      background-color: rgba(55, 236, 127, 0.05);
+      background-color: var(--accent-color-light);
       padding: 1rem;
       border-radius: var(--radius);
       text-align: left;

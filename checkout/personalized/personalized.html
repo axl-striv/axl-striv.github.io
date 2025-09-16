@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+
+  <title>Your Personalized AI Running Coach - Striv™</title>
+  <link rel="stylesheet" href="personalized.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="container">
+    <div class="header">
+      <h1>Striv™</h1>
+      <p class="header-subtitle">Get your personalized AI running coach plan</p>
+      
+      <!-- Progress indicator -->
+      <div class="progress-steps">
+        <div class="step active" data-step="1">
+          <div class="step-number">1</div>
+          <div class="step-label">Training Goals</div>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-number">2</div>
+          <div class="step-label">Weekly Mileage</div>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-number">3</div>
+          <div class="step-label">Your Plan</div>
+        </div>
+        <div class="step" data-step="4">
+          <div class="step-number">4</div>
+          <div class="step-label">Checkout</div>
+        </div>
+      </div>
+    </div>
+
+    <form id="personalized-checkout-form">
+      <!-- Step 1: Training Goals -->
+      <section id="step-1" class="step-section active">
+        <div class="card">
+          <div class="section-header">
+            <h2>What do you train for?</h2>
+            <p class="section-subtitle">Help us understand your running goals so we can recommend the perfect plan</p>
+          </div>
+          
+          <div class="training-goals-grid">
+            <!-- General Fitness -->
+            <div class="goal-card" data-goal="fitness">
+              <div class="goal-icon">🏃‍♂️</div>
+              <div class="goal-content">
+                <h3>General Fitness</h3>
+                <p>Stay healthy, build endurance, and enjoy running</p>
+                <ul class="goal-features">
+                  <li>• 3-5 runs per week</li>
+                  <li>• Focus on consistency</li>
+                  <li>• Injury prevention</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Race Training -->
+            <div class="goal-card" data-goal="race">
+              <div class="goal-icon">🏆</div>
+              <div class="goal-content">
+                <h3>Race Training</h3>
+                <p>Training for 5K, 10K, half marathon, or marathon</p>
+                <ul class="goal-features">
+                  <li>• Structured training plans</li>
+                  <li>• Performance optimization</li>
+                  <li>• Race-day preparation</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Performance -->
+            <div class="goal-card" data-goal="performance">
+              <div class="goal-icon">⚡</div>
+              <div class="goal-content">
+                <h3>Performance</h3>
+                <p>Serious training to improve speed, efficiency, and times</p>
+                <ul class="goal-features">
+                  <li>• Advanced analytics</li>
+                  <li>• Biomechanical optimization</li>
+                  <li>• Professional insights</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Recovery/Injury -->
+            <div class="goal-card" data-goal="recovery">
+              <div class="goal-icon">🩺</div>
+              <div class="goal-content">
+                <h3>Recovery & Injury Prevention</h3>
+                <p>Getting back to running or preventing future injuries</p>
+                <ul class="goal-features">
+                  <li>• Gentle progression</li>
+                  <li>• PT guidance</li>
+                  <li>• Movement analysis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 2: Weekly Mileage -->
+      <section id="step-2" class="step-section hidden">
+        <div class="card">
+          <div class="section-header">
+            <h2>How many miles do you run per week?</h2>
+            <p class="section-subtitle">This helps us calibrate your coaching intensity and insole replacement needs</p>
+          </div>
+          
+          <div class="mileage-options">
+            <div class="mileage-card" data-mileage="beginner">
+              <div class="mileage-range">0-10 miles</div>
+              <div class="mileage-label">Beginner</div>
+              <div class="mileage-description">Just starting out or casual running</div>
+            </div>
+
+            <div class="mileage-card" data-mileage="intermediate">
+              <div class="mileage-range">10-25 miles</div>
+              <div class="mileage-label">Intermediate</div>
+              <div class="mileage-description">Regular runner, 3-4 times per week</div>
+            </div>
+
+            <div class="mileage-card" data-mileage="advanced">
+              <div class="mileage-range">25-50 miles</div>
+              <div class="mileage-label">Advanced</div>
+              <div class="mileage-description">Serious runner, daily training</div>
+            </div>
+
+            <div class="mileage-card" data-mileage="elite">
+              <div class="mileage-range">50+ miles</div>
+              <div class="mileage-label">Elite</div>
+              <div class="mileage-description">Competitive or ultra-distance runner</div>
+            </div>
+          </div>
+
+          <!-- Custom Mileage Input -->
+          <div class="custom-mileage">
+            <label for="custom-miles">Or enter your exact weekly mileage:</label>
+            <div class="custom-input">
+              <input type="number" id="custom-miles" placeholder="e.g., 15" min="0" max="200">
+              <span>miles per week</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 3: Recommended Plan -->
+      <section id="step-3" class="step-section hidden">
+        <div class="card">
+          <div class="section-header">
+            <h2>Your Recommended Plan</h2>
+            <p class="section-subtitle">Based on your goals and training volume, here's what we suggest</p>
+          </div>
+          
+          <!-- AI Recommendation Display -->
+          <div class="recommendation-card">
+            <div class="recommendation-header">
+              <div class="recommendation-badge">AI Recommended</div>
+              <h3 id="recommended-plan-title">Loading your plan...</h3>
+              <p id="recommended-plan-subtitle">Analyzing your training profile...</p>
+            </div>
+
+            <div class="recommendation-content">
+              <!-- Hardware -->
+              <div class="plan-section">
+                <h4>📱 Smart Hardware</h4>
+                <div class="plan-item">
+                  <span class="item-name">Striv Smart Sensor Kit</span>
+                  <span class="item-price">$149</span>
+                </div>
+                <p class="plan-description">250+ sensors for real-time running analytics</p>
+              </div>
+
+              <!-- AI Coaching -->
+              <div class="plan-section">
+                <h4 id="ai-section-title">🧠 AI Coaching</h4>
+                <div class="plan-item">
+                  <span class="item-name" id="ai-plan-name">Essential AI Coach</span>
+                  <span class="item-price" id="ai-plan-price">$5.99/mo</span>
+                </div>
+                <div id="ai-features" class="plan-features">
+                  <!-- Features will be populated by JavaScript -->
+                </div>
+              </div>
+
+              <!-- Insole Delivery -->
+              <div class="plan-section">
+                <h4>📦 Fresh Insoles</h4>
+                <div class="plan-item">
+                  <span class="item-name" id="insole-plan-name">Standard Delivery</span>
+                  <span class="item-price" id="insole-plan-price">$20 every 6 months</span>
+                </div>
+                <div class="plan-description" id="insole-description">
+                  2 pairs delivered every 6 months based on your training volume
+                </div>
+              </div>
+
+              <!-- Total -->
+              <div class="plan-total">
+                <div class="total-breakdown">
+                  <div class="total-item">
+                    <span>Today's payment:</span>
+                    <span id="today-total">$149</span>
+                  </div>
+                  <div class="total-item">
+                    <span>Monthly subscription:</span>
+                    <span id="monthly-total">$5.99</span>
+                  </div>
+                  <div class="total-item">
+                    <span>Insole delivery:</span>
+                    <span id="insole-total">$20 every 6 months</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Why This Plan -->
+              <div class="recommendation-reason">
+                <h5>Why we recommend this plan:</h5>
+                <div id="recommendation-explanation">
+                  <!-- Explanation will be populated by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Edit Plan Option -->
+          <div class="edit-plan-section">
+            <button type="button" id="edit-plan-btn" class="edit-plan-button">
+              ✏️ Customize This Plan
+            </button>
+            <p class="edit-plan-note">Want to adjust your AI coaching level or insole delivery frequency?</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 3b: Edit Plan (shown when user clicks edit) -->
+      <section id="step-3-edit" class="step-section hidden">
+        <div class="card">
+          <div class="section-header">
+            <h2>Customize Your Plan</h2>
+            <p class="section-subtitle">Adjust your AI coaching level and insole delivery to fit your needs</p>
+          </div>
+
+          <!-- AI Coaching Options -->
+          <div class="customization-section">
+            <h3>🧠 AI Coaching Level</h3>
+            <div class="ai-options">
+              <div class="ai-option" data-ai="essential">
+                <div class="option-header">
+                  <h4>Essential AI Coach</h4>
+                  <span class="option-price">$5.99/mo</span>
+                </div>
+                <ul class="option-features">
+                  <li>Real-time feedback during runs</li>
+                  <li>Basic performance analytics</li>
+                  <li>Weekly summaries</li>
+                </ul>
+              </div>
+
+              <div class="ai-option" data-ai="full">
+                <div class="option-header">
+                  <h4>Full AI Coach</h4>
+                  <span class="option-price">$12.99/mo</span>
+                  <span class="recommended-badge">Recommended for you</span>
+                </div>
+                <ul class="option-features">
+                  <li>Everything in Essential +</li>
+                  <li>Advanced biomechanical analysis</li>
+                  <li>PT consultations</li>
+                  <li>Shoe recommendations</li>
+                  <li>Weekly AI summaries</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Insole Delivery Options -->
+          <div class="customization-section">
+            <h3>📦 Insole Delivery</h3>
+            <div class="insole-options">
+              <div class="insole-option" data-insole="quarterly">
+                <div class="option-header">
+                  <h4>Quarterly Delivery</h4>
+                  <span class="option-price">$25 every 3 months</span>
+                </div>
+                <div class="option-details">
+                  <span class="delivery-amount">2 pairs every 3 months</span>
+                  <span class="delivery-note">Maximum freshness for high-volume training</span>
+                </div>
+              </div>
+
+              <div class="insole-option" data-insole="standard">
+                <div class="option-header">
+                  <h4>Standard Delivery</h4>
+                  <span class="option-price">$20 every 6 months</span>
+                  <span class="recommended-badge">Recommended for you</span>
+                </div>
+                <div class="option-details">
+                  <span class="delivery-amount">2 pairs every 6 months</span>
+                  <span class="delivery-note">Perfect balance for most runners</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated Totals -->
+          <div class="updated-totals">
+            <h4>Updated Plan Total:</h4>
+            <div class="total-breakdown">
+              <div class="total-item">
+                <span>Today's payment:</span>
+                <span id="custom-today-total">$149</span>
+              </div>
+              <div class="total-item">
+                <span>Monthly subscription:</span>
+                <span id="custom-monthly-total">$5.99</span>
+              </div>
+              <div class="total-item">
+                <span>Insole delivery:</span>
+                <span id="custom-insole-total">$20 every 6 months</span>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" id="save-customization" class="save-button">
+            Save Customized Plan
+          </button>
+        </div>
+      </section>
+
+      <!-- Step 4: Final Checkout -->
+      <section id="step-4" class="step-section hidden">
+        <div class="card">
+          <div class="section-header">
+            <h2>Complete Your Order</h2>
+            <p class="section-subtitle">Your personalized AI running coach system is ready!</p>
+          </div>
+
+          <!-- Final Order Summary -->
+          <div class="final-order-summary">
+            <div class="order-header">
+              <h3>Order Summary</h3>
+              <div class="training-summary">
+                <span class="summary-label">Training Goal:</span>
+                <span id="final-goal" class="summary-value">General Fitness</span>
+              </div>
+              <div class="training-summary">
+                <span class="summary-label">Weekly Mileage:</span>
+                <span id="final-mileage" class="summary-value">10-25 miles</span>
+              </div>
+            </div>
+
+            <div class="order-items">
+              <div class="order-item">
+                <span class="item-name">Striv Smart Sensor Kit</span>
+                <span class="item-price">$149</span>
+              </div>
+              <div class="order-item">
+                <span class="item-name" id="final-ai-name">Essential AI Coach</span>
+                <span class="item-price" id="final-ai-price">$5.99/mo</span>
+              </div>
+              <div class="order-item">
+                <span class="item-name" id="final-insole-name">Standard Insole Delivery</span>
+                <span class="item-price" id="final-insole-price">$20 every 6 months</span>
+              </div>
+            </div>
+
+            <div class="order-totals">
+              <div class="total-item major">
+                <span>Today's Total:</span>
+                <span id="final-today-total">$149</span>
+              </div>
+              <div class="total-item">
+                <span>Then monthly:</span>
+                <span id="final-monthly-total">$5.99</span>
+              </div>
+              <div class="total-item">
+                <span>Insole delivery:</span>
+                <span id="final-insole-total">$20 every 6 months</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout Button -->
+          <button type="submit" id="final-checkout-btn" class="checkout-button">
+            <span class="button-text">Complete Order - Start My AI Coaching</span>
+            <span class="button-icon">🚀</span>
+          </button>
+
+          <div class="checkout-security">
+            <span class="security-icon">🔒</span>
+            <span>Secure checkout powered by Stripe</span>
+          </div>
+
+          <!-- Back to Edit -->
+          <button type="button" id="back-to-edit" class="back-button">
+            ← Go Back to Customize Plan
+          </button>
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <div class="navigation-container">
+        <button type="button" id="prev-button" class="nav-button prev-button hidden">
+          <span class="button-icon">←</span>
+          <span class="button-text">Previous</span>
+        </button>
+        
+        <button type="button" id="next-button" class="nav-button next-button">
+          <span class="button-text">Continue</span>
+          <span class="button-icon">→</span>
+        </button>
+      </div>
+
+      <div id="error-message" class="error-message hidden" role="alert">
+        Please make a selection to continue
+      </div>
+    </form>
+  </main>
+
+  <script src="personalized.js"></script>
+</body>
+</html>
