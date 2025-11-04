@@ -589,6 +589,151 @@
             margin-top: 15px;
             margin-bottom: 15px;
         }
+
+        /* Setup Guide Styles */
+        .setup-guide {
+            margin: 30px 0;
+        }
+
+        .setup-viewer {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+        }
+
+        .setup-track {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            touch-action: pan-y;
+            cursor: grab;
+        }
+
+        .setup-track:active {
+            cursor: grabbing;
+        }
+
+        .setup-step {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .setup-step img {
+            max-width: 100%;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            pointer-events: none;
+        }
+
+        .setup-step h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--white);
+            text-align: center;
+            margin: 0 0 12px 0;
+        }
+
+        .setup-step p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.05rem;
+            color: var(--text-color);
+            text-align: center;
+            line-height: 1.7;
+            max-width: 550px;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        /* Step indicators */
+        .setup-progress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .setup-progress .step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(55, 236, 127, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .setup-progress .step-dot.active {
+            background-color: var(--accent-color);
+            box-shadow: 0 0 8px rgba(55, 236, 127, 0.5);
+        }
+
+        .setup-progress .step-dot:hover {
+            background-color: rgba(55, 236, 127, 0.4);
+        }
+
+        /* Step counter */
+        .setup-counter {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        /* Navigation hint */
+        .setup-hint {
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .setup-step h3 {
+                font-size: 1.2rem;
+            }
+
+            .setup-step p {
+                font-size: 0.95rem;
+            }
+
+            .setup-step img {
+                max-height: 300px;
+            }
+
+            .setup-viewer {
+                padding: 30px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .setup-step img {
+                max-height: 250px;
+            }
+
+            .setup-viewer {
+                padding: 20px 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -610,8 +755,9 @@
         <div class="sidebar">
             <h3>Quick Navigation</h3>
             <!-- <a href="#introduction" class="nav-link">Introduction</a> -->
-            <a href="#getting-started" class="nav-link">Getting Started</a>
             <a href="#using-insole" class="nav-link">Start Using Your Insole</a>
+
+            <a href="#getting-started" class="nav-link">Getting Started</a>
             <a href="#connecting" class="nav-link">Connecting & Setup</a>
             <a href="#run-now" class="nav-link">Run Now, Sync Later</a>
             <!-- <a href="#calibration" class="nav-link">Calibration Process</a> -->
@@ -630,13 +776,87 @@
                 <p>Welcome to your Striv Smart Insole! This advanced wearable device provides real-time biomechanical analysis of your running and walking gait. The insole contains pressure sensors, motion sensors, and environmental sensors to deliver comprehensive data about your movement patterns.</p>
             </section> -->
 
+            <section id="using-insole" class="section">
+                <h2>Start Using Your Insole</h2>
+
+                <div class="setup-guide">
+                    <div class="setup-counter" id="setupCounter">Step 1 of 8</div>
+                    <div class="setup-viewer">
+                        <div class="setup-track" id="setupTrack">
+                            <!-- Step 1 -->
+                            <div class="setup-step">
+                                <img src="./assets_webp/onboard_h_1.webp" alt="Slide Clip Under Laces">
+                                <h3>Slide Clip Under Laces</h3>
+                                <p>Position the wider side closer to your ankle.</p>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="setup-step">
+                                <img src="./assets_webp/onboard_h_2.webp" alt="Attach Pod to Clip">
+                                <h3>Attach Pod to Clip</h3>
+                                <p>Snap the pod onto the clip until you feel it lock into place. You will hear a click when it is secure.</p>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="setup-step">
+                                <img src="./assets_webp/onboard_h_3.webp" alt="Attach Battery to Pod">
+                                <h3>Attach Battery to Pod</h3>
+                                <p>Align battery with pod and push it in until you hear a click.</p>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="setup-step">
+                                <img src="./assets_webp/onboard_h_4.webp" alt="Remove Your Current Insole">
+                                <h3>Remove Your Current Insole</h3>
+                                <p>Take out your shoe's existing insole to make room for the sensor.</p>
+                            </div>
+
+                            <!-- Step 5 -->
+                            <div class="setup-step">
+                                <img src="./assets_webp/onboard_h_5.webp" alt="Place Sensors Under Insole">
+                                <h3>Place Sensors Under Insole</h3>
+                                <p>Position sensors flat on the shoe bottom, then press the insole firmly on top.</p>
+                            </div>
+
+                            <!-- Step 6 -->
+                            <div class="setup-step">
+                                <img src="./assets_webp/onboard_h_6.webp" alt="Thread Cable Over Laces">
+                                <h3>Thread Cable Over Laces</h3>
+                                <p>Guide the cable over your tongue and under the laces. For shoes without a tongue, thread through the back.</p>
+                            </div>
+
+                            <!-- Step 7 -->
+                            <div class="setup-step">
+                                <img src="./assets_webp/onboard_h_7.webp" alt="Connect Sensor to Pod">
+                                <h3>Connect Sensor to Pod</h3>
+                                <p>Plug the sensor cable into the pod until it locks in place.</p>
+                            </div>
+
+                            <!-- Step 8 -->
+                            <div class="setup-step">
+                                <img src="./assets_webp/onboard_h_8.webp" alt="After Your Run: Disconnect Battery">
+                                <h3>After Your Run: Disconnect Battery</h3>
+                                <p>Unplug the battery from the pod to maximize battery life.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Dots -->
+                    <div class="setup-progress" id="setupProgress"></div>
+
+                    <!-- <div class="setup-hint">Swipe or drag to navigate • Click dots to jump to step</div> -->
+                </div>
+
+            </section>
+            
+
 
             <section id="getting-started" class="section">
                 <h2>Getting Started</h2>
                 
                 <h3>Helpful Resources</h3>
                 <ul>
-                    <li><a href="https://www.youtube.com/watch?v=UgBAaWpHYbE" target="_blank">Hardware Setup Video</a> watch before your first run</li>
+                    <!-- <li><a href="https://www.youtube.com/watch?v=UgBAaWpHYbE" target="_blank">Hardware Setup Video</a> watch before your first run</li> -->
                     <li><a href="https://testflight.apple.com/join/8S7HGQBe" target="_blank">iOS Early Access</a> Join our iOS early access group</li>
                     <li><a href="https://play.google.com/apps/testing/com.runningcapture.android" target="_blank">Android App</a> – Access Open Testing for Android</li>
                     <li>For most updated Android version, reach out to <a href="mailto:axl@striv.run">axl@striv.run</a> for internal testing version</li>
@@ -654,36 +874,7 @@
                 
             </section>
           
-            
-            <section id="using-insole" class="section">
-                <h2>Start Using Your Insole</h2>
-                
-                <h3>Setting Up</h3>
 
-                <ol>
-                    <img src="./images/instruction_set_up.webp" alt="Contents of the Striv Smart Insole package" style="width: 90%; height: auto; margin: 20px 0; border-radius: 8px;">
-                    <ul>
-                        <li>Remove you original insole and tape Striv insole onto the back of the insole</li>
-                        <li>Insert the insole sensors back into the shoes and thread cable over the tongue of the shoe <strong style="color: red;">*make sure there is no twisting of cable inside your shoes</strong></li>
-
-                        <li>Thread the clip through your shoelace, then attach your Striv pod and battery pod</li>
-                        <li>Put in your foot <strong style="color: red;">*before plugging sensor into Striv pod</strong></li>
-                    </ul>
-                </ol>
-
-                
-                
-                <h3>After Running</h3>
-                    <ol>
-                    <img src="./images/instruction_remove.webp" alt="Contents of the Striv Smart Insole package" style="width: 90%; height: auto; margin: 20px 0; border-radius: 8px;">
-                    <ul>
-                        <li>Unplug sensor from Striv pod <strong style="color: red;">*before taking off your shoes</strong></li>
-                        <li>If unused for over 2 days, remove battery pod for longer battery life</li>
-                    </ul>
-                </ol>
-                
-            </section>
-            
             <section id="connecting" class="section">
                 <h2>Connecting Your Insole</h2>
                 
@@ -1105,6 +1296,137 @@
     </footer>
     
     <script>
+        // Setup Guide
+        document.addEventListener('DOMContentLoaded', function() {
+            const setupTrack = document.getElementById('setupTrack');
+            const setupProgress = document.getElementById('setupProgress');
+            const setupCounter = document.getElementById('setupCounter');
+            const steps = document.querySelectorAll('.setup-step');
+            const totalSteps = steps.length;
+            let currentStep = 0;
+
+            // Create progress dots
+            for (let i = 0; i < totalSteps; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'step-dot';
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToStep(i));
+                setupProgress.appendChild(dot);
+            }
+
+            const dots = document.querySelectorAll('.step-dot');
+
+            function updateSetup() {
+                const offset = -currentStep * 100;
+                setupTrack.style.transform = `translateX(${offset}%)`;
+
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentStep);
+                });
+
+                // Update counter
+                setupCounter.textContent = `Step ${currentStep + 1} of ${totalSteps}`;
+            }
+
+            function goToStep(index) {
+                currentStep = Math.max(0, Math.min(index, totalSteps - 1));
+                updateSetup();
+            }
+
+            function nextStep() {
+                if (currentStep < totalSteps - 1) {
+                    currentStep++;
+                    updateSetup();
+                }
+            }
+
+            function previousStep() {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateSetup();
+                }
+            }
+
+            // Touch/Swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            setupTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+            }, { passive: true });
+
+            setupTrack.addEventListener('touchmove', (e) => {
+                touchEndX = e.touches[0].clientX;
+            }, { passive: true });
+
+            setupTrack.addEventListener('touchend', () => {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextStep();
+                    } else {
+                        previousStep();
+                    }
+                }
+            });
+
+            // Mouse drag support
+            let mouseStartX = 0;
+            let isMouseDragging = false;
+
+            setupTrack.addEventListener('mousedown', (e) => {
+                mouseStartX = e.clientX;
+                isMouseDragging = true;
+            });
+
+            setupTrack.addEventListener('mousemove', (e) => {
+                if (!isMouseDragging) return;
+                const mouseDiff = e.clientX - mouseStartX;
+                // Optional: Add visual feedback here
+            });
+
+            setupTrack.addEventListener('mouseup', (e) => {
+                if (!isMouseDragging) return;
+                isMouseDragging = false;
+
+                const swipeThreshold = 50;
+                const diff = mouseStartX - e.clientX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextStep();
+                    } else {
+                        previousStep();
+                    }
+                }
+            });
+
+            setupTrack.addEventListener('mouseleave', () => {
+                isMouseDragging = false;
+            });
+
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                const setupSection = document.getElementById('using-insole');
+                const rect = setupSection.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+                if (isVisible) {
+                    if (e.key === 'ArrowLeft') {
+                        previousStep();
+                    } else if (e.key === 'ArrowRight') {
+                        nextStep();
+                    }
+                }
+            });
+
+            // Initialize
+            updateSetup();
+        });
+
         // Mobile navigation toggle
         document.addEventListener('DOMContentLoaded', function() {
             // Create mobile navigation toggle button
