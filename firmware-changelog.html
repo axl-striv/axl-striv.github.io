@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firmware Updates - Striv Smart Insole</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-color: #231f20;
+            --accent-color: #37ec7f;
+            --text-color: #f5f5f5;
+            --text-dark: #231f20;
+            --light-gray: #333333;
+            --dark-gray: #1a1a1a;
+            --white: #ffffff;
+            --off-white: #f0f0f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--brand-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            font-weight: 300;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 10px;
+            color: var(--white);
+        }
+
+        .release-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        p, li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        ul { margin-left: 25px; margin-bottom: 20px; }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        a:hover { text-decoration: underline; }
+
+        .release {
+            margin-bottom: 30px;
+            padding: 25px 30px;
+            background-color: var(--dark-gray);
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .release::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-color);
+            opacity: 0.7;
+        }
+
+        .release.recommended::before { opacity: 1; }
+
+        .recommended-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: rgba(55, 236, 127, 0.2);
+            color: var(--accent-color);
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .intro {
+            background-color: rgba(55, 236, 127, 0.08);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px 25px;
+            border-radius: 6px;
+            margin-bottom: 35px;
+        }
+
+        .intro p { margin-bottom: 8px; }
+        .intro p:last-child { margin-bottom: 0; }
+
+        footer {
+            margin-top: 50px;
+            padding: 25px 0;
+            border-top: 1px solid var(--light-gray);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            .logo { font-size: 2.2rem; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.2rem; }
+            .release { padding: 20px; }
+            body { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">STRIV</div>
+        <h1>Firmware Updates</h1>
+    </header>
+
+    <main>
+        <div class="intro">
+            <p>Release notes for Striv Smart Insole firmware. Updates are delivered over-the-air through the Striv app — open the app, go to <strong>Settings → Insole</strong>, and follow the firmware update prompt.</p>
+            <p>If you have questions, contact <a href="mailto:axl@striv.run">axl@striv.run</a>.</p>
+        </div>
+
+        <h2>Latest Releases</h2>
+
+        <article class="release recommended">
+            <div class="release-date">2026-04-16</div>
+            <h3>v1.2.3 <span class="recommended-tag">Recommended</span></h3>
+            <p>The most polished release in the 1.2 series. Several improvements roll up at once:</p>
+            <ul>
+                <li><strong>More reliable post-run sync.</strong> When your insole uploads buffered runs after a workout, every step's full data now comes through cleanly — no missing fields if the connection mode changed mid-run.</li>
+                <li><strong>Smarter step detection.</strong> The algorithm that decides where each step starts and ends has been rewritten for cleaner, more consistent results across different running styles.</li>
+                <li><strong>Stability fixes</strong> across the main loop, sensors, and Bluetooth state machine.</li>
+            </ul>
+        </article>
+
+        <article class="release">
+            <div class="release-date">2026-04-07</div>
+            <h3>v1.2.2</h3>
+            <p>Maintenance release. Internal version-string alignment only — no user-visible change versus 1.2.1. If you're on 1.2.1, you can skip ahead to 1.2.3.</p>
+        </article>
+
+        <article class="release">
+            <div class="release-date">2026-04-03</div>
+            <h3>v1.2.1</h3>
+            <p>Bluetooth stability fix.</p>
+            <ul>
+                <li>Fixed two latent bugs that could cause occasional disconnects or instability during long sessions: a dangling pointer in the Bluetooth advertising name and a connection reference-count leak.</li>
+            </ul>
+            <p>Recommended over 1.2.0 for everyone.</p>
+        </article>
+
+        <article class="release">
+            <div class="release-date">2026-04-02</div>
+            <h3>v1.2.0</h3>
+            <p>Production-grade hardening.</p>
+            <ul>
+                <li><strong>Safer firmware updates.</strong> Added a safety timeout to the firmware update flow so a stalled update can't leave the insole in a stuck state.</li>
+                <li><strong>Smoother sensor calibration.</strong> The pressure-sensor auto-tuning now adjusts more gradually, reducing noise during the warm-up window.</li>
+                <li><strong>Hardware protection enabled.</strong> Production-grade firmware-readout protection is now active.</li>
+            </ul>
+        </article>
+
+        <article class="release">
+            <div class="release-date">2026-03-28</div>
+            <h3>v1.1.9</h3>
+            <ul>
+                <li>Step-detection algorithm tuning for more consistent stride boundaries.</li>
+            </ul>
+        </article>
+    </main>
+
+    <footer>
+        <p>For older firmware versions, see the <a href="https://github.com/axl-striv/axl-striv.github.io/tree/main/firmware">firmware archive</a>.</p>
+        <p style="margin-top: 10px;"><a href="manual.html">User Manual</a> · <a href="mailto:axl@striv.run">Support</a></p>
+    </footer>
+</body>
+</html>
