@@ -185,18 +185,8 @@
         <h2>1.x — Production line</h2>
 
         <article class="release recommended">
-            <div class="release-date">2026-05-01</div>
-            <h3>v1.2.4 <span class="recommended-tag">Recommended</span></h3>
-            <p>Bluetooth identity reliability fix.</p>
-            <ul>
-                <li><strong>More reliable Bluetooth identity.</strong> The insole now consistently advertises as <code>STRIV_LEFT</code> or <code>STRIV_RIGHT</code> across all Bluetooth scanners and operating systems. Previously, some clients could occasionally see the wrong side label or a generic name due to how the firmware exposed its name to the Bluetooth stack.</li>
-                <li>This is the first Striv firmware shipped with hardware-validated DFU round-trip — the upgrade from v1.2.3 → v1.2.4 (and rollback v1.2.4 → v1.2.3) was verified end-to-end on real hardware before publish.</li>
-            </ul>
-        </article>
-
-        <article class="release">
             <div class="release-date">2026-04-16</div>
-            <h3>v1.2.3</h3>
+            <h3>v1.2.3 <span class="recommended-tag">Recommended</span></h3>
             <p>The most polished release in the 1.2 series. Several improvements roll up at once:</p>
             <ul>
                 <li><strong>More reliable post-run sync.</strong> When your insole uploads buffered runs after a workout, every step's full data now comes through cleanly — no missing fields if the connection mode changed mid-run.</li>
@@ -247,18 +237,6 @@
             and pilot users. <strong>If your insole is from the standard 1.x line,
             do not install these — they're for different hardware.</strong>
         </p>
-
-        <article class="release">
-            <div class="release-date">2026-05-01</div>
-            <h3>v2.0.6</h3>
-            <p>Catch-up release: brings the 2.x line up to 1.2.3-equivalent on the SPI hardware, plus the same Bluetooth identity reliability fix as v1.2.4.</p>
-            <ul>
-                <li><strong>Same BLE identity fix as v1.2.4</strong> — consistent <code>STRIV_LEFT</code> / <code>STRIV_RIGHT</code> across all scanners.</li>
-                <li><strong>All paired application-layer improvements</strong> that landed on the shared codebase between 2.0.5 and now: post-run sync reliability, gait analysis rewrite, miscellaneous bug fixes.</li>
-                <li><strong>Pot-direction fix</strong> specific to SPI hardware (was inverted on some boards).</li>
-                <li>Validated end-to-end via hardware DFU round-trip (2.0.5 ↔ 2.0.6 upgrade and rollback both verified).</li>
-            </ul>
-        </article>
 
         <article class="release">
             <div class="release-date">2026-03-30</div>
