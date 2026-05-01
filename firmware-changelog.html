@@ -178,14 +178,25 @@
     <main>
         <div class="intro">
             <p>Release notes for Striv Smart Insole firmware. Updates are delivered over-the-air through the Striv app — open the app, go to <strong>Settings → Insole</strong>, and follow the firmware update prompt.</p>
+            <p>Most users are on the <strong>1.x</strong> production line. If you're on the <strong>2.x early-access SPI hardware</strong> (pilot program), see the second section below.</p>
             <p>If you have questions, contact <a href="mailto:axl@striv.run">axl@striv.run</a>.</p>
         </div>
 
-        <h2>Latest Releases</h2>
+        <h2>1.x — Production line</h2>
 
         <article class="release recommended">
+            <div class="release-date">2026-05-01</div>
+            <h3>v1.2.4 <span class="recommended-tag">Recommended</span></h3>
+            <p>Bluetooth identity reliability fix.</p>
+            <ul>
+                <li><strong>More reliable Bluetooth identity.</strong> The insole now consistently advertises as <code>STRIV_LEFT</code> or <code>STRIV_RIGHT</code> across all Bluetooth scanners and operating systems. Previously, some clients could occasionally see the wrong side label or a generic name due to how the firmware exposed its name to the Bluetooth stack.</li>
+                <li>This is the first Striv firmware shipped with hardware-validated DFU round-trip — the upgrade from v1.2.3 → v1.2.4 (and rollback v1.2.4 → v1.2.3) was verified end-to-end on real hardware before publish.</li>
+            </ul>
+        </article>
+
+        <article class="release">
             <div class="release-date">2026-04-16</div>
-            <h3>v1.2.3 <span class="recommended-tag">Recommended</span></h3>
+            <h3>v1.2.3</h3>
             <p>The most polished release in the 1.2 series. Several improvements roll up at once:</p>
             <ul>
                 <li><strong>More reliable post-run sync.</strong> When your insole uploads buffered runs after a workout, every step's full data now comes through cleanly — no missing fields if the connection mode changed mid-run.</li>
@@ -226,6 +237,54 @@
             <h3>v1.1.9</h3>
             <ul>
                 <li>Step-detection algorithm tuning for more consistent stride boundaries.</li>
+            </ul>
+        </article>
+
+        <h2 style="margin-top: 50px;">2.x — Early-access SPI hardware (pilot)</h2>
+        <p style="opacity: 0.85; margin-bottom: 25px;">
+            The 2.x line targets a newer generation of hardware (SPI-based pressure
+            sensing, different IMU). It's currently distributed to internal testers
+            and pilot users. <strong>If your insole is from the standard 1.x line,
+            do not install these — they're for different hardware.</strong>
+        </p>
+
+        <article class="release">
+            <div class="release-date">2026-05-01</div>
+            <h3>v2.0.6</h3>
+            <p>Catch-up release: brings the 2.x line up to 1.2.3-equivalent on the SPI hardware, plus the same Bluetooth identity reliability fix as v1.2.4.</p>
+            <ul>
+                <li><strong>Same BLE identity fix as v1.2.4</strong> — consistent <code>STRIV_LEFT</code> / <code>STRIV_RIGHT</code> across all scanners.</li>
+                <li><strong>All paired application-layer improvements</strong> that landed on the shared codebase between 2.0.5 and now: post-run sync reliability, gait analysis rewrite, miscellaneous bug fixes.</li>
+                <li><strong>Pot-direction fix</strong> specific to SPI hardware (was inverted on some boards).</li>
+                <li>Validated end-to-end via hardware DFU round-trip (2.0.5 ↔ 2.0.6 upgrade and rollback both verified).</li>
+            </ul>
+        </article>
+
+        <article class="release">
+            <div class="release-date">2026-03-30</div>
+            <h3>v2.0.5</h3>
+            <ul>
+                <li>Continues 2.0.4 gait detection tuning on SPI hardware.</li>
+            </ul>
+        </article>
+
+        <article class="release">
+            <div class="release-date">2026-03-28</div>
+            <h3>v2.0.4</h3>
+            <ul>
+                <li>Step-detection threshold retune to match the new 416 Hz IMU sampling and shoe-baseline subtraction.</li>
+            </ul>
+        </article>
+
+        <article class="release">
+            <div class="release-date">2026-03-27</div>
+            <h3>v2.0.2 / v2.0.3</h3>
+            <p>First 2.x releases — foundational changes for SPI hardware. Install v2.0.3 directly (skip v2.0.2 — same-day hotfix on top).</p>
+            <ul>
+                <li><strong>Higher-resolution IMU.</strong> Accelerometer sampling raised to 416 Hz (up from 208 Hz); peak-acceleration selection rewritten for physically coherent values.</li>
+                <li><strong>Shoe baseline learning.</strong> Per-cell pressure baseline learned automatically during swing phase and subtracted from output — gives cleaner pressure / center-of-pressure data.</li>
+                <li><strong>Touchdown / takeoff detection</strong> retuned for SPI hardware response.</li>
+                <li><strong>OTA path enabled</strong> end-to-end (mcumgr).</li>
             </ul>
         </article>
     </main>
