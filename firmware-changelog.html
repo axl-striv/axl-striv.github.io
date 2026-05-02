@@ -184,6 +184,17 @@
 
         <h2>1.x — Production line</h2>
 
+        <article class="release">
+            <div class="release-date">2026-05-02</div>
+            <h3>v1.2.5 <span class="recommended-tag" style="background-color: rgba(255,200,0,0.2); color: #ffc800;">Experimental</span></h3>
+            <p><strong>Hotfix for OTA upgrade hang.</strong> If you upgraded from v1.2.3 or v1.2.4 and had to power-cycle your insole after the update completed, this is the fix.</p>
+            <ul>
+                <li><strong>OTA reliability fix.</strong> After a firmware update, the insole now marks itself as permanent before reconnecting — the app's confirmation step becomes a fast no-op instead of potentially timing out during internal flash housekeeping.</li>
+                <li>No other behavioral changes.</li>
+            </ul>
+            <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 8px;"><em>Experimental build — staged for testing, not yet promoted to general release.</em></p>
+        </article>
+
         <article class="release recommended">
             <div class="release-date">2026-04-16</div>
             <h3>v1.2.3 <span class="recommended-tag">Recommended</span></h3>
@@ -237,6 +248,17 @@
             and pilot users. <strong>If your insole is from the standard 1.x line,
             do not install these — they're for different hardware.</strong>
         </p>
+
+        <article class="release">
+            <div class="release-date">2026-05-02</div>
+            <h3>v2.0.7 <span class="recommended-tag" style="background-color: rgba(255,200,0,0.2); color: #ffc800;">Experimental</span></h3>
+            <p><strong>Hotfix for OTA upgrade hang</strong> (same root cause as 1.2.5 above). After the 2.0.5→2.0.6 upgrade, users had to power-cycle after OTA completed. v2.0.7 eliminates the hang by confirming the new image permanent before Bluetooth starts up.</p>
+            <ul>
+                <li>OTA confirm-write now resolves instantly post-reconnect instead of racing against internal flash operations.</li>
+                <li>Validated: 3/3 OTA rounds via macOS, 1/1 via Striv app on Android. No replug required.</li>
+            </ul>
+            <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 8px;"><em>Experimental build — staged for testing, not yet promoted to general release.</em></p>
+        </article>
 
         <article class="release">
             <div class="release-date">2026-03-30</div>
