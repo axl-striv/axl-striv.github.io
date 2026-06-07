@@ -186,6 +186,17 @@
 
         <article class="release">
             <div class="release-date">2026-06-07</div>
+            <h3>v1.3.3 <span class="recommended-tag" style="background-color: rgba(255,200,0,0.2); color: #ffc800;">Experimental — Flutter app only</span></h3>
+            <p>Two follow-up fixes on top of v1.3.2.</p>
+            <ul>
+                <li><strong>Reliably reconnects after a firmware update.</strong> After installing a new firmware version, the insole could occasionally go dark and stay invisible to the app until it timed out and rebooted on its own. It now forces its radio back on the moment you disconnect, so it's ready to re-pair right away.</li>
+                <li><strong>Accurate battery reading.</strong> The reported battery percentage had been reading consistently lower than the true level. Fixed how the battery voltage is measured, so the percentage now reflects the actual charge.</li>
+            </ul>
+            <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 8px;"><em>Experimental build — distributed only via the Flutter app.</em></p>
+        </article>
+
+        <article class="release">
+            <div class="release-date">2026-06-07</div>
             <h3>v1.3.2 <span class="recommended-tag" style="background-color: rgba(255,200,0,0.2); color: #ffc800;">Experimental — Flutter app only</span></h3>
             <p>Power and reliability fixes on top of v1.3.1.</p>
             <ul>
@@ -283,6 +294,17 @@
             and pilot users. <strong>If your insole is from the standard 1.x line,
             do not install these — they're for different hardware.</strong>
         </p>
+
+        <article class="release">
+            <div class="release-date">2026-06-07</div>
+            <h3>v2.1.3 <span class="recommended-tag" style="background-color: rgba(255,200,0,0.2); color: #ffc800;">Experimental — Flutter app only</span></h3>
+            <p>Same two follow-up fixes as v1.3.3, built for the 2.x SPI pilot hardware.</p>
+            <ul>
+                <li><strong>Reliably reconnects after a firmware update.</strong> After installing a new firmware version, the insole could occasionally go dark and stay invisible to the app until it timed out and rebooted on its own. It now forces its radio back on the moment you disconnect, so it's ready to re-pair right away.</li>
+                <li><strong>Accurate battery reading.</strong> The reported battery percentage had been reading consistently lower than the true level. Fixed how the battery voltage is measured, so the percentage now reflects the actual charge.</li>
+            </ul>
+            <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 8px;"><em>Experimental build — distributed only via the Flutter app.</em></p>
+        </article>
 
         <article class="release">
             <div class="release-date">2026-06-07</div>
