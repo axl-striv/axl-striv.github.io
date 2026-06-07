@@ -185,6 +185,19 @@
         <h2>1.x — Production line</h2>
 
         <article class="release">
+            <div class="release-date">2026-06-06</div>
+            <h3>v1.3.2 <span class="recommended-tag" style="background-color: rgba(255,200,0,0.2); color: #ffc800;">Experimental — Flutter app only</span></h3>
+            <p>Power and reliability fixes on top of v1.3.1.</p>
+            <ul>
+                <li><strong>Insole can't get stuck asleep.</strong> Hardened the auto-sleep path so powering down between sessions can no longer leave the insole unresponsive — motion reliably wakes it back up.</li>
+                <li><strong>Steadier battery reading.</strong> The reported battery percentage is now smoothed, so it no longer jumps around between readings.</li>
+                <li><strong>Cleaner post-run sync.</strong> Stride uploads now retry if a packet is dropped, so buffered steps come through reliably after a workout.</li>
+                <li>Minor: the blue "disconnected" status light now switches off after 30 seconds (was 60) to save battery.</li>
+            </ul>
+            <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 8px;"><em>Experimental build — distributed only via the Flutter app.</em></p>
+        </article>
+
+        <article class="release">
             <div class="release-date">2026-06-01</div>
             <h3>v1.3.1 <span class="recommended-tag" style="background-color: rgba(255,200,0,0.2); color: #ffc800;">Experimental — Flutter app only</span></h3>
             <p>Stride-detection robustness fixes on top of v1.3.0.</p>
@@ -266,6 +279,19 @@
             and pilot users. <strong>If your insole is from the standard 1.x line,
             do not install these — they're for different hardware.</strong>
         </p>
+
+        <article class="release">
+            <div class="release-date">2026-06-06</div>
+            <h3>v2.1.2 <span class="recommended-tag" style="background-color: rgba(255,200,0,0.2); color: #ffc800;">Experimental — Flutter app only</span></h3>
+            <p>Same power and reliability fixes as v1.3.2, built for the 2.x SPI pilot hardware.</p>
+            <ul>
+                <li><strong>Insole can't get stuck asleep.</strong> Hardened auto-sleep so powering down between sessions can't leave the insole unresponsive; motion reliably wakes it.</li>
+                <li><strong>Steadier battery reading.</strong> Reported battery percentage is now smoothed.</li>
+                <li><strong>Cleaner post-run sync.</strong> Stride uploads retry if a packet is dropped.</li>
+                <li>Minor: blue "disconnected" status light now switches off after 30 seconds (was 60).</li>
+            </ul>
+            <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 8px;"><em>Experimental build — distributed only via the Flutter app.</em></p>
+        </article>
 
         <article class="release">
             <div class="release-date">2026-06-01</div>
