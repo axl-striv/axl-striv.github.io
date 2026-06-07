@@ -190,6 +190,8 @@
             <p>Power and reliability fixes on top of v1.3.1.</p>
             <ul>
                 <li><strong>Insole can't get stuck asleep.</strong> Hardened the auto-sleep path so powering down between sessions can no longer leave the insole unresponsive — motion reliably wakes it back up.</li>
+                <li><strong>Stays awake right after you disconnect.</strong> Previously, if the insole sat connected and still for a while, it could drop straight to sleep the instant you disconnected — and not show up for re-pairing until you picked it up. A live connection now counts as activity, so you always get a full idle window after disconnecting.</li>
+                <li><strong>Always reappears for re-pairing.</strong> Fixed a rare case where the insole could silently stop broadcasting after a disconnect or firmware update and stay invisible to the app — it now notices the dark radio and starts advertising again on its own.</li>
                 <li><strong>No more waking on a bump.</strong> The motion threshold that wakes the insole from deep sleep was set too low, so a knock or vibration could wake it in your bag and drain the battery. It now needs a real pick-up (a firmer movement, briefly sustained) to wake.</li>
                 <li><strong>Steadier battery reading.</strong> The reported battery percentage is now smoothed, so it no longer jumps around between readings.</li>
                 <li><strong>Cleaner post-run sync.</strong> Stride uploads now retry if a packet is dropped, so steps buffered during a workout come through reliably once you reconnect.</li>
@@ -288,6 +290,8 @@
             <p>Same power and reliability fixes as v1.3.2, built for the 2.x SPI pilot hardware.</p>
             <ul>
                 <li><strong>Insole can't get stuck asleep.</strong> Hardened auto-sleep so powering down between sessions can't leave the insole unresponsive; motion reliably wakes it.</li>
+                <li><strong>Stays awake right after you disconnect.</strong> If the insole sat connected and still for a while, it could drop straight to sleep the instant you disconnected — and not show up for re-pairing until you picked it up. A live connection now counts as activity, so you always get a full idle window after disconnecting.</li>
+                <li><strong>Always reappears for re-pairing.</strong> Fixed a rare case where the insole could silently stop broadcasting after a disconnect or firmware update and stay invisible to the app — it now notices the dark radio and starts advertising again on its own.</li>
                 <li><strong>No more waking on a bump.</strong> The deep-sleep wake threshold was too low; a knock or vibration could wake the insole in storage and drain the battery. It now needs a real pick-up to wake.</li>
                 <li><strong>Steadier battery reading.</strong> Reported battery percentage is now smoothed.</li>
                 <li><strong>Cleaner post-run sync.</strong> Stride uploads retry if a packet is dropped.</li>
