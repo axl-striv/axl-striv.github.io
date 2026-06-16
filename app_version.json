@@ -1,12 +1,12 @@
 {
-  "_comment": "App update manifest read by the Striv app on startup. Bump 'latest' to nudge users (dismissable); bump 'min' to force-update (blocking). Versions are CFBundleShortVersionString / versionName, no build suffix. 'url' is where the Update button sends the user.",
+  "_comment": "App update manifest read by the Striv app on startup. Bump 'latest' to nudge users (dismissable); bump 'min' to force-update (blocking). Versions are versionName + build number, e.g. '1.0.0+9' — the build suffix IS compared, so include it for build-only bumps. Only point 'latest'/'min' at a version already available to testers (downloadable), never one still in review. 'url' is where the Update button sends the user.",
   "ios": {
-    "latest": "1.0.0",
+    "latest": "1.0.0+9",
     "min": "1.0.0",
     "url": "https://testflight.apple.com/join/8TZR6hB6"
   },
   "android": {
-    "latest": "1.0.0",
+    "latest": "1.0.0+9",
     "min": "1.0.0",
     "url": "https://play.google.com/apps/testing/com.striv.app"
   }
